@@ -5,7 +5,7 @@
   programs.alacritty = {
       enable = true;
       settings = {
-        font = rec {                          # Font - Laptop has size manually changed at home.nix
+        font = rec {                         
           normal.family = "Fantasque Sans Mono";
           bold.family = "Fantasque Sans Mono";
           size = 12;
