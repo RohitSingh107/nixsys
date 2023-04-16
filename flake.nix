@@ -21,11 +21,11 @@
     		rohits = nixpkgs.lib.nixosSystem {
     			inherit system;
     			modules = [ 
-			./configuration.nix 
+			./system/configuration.nix 
 			home-manager.nixosModules.home-manager {
 				    home-manager.useGlobalPkgs = true;
 				    home-manager.useUserPackages = true;
-				    home-manager.users.rohits = import ./home.nix; 
+				    home-manager.users.rohits = import ./home/home.nix; 
 				  }
 			];
     		};
