@@ -2,7 +2,9 @@
 
 {
 
-
+  imports = [
+  ./alacritty.nix
+  ];
 
   home.username = "rohits";
   home.homeDirectory = "/home/rohits";
@@ -25,7 +27,10 @@
   bitwarden-cli
   neofetch
   gnomeExtensions.dash-to-dock
+  discord
+  fantasque-sans-mono
   ];
+
 
 
 
