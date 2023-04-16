@@ -1,8 +1,3 @@
-#
-# Terminal Emulator
-#
-# Hardcoded as terminal for rofi and doom emacs
-#
 
 { pkgs, ... }:
 
