@@ -3,11 +3,11 @@
 {
 
   imports = [
-  ./alacritty.nix
-  ./gtk.nix
-  ./tmux.nix
-  ./mimeApps.nix
-  ./neovim.nix
+    ./alacritty.nix
+    ./gtk.nix
+    ./tmux.nix
+    ./mimeApps.nix
+    ./neovim.nix
   ];
 
   home.username = "rohits";
@@ -24,8 +24,9 @@
     git = true;
     icons = true;
     extraOptions = [
-  "--group-directories-first"
-  "--header"
+      "--group-directories-first"
+      "--header"
+      "--icons"
     ];
   };
 
@@ -39,25 +40,25 @@
     userEmail = "RohitSinghEmail@protonmail.com";
   };
   home.packages = with pkgs; [
-  alacritty
-  fish
-  htop
-  gdu
-  bitwarden
-  bitwarden-cli
-  neofetch
-  gnomeExtensions.dash-to-dock
-  discord
-  fantasque-sans-mono
-  micro
-  rnix-lsp
-  nerdfonts
+    alacritty
+    fish
+    htop
+    gdu
+    bitwarden
+    bitwarden-cli
+    neofetch
+    gnomeExtensions.dash-to-dock
+    discord
+    fantasque-sans-mono
+    micro
+    rnix-lsp
+    nerdfonts
   ];
 
 
 
 
-  
+
 
 
 

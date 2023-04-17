@@ -5,19 +5,32 @@
     viAlias = true;
 
     plugins = with pkgs.vimPlugins; [
+
       telescope-nvim
-      coc-json
-      nvim-treesitter
       which-key-nvim
-      vim-airline
-      vim-airline-themes
+      vim-airline #vim
+      vim-airline-themes #vim
       dracula-nvim
       gruvbox-nvim
       nvim-colorizer-lua
       comment-nvim
       nvim-web-devicons
-      vim-devicons
+      vim-devicons #vim
       nvim-tree-lua
+
+
+      ## Coc Extensions
+      coc-json
+      coc-snippets
+
+      ## Coding
+      vim-snippets #vim
+      vim-visual-multi #vim
+
+      ## Beautification
+      nvim-treesitter
+      indent-blankline-nvim
+      nvim-ts-rainbow2
     ];
 
     extraPackages = [ pkgs.shfmt ];

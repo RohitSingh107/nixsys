@@ -20,7 +20,8 @@ map("i", "<C-E>", "<ESC>A")
 map("i", "<C-A>", "<ESC>I")
 
 -- Toogle NVim Tree 
-map("n", "<C-f>", "<CMD>NvimTreeToggle<CR>")
+-- map("n", "<space-f>", "<CMD>NvimTreeToggle<CR>")
+map('n', '<C-\\>', '<CMD>NvimTreeToggle<CR>')
 
 -- Insert New lines below and above
 map("n", "]<space>", "<CMD>set paste<CR>m`o<Esc>``:set nopaste<CR>")
@@ -41,8 +42,8 @@ map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>")
 -- map("x", "J", ":move '>+1<CR>gv-gv")
 
 -- Copying the vscode behaviour of making tab splits
-map('n', '<C-\\>', '<CMD>vsplit<CR>')
-map('n', '<A-\\>', '<CMD>split<CR>')
+-- map('n', '<C-\\>', '<CMD>vsplit<CR>')
+-- map('n', '<A-\\>', '<CMD>split<CR>')
 
 -- Move line up and down in NORMAL and VISUAL modes
 map('n', '<C-j>', '<CMD>move .+1<CR>')
