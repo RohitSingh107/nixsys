@@ -149,6 +149,14 @@
 
   environment.variables.EDITOR = "nvim";
   environment.variables.NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+  fonts.fonts = with pkgs; [
+  noto-fonts
+  noto-fonts-emoji
+  liberation_ttf
+  fira-code
+  fira-code-symbols
+  ];
+
 
 
 

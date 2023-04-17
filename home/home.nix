@@ -16,6 +16,21 @@
   home.stateVersion = "22.11";
 
 
+  fonts.fontconfig.enable = true;
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    git = true;
+    icons = true;
+    extraOptions = [
+  "--group-directories-first"
+  "--header"
+    ];
+  };
+
+
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.git = {
@@ -36,6 +51,7 @@
   fantasque-sans-mono
   micro
   rnix-lsp
+  nerdfonts
   ];
 
 

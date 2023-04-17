@@ -7,6 +7,17 @@
     plugins = with pkgs.vimPlugins; [
       telescope-nvim
       coc-json
+      nvim-treesitter
+      which-key-nvim
+      vim-airline
+      vim-airline-themes
+      dracula-nvim
+      gruvbox-nvim
+      nvim-colorizer-lua
+      comment-nvim
+      nvim-web-devicons
+      vim-devicons
+      nvim-tree-lua
     ];
 
     extraPackages = [ pkgs.shfmt ];
@@ -20,6 +31,7 @@
       "$NIXOS_CONFIG_DIR/home/nvim/lua/autocmd.lua", -- Auto Commands settings
       "$NIXOS_CONFIG_DIR/home/nvim/lua/mappings.lua", -- Custom Mappings
       "$NIXOS_CONFIG_DIR/home/nvim/lua/coc-conf.lua", -- coc.nvim specific settings
+      "$NIXOS_CONFIG_DIR/home/nvim/lua/plugin-settings.lua", -- plugins specific settings
     }
 
     -- source all the core config files
