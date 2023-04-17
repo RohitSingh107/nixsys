@@ -112,6 +112,7 @@
   #  wget
   firefox
   git
+  neovim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -145,6 +146,11 @@
   #  programs.bash.enable = true;
   #  home.packages = with pkgs; [ htop ];
   #};
+
+  environment.variables.EDITOR = "nvim";
+  environment.variables.NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+
+
 
   nix = {
     package = pkgs.nixFlakes;
