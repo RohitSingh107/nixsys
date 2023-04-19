@@ -18,11 +18,6 @@
       vim-devicons #vim
       nvim-tree-lua
 
-
-      ## Coc Extensions
-      coc-json
-      coc-snippets
-
       ## Coding
       vim-snippets #vim
       vim-visual-multi #vim
@@ -31,9 +26,38 @@
       nvim-treesitter
       indent-blankline-nvim
       nvim-ts-rainbow2
+
+
+      ## Coc Extensions
+      coc-json
+      coc-snippets
+      coc-clangd
+      coc-emmet
+      coc-eslint
+      # coc-flutter
+      coc-highlight
+      coc-html
+      coc-json
+      coc-pairs
+      coc-prettier
+      coc-pyright
+      coc-rust-analyzer
+      coc-tabnine
+      coc-tsserver
+      # coc-vimlsp
+      coc-sh
+      coc-lua
+      coc-markdownlint
+      # coc-tailwindcss
+      # coc-stylelint
+
+
+
     ];
 
-    extraPackages = [ pkgs.shfmt ];
+    extraPackages = [ 
+      pkgs.shfmt
+    ];
 
     extraLuaConfig = ''
 
