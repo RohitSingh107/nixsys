@@ -7,7 +7,7 @@
       font = rec {
         normal.family = "Fantasque Sans Mono";
         bold.family = "Fantasque Sans Mono";
-        size = 12;
+        size = 14;
       };
       window = {
         opacity = 0.6;

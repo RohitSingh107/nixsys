@@ -69,6 +69,10 @@
         symbol = "🔴";
       };
 
+      python.symbol = " ";
+      nix_shell.symbol = " ";
+
+
       # battery = {
       #   charging_symbol = "";
       #   disabled = true;
