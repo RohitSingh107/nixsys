@@ -6,19 +6,57 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.efiSupport = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.version = 2;
+  # boot.loader.grub.device = "nodev";
+  # boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.efiSupport = true;
+  #
+
+  boot = {
+    loader = {
+
+      # systemd-boot = {
+      #   enable = false;
+      # };
+
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+
+      grub = {
+        enable = true;
+        version = 2;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+
+        extraEntries = ''
+
+          menuentry "Reboot" {
+	          reboot
+          }
+
+          menuentry "Shut Down" {
+	          halt
+          }
+          '';
+      };
+
+    };
+  };
+
+
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -90,7 +128,7 @@
     description = "Rohit Singh";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -108,11 +146,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  firefox
-  git
-  neovim
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    firefox
+    git
+    neovim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -150,11 +188,11 @@
   environment.variables.EDITOR = "nvim";
   environment.variables.NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
   fonts.fonts = with pkgs; [
-  noto-fonts
-  noto-fonts-emoji
-  liberation_ttf
-  fira-code
-  fira-code-symbols
+    noto-fonts
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
   ];
 
 
