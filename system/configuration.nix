@@ -93,6 +93,12 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+
+  services.xserver.windowManager.xmonad = {
+    enable = true;
+    enableContribAndExtras = true;
+  };
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -186,8 +192,12 @@
   #};
 
   environment.variables.EDITOR = "nvim";
+  environment.variables.LC_ALL = "en_IN.UTF-8";
+
   environment.variables.NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
-  fonts.fonts = with pkgs; [
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
     noto-fonts
     noto-fonts-emoji
     liberation_ttf
@@ -195,6 +205,7 @@
     fira-code-symbols
   ];
 
+  };
 
 
 

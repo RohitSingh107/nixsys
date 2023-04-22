@@ -27,22 +27,22 @@
       # Common use
       grubup = "sudo update-grub";
       fixpacman = "sudo rm /var/lib/pacman/db.lck";
-      tarnow = "tar - acf ";
-      untar = "tar - xvf ";
-      wget = "wget - c ";
-      psmem = "ps auxf | sort - nr - k 4";
-      psmem10 = "ps auxf | sort - nr - k 4 | head - 10";
+      tarnow = "tar -acf ";
+      untar = "tar -xvf ";
+      wget = "wget -c ";
+      psmem = "ps auxf | sort -nr -k 4";
+      psmem10 = "ps auxf | sort -nr -k 4 | head - 10";
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       "......" = "cd ../../../../..";
-      dir = "dir - -color=auto";
-      vdir = "vdir - -color=auto";
-      grep = "grep - -color=auto";
-      fgrep = "fgrep - -color=auto";
-      egrep = "egrep - -color=auto";
-      hw = "hwinfo - -short";
+      dir = "dir --color=auto";
+      vdir = "vdir --color=auto";
+      grep = "grep --color=auto";
+      fgrep = "fgrep --color=auto";
+      egrep = "egrep --color=auto";
+      hw = "hwinfo --short";
 
 
       # Get the error messages from journalctl
