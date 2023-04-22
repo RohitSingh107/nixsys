@@ -116,7 +116,7 @@ myStartupHook = do
   -- spawnOnce "conky -c $HOME/.config/conky/doomone-xmonad.conkyrc"
   spawnOnce "trayer --edge top --align right --widthtype request --padding 0 --SetDockType true --SetPartialStrut true --expand false --monitor 0 --transparent true --alpha 60 --tint 0x6790eb  --height 22 &"
   -- spawnOnce "trayer --edge top --align right --widthtype request --padding 0 --SetDockType true --SetPartialStrut false --expand true --monitor 1 --transparent true --alpha 180 --tint 0x282c34  --height 22 &"
-  -- spawnOnce "flameshot &"
+  spawnOnce "flameshot &"
   -- spawnOnce "emacs --daemon &" -- emacs daemon for the emacsclient
   -- uncomment to restore last saved wallpaper
   -- spawnOnce "feh --randomize --bg-fill /home/rohit/Pictures/wallpapers/0051.jpg"
@@ -437,17 +437,19 @@ myKeys =
   -- SUPER + SHIFT KEYS
   [ ("M-S-r", spawn "xmonad --restart"), -- Recompiles xmonad
     ("M-S-x", io exitSuccess), -- Quits xmonad
-    ("M-S-/", spawn "~/.config/xmonad/xmonad_keys.sh"),
-    ("M-S-<Return>", spawn "pcmanfm"), -- PCManFM
+    -- ("M-S-/", spawn "~/.config/xmonad/xmonad_keys.sh"),
+    ("M-S-<Return>", spawn "nautilus"), -- File Manager
     -- , ("M-S-<Return>", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
-    ("M-S-d", spawn "dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15' -p \"Run: \""), -- Dmenu
+    ("M-S-d", spawn ("nwggrid -p -o 0.4")),
     ("M-S-q", kill1), -- Kill the currently focused client
     ("M-S-a", killAll), -- Kill all windows on current workspace
 
     -- SUPER + ... KEYS
     ("M-<Return>", spawn (myTerminal)),
     ("M-b", spawn (myBrowser)),
-    ("M-d", spawn ("nwggrid -p -o 0.4")),
+    ("M-d", spawn "dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15' -p \"Run: \""), -- Dmenu
+
+
     -- SUPER + s KEYSTROKES
     ("C-<Return>", namedScratchpadAction myScratchPads "terminal"),
     ("C-w", namedScratchpadAction myScratchPads "browser"),

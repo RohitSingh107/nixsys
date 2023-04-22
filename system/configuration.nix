@@ -100,11 +100,20 @@
       desktopManager = {
 
         # Enable the GNOME Desktop Environment.
+        gnome = {
+          enable = true;
+        };
+      };
+
+      displayManager = {
+        # Enable the GNOME Desktop Environment.
         gdm = {
           enable = true;
         };
-        gnome = {
+        autoLogin = {
+          # Enable automatic login for the user.
           enable = true;
+          user = "rohits";
         };
       };
 
@@ -136,13 +145,7 @@
     };
 
 
-    displayManager = {
-      autoLogin = {
-        # Enable automatic login for the user.
-        enable = true;
-        user = "rohits";
-      };
-    };
+
 
   };
 
