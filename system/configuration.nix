@@ -12,16 +12,6 @@
     ];
 
   # Bootloader.
-  #boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.version = 2;
-  # boot.loader.grub.device = "nodev";
-  # boot.loader.grub.useOSProber = true;
-  # boot.loader.grub.efiSupport = true;
-  #
-
   boot = {
     loader = {
 
@@ -56,57 +46,181 @@
     };
   };
 
+  networking = {
+    hostName = "nixos"; # Define your hostname.
 
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Enable networking
+    networkmanager = {
+      enable = true;
+    };
+  };
 
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Asia/Kolkata";
+  time = {
+    timeZone = "Asia/Kolkata";
+  };
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
+  i18n = {
+    defaultLocale = "en_IN";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_IN";
+      LC_IDENTIFICATION = "en_IN";
+      LC_MEASUREMENT = "en_IN";
+      LC_MONETARY = "en_IN";
+      LC_NAME = "en_IN";
+      LC_NUMERIC = "en_IN";
+      LC_PAPER = "en_IN";
+      LC_TELEPHONE = "en_IN";
+      LC_TIME = "en_IN";
+    };
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services = {
+
+    xserver = {
+
+      # Configure keymap in X11
+      layout = "us";
+      xkbVariant = "";
+
+      # Enable the X11 windowing system.
+      enable = true;
 
 
-  services.xserver.windowManager.xmonad = {
-    enable = true;
-    enableContribAndExtras = true;
+      desktopManager = {
+
+        # Enable the GNOME Desktop Environment.
+        gdm = {
+          enable = true;
+        };
+        gnome = {
+          enable = true;
+        };
+      };
+
+      windowManager = {
+        xmonad = {
+          enable = true;
+          enableContribAndExtras = true;
+        };
+      };
+
+
+
+      libinput = {
+        # Enable touchpad support (enabled default in most desktopManager).
+        enable = true;
+        touchpad = {
+          naturalScrolling = true;
+        };
+        mouse = {
+          naturalScrolling = true;
+        };
+      };
+
+    };
+
+    printing = {
+      # Enable CUPS to print documents.
+      enable = true;
+    };
+
+
+    displayManager = {
+      autoLogin = {
+        # Enable automatic login for the user.
+        enable = true;
+        user = "rohits";
+      };
+    };
+
   };
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+  users.users = {
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    rohits = {
+      isNormalUser = true;
+      description = "Rohit Singh";
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [
+        #  thunderbird
+      ];
+    };
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  systemd = {
+    services = {
+      # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+      "getty@tty1".enable = false;
+      "autovt@tty1".enable = false;
+    };
+  };
+
+
+  nixpkgs = {
+    config = {
+      # Allow unfree packages
+      allowUnfree = true;
+    };
+  };
+
+  environment = {
+
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    systemPackages = with pkgs; [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
+      firefox
+      git
+      neovim
+    ];
+
+    variables = {
+      EDITOR = "nvim";
+      LC_ALL = "en_IN.UTF-8";
+      NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+    };
+
+
+
+  };
+
+
+
+
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+    ];
+
+  };
+
+
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -125,39 +239,11 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.rohits = {
-    isNormalUser = true;
-    description = "Rohit Singh";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
-  };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "rohits";
 
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    firefox
-    git
-    neovim
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -167,7 +253,6 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -186,33 +271,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
 
-  #home-manager.users.rohits = { pkgs, ... }: {
-  #  programs.bash.enable = true;
-  #  home.packages = with pkgs; [ htop ];
-  #};
-
-  environment.variables.EDITOR = "nvim";
-  environment.variables.LC_ALL = "en_IN.UTF-8";
-
-  environment.variables.NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-  ];
-
-  };
 
 
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
 }
