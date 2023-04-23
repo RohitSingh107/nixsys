@@ -129,7 +129,8 @@ myStartupHook = do
   -- spawnOnce "find /usr/share/backgrounds/dtos-backgrounds/ -type f | shuf -n 1 | xargs xwallpaper --stretch"
 
   -- spawnOnce "~/.fehbg &"  -- set last saved feh wallpaper
-  spawnOnce "feh --randomize --bg-fill /home/rohits/nixsys/images" -- feh set random wallpaper
+  -- spawnOnce "feh --randomize --bg-fill ~/.config/wall" -- feh set random wallpaper
+  spawnOnce "feh --bg-fill ~/.config/wall/xmonad.jpg"
   -- spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
   setWMName "LG3D"
 

@@ -8,9 +8,9 @@
     ./gtk.nix
     ./tmux.nix
     ./mimeApps.nix
-    ./neovim.nix
     ./starship.nix
-    ./xmobar/xmobar.nix
+    ./nvim
+    ./xmobar
   ];
 
 
@@ -29,7 +29,7 @@
       fantasque-sans-mono
       micro
       rnix-lsp
-      nerdfonts
+      nerdfonts # Maybe should not be here
       feh
       trayer # For Xmonad/Xmobar tray
       dmenu
