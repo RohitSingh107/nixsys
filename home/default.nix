@@ -39,6 +39,12 @@
       wl-clipboard
 
     ];
+
+
+    file = {
+      ".config/wall".source = config.lib.file.mkOutOfStoreSymlink ../wall;
+    };
+
   };
 
   services = {

@@ -35,7 +35,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.rohits = {
                 imports = [
-                  ./home/home.nix
+                  ./home
                   nix-doom-emacs.hmModule
                 ];
               };

@@ -15,14 +15,16 @@
   boot = {
     loader = {
 
-      # systemd-boot = {
-      #   enable = false;
-      # };
-
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
       };
+
+      # systemd-boot = {
+      #   enable = false;
+      # };
+
+
 
       grub = {
         enable = true;
@@ -30,6 +32,8 @@
         device = "nodev";
         useOSProber = true;
         efiSupport = true;
+
+        theme = pkgs.nixos-grub2-theme;
 
         extraEntries = ''
 
@@ -42,6 +46,8 @@
           }
           '';
       };
+
+      timeout = 5;
 
     };
   };
@@ -137,6 +143,15 @@
         };
       };
 
+
+      # Extra Optional Settings to prevent screen timeout 
+      serverFlagsSection = ''
+        Option "BlankTime" "0"
+        Option "StandbyTime" "0"
+        Option "SuspendTime" "0"
+        Option "OffTime" "0"
+        '';
+
     };
 
     printing = {
@@ -155,6 +170,7 @@
       isNormalUser = true;
       description = "Rohit Singh";
       extraGroups = [ "networkmanager" "wheel" ];
+      # extraGroups = [ "networkmanager" "wheel" "audio" "video" "ip" "scanner" "camera" "kvm" "libvirtd" "plex" ];
       packages = with pkgs; [
         #  thunderbird
       ];
@@ -206,9 +222,15 @@
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
-      noto-fonts
+      font-awesome
+      corefonts
       noto-fonts-emoji
       liberation_ttf
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+        ];
+      })
       fira-code
       fira-code-symbols
     ];
@@ -222,6 +244,15 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+
+    settings = {
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
 
