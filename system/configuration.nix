@@ -34,6 +34,7 @@
         efiSupport = true;
 
         theme = pkgs.nixos-grub2-theme;
+        splashImage = ../wall/grub.jpg;
 
         extraEntries = ''
 

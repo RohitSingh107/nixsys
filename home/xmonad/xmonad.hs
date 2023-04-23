@@ -447,6 +447,7 @@ myKeys =
 
     -- SUPER + ... KEYS
     ("M-<Return>", spawn (myTerminal)),
+    ("M-q", kill1), -- Kill the currently focused client
     ("M-b", spawn (myBrowser)),
     ("M-d", spawn "dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15' -p \"Run: \""), -- Dmenu
 
