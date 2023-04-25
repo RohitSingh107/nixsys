@@ -34,7 +34,7 @@
         efiSupport = true;
 
         theme = pkgs.nixos-grub2-theme;
-        splashImage = ../wall/grub.jpg;
+        # splashImage = ../wall/grub.png;
 
         extraEntries = ''
 
@@ -128,6 +128,14 @@
         xmonad = {
           enable = true;
           enableContribAndExtras = true;
+        };
+
+        qtile = {
+          enable = true;
+          backend = "x11";
+          configFile = ./qtile/config.py;
+
+
         };
       };
 
