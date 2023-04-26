@@ -77,6 +77,8 @@ import           XMonad.Util.Run                     (runProcessWithInput,
                                                       safeSpawn, spawnPipe)
 import           XMonad.Util.SpawnOnce
 
+import MyDefaults (fileManager, ssTool)
+
 myFont :: String
 myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
 
@@ -170,7 +172,7 @@ spawnSelected' lst = gridselect conf lst >>= flip whenJust spawn
 
 myAppGrid =
   [ ("Termonad", "termonad"),
-    ("PCManFM", "pcmanfm"),
+    ("PCManFM", fileManager),
     ("Emacs", "emacsclient -c -a emacs"),
     ("iPython", "alacritty -e ipython"),
     ("FreeTube", "freetube"),

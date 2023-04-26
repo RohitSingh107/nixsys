@@ -55,7 +55,7 @@
 
     ];
 
-    extraPackages = [ 
+    extraPackages = [
       pkgs.shfmt
     ];
 
@@ -115,6 +115,19 @@
               "haskell"
               "lhaskell"
             ];
+            settings = {
+              haskell = {
+                checkParents = "CheckOnSave";
+                checkProject = true;
+                maxCompletions = 40;
+                formattingProvider = "ormolu";
+                plugin = {
+                  stan = {
+                    globalOn = true;
+                  };
+                };
+              };
+            };
           };
           nix = {
             command = "rnix-lsp";

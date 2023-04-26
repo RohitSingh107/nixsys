@@ -9,8 +9,10 @@
     ./tmux.nix
     ./mimeApps.nix
     ./starship.nix
+    ./vscode.nix
     ./nvim
     ./xmobar
+    ./xmonad
   ];
 
 
@@ -107,17 +109,6 @@
 
 
 
-  xsession = {
-    windowManager = {
-      xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
-        config = ./xmonad/xmonad.hs;
 
-      };
-    };
-
-
-  };
 
 }
