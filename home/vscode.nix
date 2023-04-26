@@ -7,6 +7,7 @@
     # package = pkgs.vscodium;
     extensions = [
       pkgs.vscode-extensions.esbenp.prettier-vscode
+      pkgs.vscode-extensions.haskell.haskell
     ];
 
     globalSnippets = {
@@ -24,7 +25,7 @@
     haskell = {
       enable = true;
       hie = {
-        enable = true;
+        enable = false;
       };
     };
     keybindings = [
