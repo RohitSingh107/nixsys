@@ -10,7 +10,7 @@ import           Data.Monoid
 import           Data.Tree
 import           System.Directory
 import           System.Exit                         (exitSuccess)
-import           System.IO                           (hPutStrLn)
+import           System.IO                           (hPutStrLn, Handle)
 import           XMonad
 import           XMonad.Actions.CopyWindow           (kill1)
 import           XMonad.Actions.CycleWS              (Direction1D (..),
@@ -219,8 +219,7 @@ tabs =
     tabbed shrinkText myTabTheme
 
 tallAccordion =
-  renamed [Replace "tallAccordion"] $
-    Accordion
+  renamed [Replace "tallAccordion"] Accordion
 
 wideAccordion =
   renamed [Replace "wideAccordion"] $
@@ -311,40 +310,11 @@ myManageHook =
     ]
     <+> namedScratchpadManageHook myScratchPads
 
-main :: IO ()
-main = do
-  -- Launching three instances of xmobar on their monitors.
-  xmproc0 <- spawnPipe "xmobar"
-  -- xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc"
-  -- xmproc2 <- spawnPipe "xmobar -x 2 $HOME/.config/xmobar/xmobarrc"
-  -- the xmonad, ya know...what the WM is named after!
-  xmonad $
-    ewmh
-      $ docks
-      def
-        { manageHook = myManageHook <+> manageDocks,
-          --        , handleEventHook    = docks
-          -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
-          -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
-          -- it adds a border around the window if screen does not have focus. So, my solution
-          -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
-          -- <+> fullscreenEventHook
-          modMask = myModMask,
-          terminal = myTerminal,
-          startupHook = myStartupHook,
-          -- , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
-          layoutHook = myLayoutHook,
-          workspaces = myWorkspaces,
-          borderWidth = myBorderWidth,
-          normalBorderColor = myNormColor,
-          focusedBorderColor = myFocusColor,
-          --        , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
-          logHook =
-            dynamicLogWithPP $
-              XMonad.Hooks.StatusBar.PP.filterOutWsPP [scratchpadWorkspaceTag] $
-                xmobarPP
-                  { -- the following variables beginning with 'pp' are settings for xmobar.
-                    ppOutput = \x -> hPutStrLn xmproc0 x, -- xmobar on monitor 1
+
+
+myXmobarConf xmb = xmobarPP { -- the following variables beginning with 'pp' are settings for xmobar.
+                    -- ppOutput = hPutStrLn xmproc0, -- xmobar on monitor 1
+                    ppOutput = hPutStrLn xmb, -- xmobar on monitor 1
                     --  >> hPutStrLn xmproc1 x                          -- xmobar on monitor 2
                     --  >> hPutStrLn xmproc2 x                          -- xmobar on monitor 3
 
@@ -367,6 +337,37 @@ main = do
                     ppExtras = [windowCount], -- # of windows current workspace
                     ppOrder = \(ws : l : t : ex) -> [ws, l] ++ ex ++ [t] -- order of things in xmobar
                   }
+
+myXConf xmb = def { manageHook = myManageHook <+> manageDocks,
+          --        , handleEventHook    = docks
+          -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
+          -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
+          -- it adds a border around the window if screen does not have focus. So, my solution
+          -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
+          -- <+> fullscreenEventHook
+          modMask = myModMask,
+          terminal = myTerminal,
+          startupHook = myStartupHook,
+          -- , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
+          layoutHook = myLayoutHook,
+          workspaces = myWorkspaces,
+          borderWidth = myBorderWidth,
+          normalBorderColor = myNormColor,
+          focusedBorderColor = myFocusColor,
+          --        , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
+          logHook =
+            dynamicLogWithPP $
+              XMonad.Hooks.StatusBar.PP.filterOutWsPP [scratchpadWorkspaceTag] $
+                myXmobarConf xmb
+
         }
-      `additionalKeysP` myKeys
+
+main :: IO ()
+main = do
+  -- Launching three instances of xmobar on their monitors.
+  xmproc0 <- spawnPipe "xmobar"
+  -- xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc"
+  -- xmproc2 <- spawnPipe "xmobar -x 2 $HOME/.config/xmobar/xmobarrc"
+  -- the xmonad, ya know...what the WM is named after!
+  xmonad $ ewmh $ docks $ myXConf xmproc0 `additionalKeysP` myKeys
 
