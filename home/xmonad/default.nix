@@ -11,6 +11,8 @@
           "MyGrids.hs" = ./MyGrids.hs;
           "MyKeys.hs" = ./MyKeys.hs;
           "MyScratchpads.hs" = ./MyScratchpads.hs;
+          "XmobarConf.hs" = ./XmobarConf.hs;
+          "XConf.hs" = ./XConf.hs;
 
         };
       };
