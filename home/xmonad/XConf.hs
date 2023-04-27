@@ -13,7 +13,8 @@ import           XMonad.Util.NamedScratchpad
 
 -- My Modules Import
 import WindowManagement (myManageHook)
-import MyDefaults (myModMask, myFont, myTerminal, myBrowser, myEmacs, myEditor, fileManager, ssTool)
+import MyWindowsLayout (myLayoutHook)
+import MyDefaults (myBorderWidth, myFocusColor, myUnFocusColor, myModMask, myFont, myTerminal, myBrowser, myEmacs, myEditor, fileManager, ssTool)
 import MyStartupHook (myStartupHook)
 import XmobarConf (myWorkspaces, myXmobarConf)
 
@@ -31,7 +32,7 @@ myXConf xmb = def { manageHook = myManageHook <+> manageDocks,
           layoutHook = myLayoutHook,
           workspaces = myWorkspaces,
           borderWidth = myBorderWidth,
-          normalBorderColor = myNormColor,
+          normalBorderColor = myUnFocusColor,
           focusedBorderColor = myFocusColor,
           --        , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
           logHook =

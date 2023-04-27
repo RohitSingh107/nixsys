@@ -11,9 +11,11 @@
           "MyGrids.hs" = ./MyGrids.hs;
           "MyKeys.hs" = ./MyKeys.hs;
           "MyScratchpads.hs" = ./MyScratchpads.hs;
-          "XmobarConf.hs" = ./XmobarConf.hs;
+          "MyStartupHook.hs" = ./MyStartupHook.hs;
+          "MyWindowsLayout.hs" = ./MyWindowsLayout.hs;
+          "WindowManagement.hs" = ./WindowManagement.hs;
           "XConf.hs" = ./XConf.hs;
-
+          "XmobarConf.hs" = ./XmobarConf.hs;
         };
       };
     };

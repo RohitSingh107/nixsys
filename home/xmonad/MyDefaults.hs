@@ -26,3 +26,15 @@ ssTool = "flameshot"
 
 fileManager :: String
 fileManager = "nautilus"
+
+
+myBorderWidth :: Dimension
+myBorderWidth = 1 -- Sets border width for windows
+
+myUnFocusColor :: String
+myUnFocusColor = "#e39ff6" -- Border color of normal windows
+
+myFocusColor :: String
+myFocusColor = "#a1045a" -- Border color of focused windows
+
+
