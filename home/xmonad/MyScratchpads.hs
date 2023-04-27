@@ -1,4 +1,3 @@
-
 module MyScratchpads where
 
 -- Data
@@ -12,7 +11,7 @@ import           XMonad.Util.NamedScratchpad
 import qualified XMonad.StackSet                     as W
 
 -- My modules Import
-import MyDefaults (myTerminal)
+import           MyDefaults                          (myTerminal)
 
 
 

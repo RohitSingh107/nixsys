@@ -1,6 +1,5 @@
 module MyKeys where
 
-
 -- Data
 import           Data.Maybe                          (fromJust, isJust)
 import           XMonad
@@ -10,38 +9,30 @@ import           XMonad.Actions.GridSelect
 import           XMonad.Actions.Promote
 import           XMonad.Actions.RotSlaves            (rotAllDown, rotSlavesDown)
 import           XMonad.Actions.WindowGo             (runOrRaise)
-import           XMonad.Actions.CycleWS              (Direction1D (..),
-                                                      WSType (..), moveTo,
-                                                      nextScreen, prevScreen,
-                                                      shiftTo)
+import           XMonad.Actions.CycleWS              (Direction1D (..), WSType (..), moveTo, nextScreen, prevScreen, shiftTo)
 
 -- Layouts modifiers
 import qualified XMonad.StackSet                     as W
-import qualified XMonad.Layout.ToggleLayouts         as T (ToggleLayout (Toggle), toggleLayouts)
+import qualified XMonad.Layout.ToggleLayouts         as T (ToggleLayout (Toggle))
 import qualified XMonad.Layout.MultiToggle           as MT (Toggle (..))
 import           XMonad.Layout.Tabbed
 import           XMonad.Actions.WithAll              (killAll, sinkAll)
 import           XMonad.Layout.Spacing
 import           XMonad.Layout.MultiToggle.Instances (StdTransformers (MIRROR, NBFULL, NOBORDERS))
-import           XMonad.Layout.LimitWindows          (decreaseLimit,
-                                                      increaseLimit,
-                                                      limitWindows)
-
+import           XMonad.Layout.LimitWindows          (decreaseLimit, increaseLimit)
 import           XMonad.Layout.ResizableTile
+
 -- Utilities
 import           XMonad.Util.NamedScratchpad
 import           XMonad.Layout.SubLayouts
 
 -- Hooks
-import           XMonad.Hooks.ManageDocks            (ToggleStruts (..),
-                                                      avoidStruts, docks,
-                                                      docksEventHook,
-                                                      manageDocks)
+import           XMonad.Hooks.ManageDocks            (ToggleStruts (..), avoidStruts)
 
 -- My modules Import
-import MyDefaults (myModMask, myFont, myTerminal, myBrowser, myEmacs, myEditor, fileManager, ssTool)
-import MyScratchpads (myScratchPads)
-import MyGrids (myAppGrid, myWebGrid, mygridConfig, myColorizer) -- Mybe shit mycolorizer
+import          MyDefaults                           (myModMask, myFont, myTerminal, myBrowser, myEmacs, myEditor, fileManager, ssTool)
+import          MyScratchpads                        (myScratchPads)
+import          MyGrids                              (myAppGrid, myWebGrid, mygridConfig, myColorizer) -- Mybe shit mycolorizer
 
 
 
@@ -96,18 +87,18 @@ myKeys =
     ("C-g b", bringSelected $ mygridConfig myColorizer), -- bring selected window
 
     -- CONTROL + ALT KEYS
-    ("C-M1-p", spawn ("$HOME/.config/xmonad/picom-toggle.sh")),
-    ("C-M1-w", spawn ("feh --randomize --bg-fill /home/rohits/Pictures/wallpapers/*.jpg")),
+    ("C-M1-p", spawn "$HOME/.config/xmonad/picom-toggle.sh"),
+    ("C-M1-w", spawn "feh --randomize --bg-fill /home/rohits/Pictures/wallpapers/*.jpg"),
     -- CONTROL + e KEYSTROKES
     -- , ("C-e e", spawn myEmacs)                 -- start emacs
-    ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'"))), -- emacs dashboard
-    ("C-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'"))), -- list buffers
-    ("C-e d", spawn (myEmacs ++ ("--eval '(dired nil)'"))), -- dired
-    ("C-e i", spawn (myEmacs ++ ("--eval '(erc)'"))), -- erc irc client
-    ("C-e s", spawn (myEmacs ++ ("--eval '(eshell)'"))), -- eshell
-    ("C-e t", spawn (myEmacs ++ ("--eval '(mastodon)'"))), -- mastodon.el
-    ("C-e v", spawn (myEmacs ++ ("--eval '(vterm nil)'"))), -- vterm if on GNU Emacs
-    ("C-e w", spawn (myEmacs ++ ("--eval '(eww \"distrotube.com\")'"))), -- eww browser if on GNU Emacs
+    ("C-e e", spawn (myEmacs ++ "--eval '(dashboard-refresh-buffer)'")), -- emacs dashboard
+    ("C-e b", spawn (myEmacs ++ "--eval '(ibuffer)'")), -- list buffers
+    ("C-e d", spawn (myEmacs ++ "--eval '(dired nil)'")), -- dired
+    ("C-e i", spawn (myEmacs ++ "--eval '(erc)'")), -- erc irc client
+    ("C-e s", spawn (myEmacs ++ "--eval '(eshell)'")), -- eshell
+    ("C-e t", spawn (myEmacs ++ "--eval '(mastodon)'")), -- mastodon.el
+    ("C-e v", spawn (myEmacs ++ "--eval '(vterm nil)'")), -- vterm if on GNU Emacs
+    ("C-e w", spawn (myEmacs ++ "--eval '(eww \"google.com\")'")), -- eww browser if on GNU Emacs
 
     -- Super + p KEYSTROKES (dmenu)
     ("M-p a", spawn "dm-sounds"), -- choose an ambient background

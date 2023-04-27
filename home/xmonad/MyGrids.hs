@@ -4,9 +4,8 @@ module MyGrids where
 import           XMonad.Actions.GridSelect
 import           XMonad
 
-
-
-import MyDefaults (myFont)
+-- My Modules Import
+import           MyDefaults                        (myFont)
 
 myColorizer :: Window -> Bool -> X (String, String) -- Maybe should be transferred from here
 myColorizer =
@@ -16,8 +15,6 @@ myColorizer =
     (0xc7, 0x92, 0xea) -- active bg
     (0xc0, 0xa7, 0x9a) -- inactive fg
     (0x28, 0x2c, 0x34) -- active fg
-
-
 
 
 -- gridSelect menu layout

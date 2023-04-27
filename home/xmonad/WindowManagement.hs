@@ -12,8 +12,8 @@ import           XMonad.Hooks.ManageHelpers          (doCenterFloat, doFullFloat
 import           XMonad.Util.NamedScratchpad
 
 -- My Module Import
-import MyScratchpads (myScratchPads)
-import XmobarConf (myWorkspaces)
+import           MyScratchpads                       (myScratchPads)
+import           XmobarConf                          (myWorkspaces)
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook =

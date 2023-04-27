@@ -1,7 +1,7 @@
 module MyDefaults where
 
 -- Data
-import           XMonad
+import           XMonad (KeyMask, mod4Mask, Dimension)
 
 myModMask :: KeyMask
 myModMask = mod4Mask -- Sets modkey to super/windows key
@@ -13,13 +13,13 @@ myTerminal :: String
 myTerminal = "alacritty" -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "qutebrowser" -- Sets qutebrowser as browser
+myBrowser = "firefox" -- Sets qutebrowser as browser
 
 myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' " -- Makes emacs keybindings easier to type
 
 myEditor :: String
-myEditor = "emacsclient -c -a 'emacs' " -- Sets emacs as editor
+myEditor = "nvim " -- Sets emacs as editor
 
 ssTool :: String
 ssTool = "flameshot"

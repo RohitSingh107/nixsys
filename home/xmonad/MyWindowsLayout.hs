@@ -1,15 +1,11 @@
 module MyWindowsLayout where
 
-
 -- Data
 import           XMonad
 import           XMonad.Actions.MouseResize
 
 -- Hooks
-import           XMonad.Hooks.ManageDocks            (ToggleStruts (..),
-                                                      avoidStruts, docks,
-                                                      docksEventHook,
-                                                      manageDocks)
+import           XMonad.Hooks.ManageDocks            (ToggleStruts (..), avoidStruts, docks, docksEventHook, manageDocks)
 
 -- Layouts modifiers
 import           XMonad.Layout.Spacing
@@ -26,13 +22,9 @@ import           XMonad.Layout.Simplest
 import           XMonad.Layout.SimplestFloat
 import           XMonad.Layout.Spiral
 import           XMonad.Layout.ThreeColumns
-import           XMonad.Layout.WindowArranger        (WindowArrangerMsg (..),
-                                                      windowArrange)
-import           XMonad.Layout.LimitWindows          (decreaseLimit,
-                                                      increaseLimit,
-                                                      limitWindows)
-import           XMonad.Layout.MultiToggle           (EOT (EOT), mkToggle,
-                                                      single, (??))
+import           XMonad.Layout.WindowArranger        (WindowArrangerMsg (..), windowArrange)
+import           XMonad.Layout.LimitWindows          (decreaseLimit, increaseLimit, limitWindows)
+import           XMonad.Layout.MultiToggle           (EOT (EOT), mkToggle, single, (??))
 import           XMonad.Layout.MultiToggle.Instances (StdTransformers (MIRROR, NBFULL, NOBORDERS))
 
 -- Layouts
@@ -40,7 +32,7 @@ import           XMonad.Layout.Accordion
 import           XMonad.Layout.GridVariants          (Grid (Grid))
 
 -- My Modules Import
-import MyDefaults (myFont, myBorderWidth)
+import           MyDefaults                          (myFont, myBorderWidth)
 
 
 

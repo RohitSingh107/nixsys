@@ -1,7 +1,5 @@
 module MyStartupHook where
 
-
-
 -- Data
 import           XMonad
 
