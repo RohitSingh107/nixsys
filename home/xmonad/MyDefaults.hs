@@ -29,7 +29,7 @@ fileManager = "nautilus"
 
 
 myBorderWidth :: Dimension
-myBorderWidth = 1 -- Sets border width for windows
+myBorderWidth = 3 -- Sets border width for windows
 
 myUnFocusColor :: String
 myUnFocusColor = "#e39ff6" -- Border color of normal windows
