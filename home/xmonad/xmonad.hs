@@ -14,5 +14,5 @@ import           XConf                               (myXConf)
 
 main :: IO ()
 main = do
-  xmobar0 <- spawnPipe "xmobar"
+  xmobar0 <- spawnPipe "xmobar-rohit"
   xmonad $ ewmh $ docks $ myXConf xmobar0 `additionalKeysP` myKeys

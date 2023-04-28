@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # ec = {
+    #
+    #   url = "github:RohitSingh107/example-c";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
   };
 
 
@@ -21,6 +27,8 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+
     in
     {
       nixosConfigurations = {
@@ -43,10 +51,5 @@
           ];
         };
       };
-      
-
     };
-
-
-
 }
