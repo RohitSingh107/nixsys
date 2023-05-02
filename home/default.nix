@@ -10,9 +10,11 @@
     ./mimeApps.nix
     ./starship.nix
     ./vscode.nix
+    ./firefox.nix
     ./nvim
     ./xmobar
     ./xmonad
+
   ];
 
 
@@ -39,6 +41,7 @@
       pavucontrol
       xclip
       wl-clipboard
+      xdotool
 
     ];
 

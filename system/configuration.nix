@@ -30,7 +30,7 @@
         enable = true;
         version = 2;
         device = "nodev";
-        useOSProber = true;
+        useOSProber = false;
         efiSupport = true;
 
         theme = pkgs.nixos-grub2-theme;
@@ -45,6 +45,38 @@
           menuentry "Shut Down" {
 	          halt
           }
+
+          
+          function load_video {
+            if [ x$feature_all_video_module = xy ]; then
+              insmod all_video
+            else
+              insmod efi_gop
+              insmod efi_uga
+              insmod ieee1275_fb
+              insmod vbe
+              insmod vga
+              insmod video_bochs
+              insmod video_cirrus
+            fi
+          }
+
+
+
+          menuentry 'Garuda Linux' --class garuda --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-92f6319f-6ea7-4779-ae48-2a6646f0fc86' {
+            load_video
+            set gfxpayload=keep
+            insmod gzio
+            insmod part_gpt
+            insmod btrfs
+            search --no-floppy --fs-uuid --set=root 92f6319f-6ea7-4779-ae48-2a6646f0fc86
+            echo	'Loading Linux linux-zen ...'
+            linux	/@/boot/vmlinuz-linux-zen root=UUID=92f6319f-6ea7-4779-ae48-2a6646f0fc86 rw rootflags=subvol=@  quiet splash rd.udev.log_priority=3 vt.global_cursor_default=0 loglevel=3 ibt=off
+            echo	'Loading initial ramdisk ...'
+            initrd	/@/boot/amd-ucode.img /@/boot/initramfs-linux-zen.img
+          }
+
+          
           '';
       };
 
@@ -212,6 +244,7 @@
       firefox
       git
       neovim
+      gparted
     ];
 
     variables = {

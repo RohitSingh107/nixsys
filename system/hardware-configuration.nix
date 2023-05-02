@@ -35,6 +35,11 @@
         device = "/dev/disk/by-uuid/537E-7D5E";
         fsType = "vfat";
       };
+    "/home/rohits/mydata" =
+      {
+        device = "/dev/disk/by-uuid/10f15eaf-0f70-4876-9bc0-abfa801c1dc5";
+        fsType = "ext4";
+      };
   };
 
 
