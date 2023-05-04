@@ -25,24 +25,21 @@
 
     packages = with pkgs; [
       gdu
+      brave
       bitwarden
-      bitwarden-cli
       neofetch
-      gnomeExtensions.dash-to-dock
       discord
-      fantasque-sans-mono
-      micro
       rnix-lsp
+      killall
+      fantasque-sans-mono # Maybe should not be here
       nerdfonts # Maybe should not be here
-      feh
-      trayer # For Xmonad/Xmobar tray
       dmenu
-      flameshot
       pavucontrol
       xclip
       wl-clipboard
       xdotool
-
+      gnome.gnome-tweaks
+      gnomeExtensions.dash-to-dock
     ];
 
 
@@ -54,6 +51,17 @@
 
   services = {
     network-manager-applet.enable = true;
+    flameshot = {
+      enable = true;
+      settings = {
+        General = {
+          disabledTrayIcon = true;
+          showStartupLaunchMessage = true;
+          showDesktopNotification = true;
+          savePath = "/home/rohits/Pictures";
+        };
+      };
+    };
   };
 
 
@@ -75,7 +83,6 @@
       extraOptions = [
         "--color=always"
         "--group-directories-first"
-        "--header"
         "--icons"
       ];
     };
@@ -99,6 +106,29 @@
       userName = "Rohit Singh";
       userEmail = "RohitSinghEmail@protonmail.com";
     };
+
+
+    micro = {
+      enable = true;
+      settings = {
+        colorscheme = "simple";
+      };
+    };
+
+    feh = {
+      enable = true;
+      keybindings = {
+        prev_img = [
+          "h"
+          "Left"
+        ];
+        zoom_in = "plus";
+        zoom_out = "minus";
+      };
+    };
+
+
+
   };
 
 

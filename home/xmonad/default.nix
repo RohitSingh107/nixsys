@@ -1,5 +1,19 @@
 { pkgs, ... }: {
 
+  services.trayer = {
+    enable = true;
+    settings = {
+      edge = "top";
+      align = "right";
+      widthtype = "request";
+      padding = 0;
+      SetDockType = true;
+      alpha = 60;
+      tint = "0x6790eb";
+      height = 22;
+    };
+  };
+
   xsession = {
     windowManager = {
       xmonad = {

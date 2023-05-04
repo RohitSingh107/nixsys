@@ -17,6 +17,7 @@ myStartupHook = do
   -- spawnOnce "nm-applet &"
   -- spawnOnce "volumeicon &"
   -- spawnOnce "conky -c $HOME/.config/conky/doomone-xmonad.conkyrc"
+  -- spawnOnce "trayer --edge top --align right --widthtype request --padding 0 --SetDockType true --SetPartialStrut true --expand false --monitor 0 --transparent true --alpha 60 --tint 0x6790eb  --height 22 &"
   spawnOnce "trayer --edge top --align right --widthtype request --padding 0 --SetDockType true --SetPartialStrut true --expand false --monitor 0 --transparent true --alpha 60 --tint 0x6790eb  --height 22 &"
   -- spawnOnce "trayer --edge top --align right --widthtype request --padding 0 --SetDockType true --SetPartialStrut false --expand true --monitor 1 --transparent true --alpha 180 --tint 0x282c34  --height 22 &"
   spawnOnce "flameshot &"

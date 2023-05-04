@@ -70,6 +70,10 @@
                 name = "wiki";
                 url = "https://nixos.wiki/";
               }
+              {
+                name = "Home Manager Appendix";
+                url = "https://nix-community.github.io/home-manager/options.html";
+              }
             ];
           }
         ];
@@ -83,6 +87,7 @@
           "browser.startup.homepage" = "https://nixos.org";
           "browser.search.region" = "IN";
           "browser.search.isUS" = false;
+          "browser.startup.page" = 3;
           "distribution.searchplugins.defaultLocale" = "en-GB";
           "general.useragent.locale" = "en-GB";
           "browser.bookmarks.showMobileBookmarks" = true;

@@ -20,8 +20,8 @@ myScratchPads :: [NamedScratchpad]
 myScratchPads =
   [ NS "terminal" spawnTerm findTerm manageTerm,
     NS "mocp" spawnMocp findMocp manageMocp,
-    NS "calculator" spawnCalc findCalc manageCalc,
-    NS "browser" spawnBrowser findBrowser manageBrowser
+    NS "calculator" spawnCalc findCalc manageCalc
+    -- NS "browser" spawnBrowser findBrowser manageBrowser
   ]
   where
     spawnTerm = myTerminal ++ " -t scratchpad"
@@ -34,14 +34,14 @@ myScratchPads =
         t = 0.95 - h
         l = 0.95 - w
 
-    spawnBrowser = "firefox"
-    findBrowser = className =? "firefox"
-    manageBrowser = customFloating $ W.RationalRect l t w h
-      where
-        h = 0.9
-        w = 0.9
-        t = 0.95 - h
-        l = 0.95 - w
+    -- spawnBrowser = "firefox"
+    -- findBrowser = className =? "firefox"
+    -- manageBrowser = customFloating $ W.RationalRect l t w h
+    --   where
+    --     h = 0.9
+    --     w = 0.9
+    --     t = 0.95 - h
+    --     l = 0.95 - w
 
     spawnMocp = myTerminal ++ " -t mocp -e mocp"
     findMocp = title =? "mocp"

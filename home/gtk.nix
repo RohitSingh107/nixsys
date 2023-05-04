@@ -1,16 +1,24 @@
-{ pkgs, ...}: {
+{ pkgs, ... }: {
 
- gtk = {                                     # Theming
+  gtk = {
+    # Theming
     enable = true;
+    cursorTheme = {
+      name = "Catppuccin-Mocha-Red-Cursors";
+      package = pkgs.catppuccin-cursors.mochaRed;
+      size = 16;
+
+    };
     theme = {
-      name = "Dracula";
-      #name = "Catppuccin-Mocha-Compact-Mauve-Dark";
-      package = pkgs.dracula-theme;
-      #package = pkgs.catppuccin-gtk.override {
-      #  accents = ["mauve"];
-      #  size = "compact";
-      #  variant = "mocha";
-      #};
+      # name = "Dracula";
+      # package = pkgs.dracula-theme;
+      name = "Catppuccin-Mocha-Standard-Red-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "red" ];
+        size = "standard";
+        # tweaks = [ "rimless" "normal" ];
+        variant = "mocha";
+      };
     };
     iconTheme = {
       name = "Papirus-Dark";
@@ -19,7 +27,10 @@
     font = {
       #name = "JetBrains Mono Medium";
       name = "FiraCode Nerd Font Mono Medium";
-    };                                        # Cursor is declared under home.pointerCursor
-  }; 
+      # size = "8";
+    }; # Cursor is declared under home.pointerCursor
+
+
+  };
 
 }
