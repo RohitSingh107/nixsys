@@ -84,6 +84,7 @@
         # extraConfig = "";
 
         settings = {
+          "browser.bookmarks.addedImportButton" = false;
           "browser.startup.homepage" = "https://nixos.org";
           "browser.search.region" = "IN";
           "browser.search.isUS" = false;

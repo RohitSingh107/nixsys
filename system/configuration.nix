@@ -98,6 +98,18 @@
     networkmanager = {
       enable = true;
     };
+
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+      allowedUDPPortRanges = [
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+    };
+
+
   };
 
 
@@ -191,7 +203,7 @@
         Option "StandbyTime" "0"
         Option "SuspendTime" "0"
         Option "OffTime" "0"
-        '';
+      '';
 
     };
 

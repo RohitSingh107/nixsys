@@ -10,13 +10,16 @@
       which-key-nvim
       vim-airline #vim
       vim-airline-themes #vim
-      dracula-nvim
-      gruvbox-nvim
       nvim-colorizer-lua
       comment-nvim
       nvim-web-devicons
       vim-devicons #vim
       nvim-tree-lua
+
+      ## Color themes
+      catppuccin-nvim
+      gruvbox-nvim
+      dracula-nvim
 
       ## Coding
       vim-snippets #vim

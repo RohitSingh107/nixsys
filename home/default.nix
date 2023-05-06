@@ -38,6 +38,8 @@
       xclip
       wl-clipboard
       xdotool
+      whatsapp-for-linux
+      brightnessctl
       gnome.gnome-tweaks
       gnomeExtensions.dash-to-dock
     ];
@@ -51,16 +53,19 @@
 
   services = {
     network-manager-applet.enable = true;
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
     flameshot = {
       enable = true;
-      settings = {
-        General = {
-          disabledTrayIcon = true;
-          showStartupLaunchMessage = true;
-          showDesktopNotification = true;
-          savePath = "/home/rohits/Pictures";
-        };
-      };
+      # settings = {
+      #   General = {
+      #     showStartupLaunchMessage = true;
+      #     # showDesktopNotification = true;
+      #     savePath = "/home/rohits/Pictures";
+      #   };
+      # };
     };
   };
 
