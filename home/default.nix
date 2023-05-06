@@ -11,6 +11,7 @@
     ./starship.nix
     ./vscode.nix
     ./firefox.nix
+    ./chromium.nix
     ./nvim
     ./xmobar
     ./xmonad
