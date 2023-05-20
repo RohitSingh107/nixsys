@@ -43,6 +43,7 @@
       brightnessctl
       gnome.gnome-tweaks
       gnomeExtensions.dash-to-dock
+      exercism
     ];
 
 
