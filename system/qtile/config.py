@@ -91,7 +91,7 @@ keys = [
 
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
+    Key([mod, "shift"], "Return", lazy.spawn('myFM')),
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#ff1493' -sb '#ff1493' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=15'")),
 #    Key([mod, "shift"], "d", lazy.spawn(home + '/.config/qtile/scripts/dmenu.sh')),
     Key([mod, "shift"], "q", lazy.window.kill()),
