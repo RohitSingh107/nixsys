@@ -6,7 +6,7 @@
     cursorTheme = {
       name = "Catppuccin-Mocha-Red-Cursors";
       package = pkgs.catppuccin-cursors.mochaRed;
-      size = 16;
+      size = 18;
 
     };
     theme = {

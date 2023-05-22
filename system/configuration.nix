@@ -243,7 +243,11 @@
     config = {
       # Allow unfree packages
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "nodejs-16.20.0"
+      ];
     };
+
   };
 
   environment = {
