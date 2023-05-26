@@ -305,6 +305,7 @@
 
     settings = {
       auto-optimise-store = true;
+      trusted-users = [ "root" "rohits" ];
     };
     gc = {
       automatic = true;
