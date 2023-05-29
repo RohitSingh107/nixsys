@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, home-manager, ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      home-manager.nixosModule
     ];
 
   # Bootloader.
@@ -246,6 +247,17 @@
       permittedInsecurePackages = [
         "nodejs-16.20.0"
       ];
+      # packageOverrides = pkgs: {
+      #   nur = import
+      #     (builtins.fetchTarball {
+      #       url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
+      #       sha256 = "109v3s1762djqxhq29d5gs0j1xbhlrj6l80xkfhsx2xnj810hgih";
+      #
+      #     })
+      #     {
+      #       inherit pkgs;
+      #     };
+      # };
     };
 
   };

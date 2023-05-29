@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = github:nix-community/NUR;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #
     # ec = {
     #
     #   url = "github:RohitSingh107/example-c";
@@ -20,7 +25,7 @@
   };
 
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-doom-emacs, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-doom-emacs, nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,7 +40,9 @@
         # Can have different conf for fifferent users
         rohits = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = inputs;
           modules = [
+            nur.nixosModules.nur
             ./system/configuration.nix
             home-manager.nixosModules.home-manager
             {
