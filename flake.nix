@@ -15,6 +15,10 @@
       url = github:nix-community/NUR;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # xr = {
+    #   url = github:RohitSingh107/xmobar-hs-nix;
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     #
     # ec = {
     #

@@ -12,6 +12,7 @@
     ./vscode.nix
     ./firefox.nix
     ./chromium.nix
+    ./picom.nix
     ./nvim
     ./xmobar
     ./xmonad
@@ -44,6 +45,8 @@
       gnome.gnome-tweaks
       gnomeExtensions.dash-to-dock
       exercism
+      ranger
+      kitty
     ];
 
 
