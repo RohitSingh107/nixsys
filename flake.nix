@@ -11,10 +11,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = github:nix-community/NUR;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nur = {
+    #   url = github:nix-community/NUR;
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # xr = {
     #   url = github:RohitSingh107/xmobar-hs-nix;
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +29,7 @@
   };
 
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-doom-emacs, nur, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-doom-emacs, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -46,7 +46,7 @@
           inherit system;
           specialArgs = inputs;
           modules = [
-            nur.nixosModules.nur
+            # nur.nixosModules.nur
             ./system/configuration.nix
             home-manager.nixosModules.home-manager
             {

@@ -47,6 +47,7 @@
       exercism
       ranger
       kitty
+      screenfetch
     ];
 
 

@@ -1,6 +1,7 @@
 
 -- Dracula Colorscheme
 vim.api.nvim_command("colorscheme dracula") -- colorscheme
+vim.api.nvim_command("hi Normal guibg=NONE ctermbg=NONE") -- transparent background
 
 --  Which Key
 vim.o.timeout = true

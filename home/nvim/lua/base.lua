@@ -66,7 +66,7 @@ opt.mouse = "a"
 
 vim.api.nvim_command("syntax enable") -- for rust
 vim.api.nvim_command("filetype plugin indent on") -- for rust
-vim.api.nvim_command("hi Normal guibg=NONE ctermbg=NONE") -- transparent background
+-- vim.api.nvim_command("hi Normal guibg=NONE ctermbg=NONE") -- transparent background
 -- vim.api.nvim_command('command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument') -- format on save
 
 

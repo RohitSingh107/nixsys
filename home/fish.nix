@@ -3,9 +3,9 @@
 
   programs.fish = {
     enable = true;
-    interactiveShellInit = "
-      neofetch
-      ";
+    # interactiveShellInit = "
+    #   screenfetch
+    #   ";
 
 
     shellAbbrs = {
