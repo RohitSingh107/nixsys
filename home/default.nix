@@ -10,12 +10,12 @@
     ./mimeApps.nix
     ./starship.nix
     ./vscode.nix
-    ./firefox.nix
     ./chromium.nix
     ./picom.nix
     ./nvim
     ./xmobar
     ./xmonad
+    ./firefox
 
   ];
 
