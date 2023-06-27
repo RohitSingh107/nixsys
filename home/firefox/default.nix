@@ -96,7 +96,20 @@
             ];
           }
         ];
-
+        settings = {
+          "browser.bookmarks.addedImportButton" = false;
+          # "browser.startup.homepage" = "https://duckduckgo.com";
+          "browser.search.region" = "IN";
+          "browser.search.isUS" = false;
+          "browser.startup.page" = 3;
+          "distribution.searchplugins.defaultLocale" = "en-GB";
+          "general.useragent.locale" = "en-GB";
+          "browser.bookmarks.showMobileBookmarks" = true;
+          "browser.newtabpage.pinned" = [{
+            title = "NixOS";
+            url = "https://nixos.org";
+          }];
+        };
         # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         #   privacy-badger
         # ];
@@ -118,20 +131,7 @@
           user_pref("privacy.userContext.longPressBehavior", 2);
         '';
 
-        settings = {
-          "browser.bookmarks.addedImportButton" = false;
-          "browser.startup.homepage" = "https://nixos.org";
-          "browser.search.region" = "IN";
-          "browser.search.isUS" = false;
-          "browser.startup.page" = 3;
-          "distribution.searchplugins.defaultLocale" = "en-GB";
-          "general.useragent.locale" = "en-GB";
-          "browser.bookmarks.showMobileBookmarks" = true;
-          "browser.newtabpage.pinned" = [{
-            title = "NixOS";
-            url = "https://nixos.org";
-          }];
-        };
+
 
         userChrome = ''
 
@@ -182,10 +182,6 @@
         @import url(components/ogx_UC-newtabpage.css);
         @import url(components/ogx_UC-settings-addons-pages.css);
         @import url(components/ogx_UC-addons-store.css);
-
-
-
-
 
         '';
 

@@ -16,6 +16,7 @@
     ./xmobar
     ./xmonad
     ./firefox
+    ./qtile
 
   ];
 
@@ -48,6 +49,7 @@
       ranger
       kitty
       screenfetch
+      cowsay
     ];
 
 
@@ -157,6 +159,15 @@
   fonts = {
     fontconfig = {
       enable = true;
+      # fonts = with pkgs; [
+      #   source-code-pro
+      #   font-awesome
+      #   (nerdfonts.override {
+      #     fonts = [
+      #       "FiraCode"
+      #     ];
+      #   })
+      # ];
     };
   };
 

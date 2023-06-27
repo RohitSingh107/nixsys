@@ -3,9 +3,9 @@
 
   programs.fish = {
     enable = true;
-    # interactiveShellInit = "
-    #   screenfetch
-    #   ";
+    interactiveShellInit = "
+      cowsay -r -C 'Hello Rohit'
+      ";
 
 
     shellAbbrs = {

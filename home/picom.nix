@@ -1,30 +1,19 @@
 { pkgs, ... }: {
   services.picom = {
       enable = true;
-      # package = pkgs.picom.overrideAttrs(o: {
-      #   src = pkgs.fetchFromGitHub {
-      #     #repo = "picom";
-      #     #owner = "pijulius";
-      #     #rev = "982bb43e5d4116f1a37a0bde01c9bda0b88705b9";
-      #     #sha256 = "YiuLScDV9UfgI1MiYRtjgRkJ0VuA1TExATA2nJSJMhM=";
-      #     repo = "picom";
-      #     owner = "jonaburg";
-      #     rev = "e3c19cd7d1108d114552267f302548c113278d45";
-      #     sha256 = "4voCAYd0fzJHQjJo4x3RoWz5l3JJbRvgIXn1Kg6nz6Y=";
-      #   };
-      # });                                           # Override picom to use pijulius' version
+      package = pkgs.picom-next;
 
       backend = "glx";                              # Rendering either with glx or xrender. You'll know if you need to switch this.
       vSync = true;                                 # Should fix screen tearing
 
       activeOpacity = 1;                         # Node transparency
-      inactiveOpacity = 1;
+      inactiveOpacity = 0.8;
       #menuOpacity = 0.93;
 
       shadow = false;                               # Shadows
       shadowOpacity = 0.5;
-      # shadowOffsets = [ -5 -5 ];
-      fade = false;                                  # Fade
+      # shadowOffsets = [ -7 -7 ];
+      fade = true;                                  # Fade
       fadeDelta = 4;
       fadeSteps = [ 0.03 0.03 ];
       opacityRules = [                              # Opacity rules if transparency is prefered
@@ -41,21 +30,45 @@
       settings = {
         frame-opacity = 1;
         inactive-opacity-override = false;
-        # daemon = true;
+        daemon = true;
         # use-damage = false;                         # Fixes flickering and visual bugs with borders
         # resize-damage = 1;
         # refresh-rate = 0;
-        # corner-radius = 5;                          # Corners
+        corner-radius = 0;                          # Corners
         # round-borders = 5;
-
-        # Animations Pijulius
-        #animations = true;                          # All Animations
-        #animation-window-mass = 0.5;
-        #animation-for-open-window = "zoom";
-        #animation-stiffness = 350;
-        #animation-clamping = false;
-        #fade-out-step = 1;                          # Will fix random border dots from not disappearing
-
+        # rounded-corners-exclude = [
+        #   #"window_type = 'normal'",
+        #   "class_g = 'awesome'",
+        #   "class_g = 'URxvt'",
+        #   "class_g = 'XTerm'",
+        #   "class_g = 'kitty'",
+        #   "class_g = 'Alacritty'",
+        #   "class_g = 'Termite'",
+        #   "class_g = 'Polybar'",
+        #   "class_g = 'code-oss'",
+        #   "class_g = 'firefox'",
+        #   "class_g = 'Thunderbird'"
+        # ];
+        # round-borders-rule = [
+        #   "3:class_g      = 'XTerm'",
+        #   "3:class_g      = 'URxvt'",
+        #   "10:class_g     = 'Alacritty'",
+        #   "15:class_g     = 'Signal'"
+        # ];
+        # shadow-exclude = [
+        # "name = 'Notification'",
+        # "class_g = 'Conky'",
+        # "class_g ?= 'Notify-osd'",
+        # "class_g = 'Cairo-clock'",
+        # "class_g = 'slop'",
+        # "class_g = 'Polybar'",
+        # "_GTK_FRAME_EXTENTS@:c"
+        # ];
+        # focus-exclude = [
+        #   "class_g = 'Cairo-clock'",
+        #   "class_g = 'Bar'",                    # lemonbar
+        #   "class_g = 'slop'"                    # maim
+        # ];
         # # Animations Jonaburg
         # transition-length = 300;
         # transition-pow-x = 0.5;
@@ -64,7 +77,40 @@
         # transition-pow-h = 0.5;
         # size-transition = true;
 
+
+
+        blur-kern = "3x3box";
+
+
+        blur = {
+          # requires: https://github.com/ibhagwan/picom
+          method = "kawase";
+          #method = "kernel";
+          strength = 7;
+          # deviation = 1.0;
+          # kernel = "11x11gaussian";
+          background = false;
+          background-frame = false;
+          background-fixed = false;
+          kern = "3x3box";
+        };
+
+# Exclude conditions for background blur.
+        blur-background-exclude = [
+          #"window_type = 'dock'",
+          #"window_type = 'desktop'",
+          #"class_g = 'URxvt'",
+          #
+          # prevents picom from blurring the background
+          # when taking selection screenshot with `main`
+          # https://github.com/naelstrof/maim/issues/130
+          "class_g = 'slop'"
+          "_GTK_FRAME_EXTENTS@:c"
+        ];
+          
         # Extras
+        experimental-backends = true;
+
         detect-rounded-corners = true;              # Below should fix multiple issues
         detect-client-opacity = true;
         detect-transient = true;
