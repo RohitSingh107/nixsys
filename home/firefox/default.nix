@@ -1,21 +1,6 @@
 { pkgs, ... }: {
 
 
-  home.file = {
-
-    ".mozilla/firefox/rohit/chrome/components" = {
-      source = ./components;
-      recursive = true;
-    };
-    ".mozilla/firefox/rohit/chrome/icons" = {
-      source = ./icons;
-      recursive = true;
-    };
-    ".mozilla/firefox/rohit/chrome/images" = {
-      source = ./images;
-      recursive = true;
-    };
-  };
 
 
   programs.firefox = {
@@ -133,57 +118,11 @@
 
 
 
-        userChrome = ''
+        # userChrome = ''
+        # '';
 
-        /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
-           https://github.com/Godiesc/firefox-gx */
-
-        /* ############# Required files ############## */
-
-        @import url('components/ogx_root.css');
-        @import url('components/ogx_root-personal.css');
-        @import url('components/ogx_toolbar-icons.css');
-        @import url('components/ogx_containers.css');
-        @import url('components/ogx_tabs-bar.css');
-        @import url('components/ogx_tab-shapes.css');
-        @import url('components/ogx_urlbar-searchbar.css');
-        @import url('components/ogx_windows-controls.css');
-        @import url('components/ogx_customize-styles.css');
-        @import url('components/ogx_sound.css');
-        @import url('components/ogx_arrowpanel.css');
-        @import url('components/ogx_contextual-menu.css');
-        @import url('components/ogx_notifications.css');
-        @import url('components/ogx_close-button.css');
-        @import url('components/ogx_button-styles.css');
-        @import url('components/ogx_library.css');
-        @import url('components/ogx_hamburger-menu-icons.css');
-        @import url('components/ogx_menu.css');
-
-        /* ############## Extra Files ###############  */
-
-        @import url('components/ogx_left-sidebar.css');
-        @import url('components/ogx_oneline.css');
-        @import url('components/ogx_main-image.css');
-        @import url('components/ogx_tree-tabs.css');
-        @import url('components/ogx_tab_center_reborn.css');
-        @import url('components/ogx_autohide_bookmark-bar.css');
-
-        /* ############# Your Personal File ##############  */
-
-        @import url('components/ogx_tricks.css');
-        '';
-
-        userContent = ''
-
-        /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
-           https://github.com/Godiesc/opera-gx */  
-
-        @import url(components/ogx_root-personal.css);
-        @import url(components/ogx_UC-newtabpage.css);
-        @import url(components/ogx_UC-settings-addons-pages.css);
-        @import url(components/ogx_UC-addons-store.css);
-
-        '';
+        # userContent = ''
+        #   '';
 
 
 

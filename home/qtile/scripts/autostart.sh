@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/sh
 function run {
   if ! pgrep $1 ;
   then
@@ -10,21 +9,21 @@ function run {
 
 
 #starting utility applications at boot time
-lxsession &
+# lxsession &
 run nm-applet &
-run pamac-tray &
-numlockx on &
-blueman-applet &
+# run pamac-tray &
+# numlockx on &
+# blueman-applet &
 #flameshot &
 #picom --config $HOME/.config/picom/picom.conf &
-picom --config .config/picom/picom-blur.conf &
+# picom --config .config/picom/picom-blur.conf &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-dunst &
+# dunst &
 # feh --randomize --bg-fill /usr/share/wallpapers/garuda-wallpapers/*
-feh --bg-fill /usr/share/wallpapers/garuda-wallpapers/Abstract.jpg
+feh --bg-fill ~/.config/wall/xmonad.jpg
 #starting user applications at boot time
-run volumeicon &
-run cbatticon &
+# run volumeicon &
+# run cbatticon &
 
 #run discord &
 #nitrogen --random --set-zoom-fill &

@@ -178,7 +178,7 @@
         qtile = {
           enable = true;
           backend = "x11";
-          configFile = ./qtile/config.py;
+          # configFile = ./qtile/config.py;
 
 
         };
