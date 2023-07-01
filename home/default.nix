@@ -4,6 +4,7 @@
 
   imports = [
     ./alacritty.nix
+    ./kitty.nix
     ./fish.nix
     ./gtk.nix
     ./tmux.nix
@@ -47,7 +48,6 @@
       gnomeExtensions.dash-to-dock
       exercism
       ranger
-      kitty
       screenfetch
       cowsay
     ];
