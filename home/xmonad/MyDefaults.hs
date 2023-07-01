@@ -10,7 +10,7 @@ myFont :: String
 myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
 
 myTerminal :: String
-myTerminal = "alacritty" -- Sets default terminal
+myTerminal = "kitty" -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "firefox" -- Sets qutebrowser as browser

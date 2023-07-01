@@ -24,7 +24,7 @@ myScratchPads =
     -- NS "browser" spawnBrowser findBrowser manageBrowser
   ]
   where
-    spawnTerm = myTerminal ++ " -t scratchpad"
+    spawnTerm = myTerminal ++ " -T scratchpad"
     -- spawnTerm  = myTerminal ++ " -e bash"
     findTerm = title =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
