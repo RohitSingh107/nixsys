@@ -43,6 +43,7 @@
       fgrep = "fgrep --color=auto";
       egrep = "egrep --color=auto";
       hw = "hwinfo --short";
+      icat = "kitty +kitten icat";
 
 
       # Get the error messages from journalctl
