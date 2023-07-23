@@ -18,6 +18,7 @@
     ./xmonad
     ./firefox
     ./qtile
+    ./hyprland.nix
 
   ];
 
@@ -36,7 +37,7 @@
       rnix-lsp
       killall
       fantasque-sans-mono # Maybe should not be here
-      nerdfonts # Maybe should not be here
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
       dmenu
       pavucontrol
       xclip
@@ -65,6 +66,11 @@
       enable = true;
       indicator = true;
     };
+
+    blueman-applet = {
+      enable = true;
+    };
+
     flameshot = {
       enable = true;
       # settings = {
@@ -159,20 +165,18 @@
   fonts = {
     fontconfig = {
       enable = true;
-      # fonts = with pkgs; [
-      #   source-code-pro
-      #   font-awesome
-      #   (nerdfonts.override {
-      #     fonts = [
-      #       "FiraCode"
-      #     ];
-      #   })
-      # ];
     };
   };
 
 
-
+  # wayland = {
+  #   windowManager = {
+  #     hyprland = {
+  #       enable = true;
+  #     };
+  #   };
+  # };
+  #
 
 
 }

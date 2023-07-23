@@ -138,6 +138,10 @@
 
 
   services = {
+    blueman = {
+      enable = true;
+    };
+
 
     xserver = {
 
@@ -226,7 +230,7 @@
     rohits = {
       isNormalUser = true;
       description = "Rohit Singh";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
       # extraGroups = [ "networkmanager" "wheel" "audio" "video" "ip" "scanner" "camera" "kvm" "libvirtd" "plex" ];
       packages = with pkgs; [
         #  thunderbird
@@ -276,6 +280,7 @@
       git
       neovim
       gparted
+      # virt-manager
     ];
 
     variables = {
@@ -310,6 +315,12 @@
 
   };
 
+  programs.hyprland.enable = true;
+
+  ## Virt-manager
+  # virtualisation.libvirtd.enable = true;
+  # programs.dconf.enable = true;
+  # # environment.systemPackages = with pkgs; [ virt-manager ];
 
 
   nix = {
@@ -326,6 +337,17 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
+    };
+  };
+
+
+  ## Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        ControllerMode = "bredr";
+      };
     };
   };
 

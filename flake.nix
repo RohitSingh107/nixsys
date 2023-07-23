@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # build with your own instance of nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nur = {
     #   url = github:nix-community/NUR;
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +35,7 @@
   };
 
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-doom-emacs, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-doom-emacs, hyprland, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -56,6 +62,7 @@
                 imports = [
                   ./home
                   nix-doom-emacs.hmModule
+                  hyprland.homeManagerModules.default
                 ];
               };
             }
