@@ -13,7 +13,7 @@
 #monitor=DP-1,1920x1080@60,0x0,1
 monitor=,preferred,auto,1
 
-exec-once = feh --bg-fill ~/.config/wall/xmonad.jpg
+exec-once = pkill swaybg; swaybg -o 'eDP-1' -i "/home/rohits/.config/wall/xmonad.jpg" -m fill &
 
 # exec-once = dunst
 
@@ -68,7 +68,7 @@ general {
     # damage_tracking=full
     gaps_in=5
     gaps_out=10
-    main_mod=SUPER
+    # main_mod=SUPER
     sensitivity=1.0
 }
 
@@ -79,7 +79,6 @@ master {
 
 misc {
 	disable_hyprland_logo=true
-	no_vfr=false
 	animate_manual_resizes=true
 }
 

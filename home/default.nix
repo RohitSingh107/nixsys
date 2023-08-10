@@ -18,7 +18,8 @@
     ./xmonad
     ./firefox
     ./qtile
-    ./hyprland.nix
+    # ./hyprland.nix
+    ./accounts.nix
 
   ];
 
@@ -51,6 +52,10 @@
       ranger
       screenfetch
       cowsay
+
+
+      ## Wayland only
+      swaybg
     ];
 
 
@@ -106,11 +111,11 @@
       ];
     };
 
-    doom-emacs = {
-      enable = true;
-      doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
-      # and packages.el files
-    };
+    # doom-emacs = {
+    #   enable = true;
+    #   doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
+    #   # and packages.el files
+    # };
 
 
 
