@@ -20,6 +20,7 @@
     ./qtile
     # ./hyprland.nix
     ./accounts.nix
+    ./qt.nix
 
   ];
 

@@ -230,7 +230,7 @@
     rohits = {
       isNormalUser = true;
       description = "Rohit Singh";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
       # extraGroups = [ "networkmanager" "wheel" "audio" "video" "ip" "scanner" "camera" "kvm" "libvirtd" "plex" ];
       packages = with pkgs; [
         #  thunderbird
@@ -340,6 +340,9 @@
     };
   };
 
+
+  ## Docker
+  # virtualisation.docker.enable = true;
 
   ## Bluetooth
   hardware.bluetooth = {

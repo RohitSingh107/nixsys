@@ -1,24 +1,25 @@
+
 { pkgs, ... }: {
 
   gtk = {
     # Theming
     enable = true;
     cursorTheme = {
-      name = "Catppuccin-Mocha-Red-Cursors";
-      package = pkgs.catppuccin-cursors.mochaRed;
+      name = "Dracula-cursors";
+      package = pkgs.dracula-theme;
       size = 18;
 
     };
     theme = {
-      # name = "Dracula";
-      # package = pkgs.dracula-theme;
-      name = "Catppuccin-Mocha-Standard-Red-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "red" ];
-        size = "standard";
-        # tweaks = [ "rimless" "normal" ];
-        variant = "mocha";
-      };
+      name = "Dracula";
+      package = pkgs.dracula-theme;
+      # name = "Catppuccin-Mocha-Standard-Red-Dark";
+      # package = pkgs.catppuccin-gtk.override {
+      #   accents = [ "red" ];
+      #   size = "standard";
+      #   # tweaks = [ "rimless" "normal" ];
+      #   variant = "mocha";
+      # };
     };
     iconTheme = {
       name = "Papirus-Dark";
