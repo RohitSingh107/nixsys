@@ -21,6 +21,7 @@
     # ./hyprland.nix
     ./accounts.nix
     ./qt.nix
+    ./bash.nix
 
   ];
 
