@@ -321,10 +321,12 @@
 
   };
 
+  programs.sway.enable = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
+  hardware.opengl.enable = true;
 
   ## Virt-manager
   # virtualisation.libvirtd.enable = true;

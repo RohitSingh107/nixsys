@@ -25,6 +25,7 @@
     ./rofi.nix
     ./waybar.nix
     ./wlogout.nix
+    ./swaylock.nix
 
   ];
 
@@ -35,7 +36,6 @@
     stateVersion = "22.11";
 
     packages = with pkgs; [
-      gdu
       brave
       bitwarden
       neofetch
@@ -60,6 +60,7 @@
 
       ## Disk
       filelight
+      gdu
 
       ## Sound
       pulseaudio
@@ -69,7 +70,11 @@
       libnotify
 
       ## Wayland only
+      clipman
       swaybg
+      swappy
+      grim
+      slurp
     ];
 
 
