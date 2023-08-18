@@ -18,7 +18,7 @@ exec-once = pkill swaybg; swaybg -o 'eDP-1' -i "/home/rohits/.config/wall/xmonad
 # exec-once = dunst
 
 ### Waybar Horizontal Bubbles Catppuccin Mocha
-# exec-once = waybar -c ~/.config/waybar/configs/config-icons-horizontal.jsonc -s ~/.config/waybar/styles/bubbles/catppuccin-mocha/style-horizontal.css
+exec-once = waybar
 
 ### Waybar Vertical Bubbles Catppuccin Mocha
 # exec-once = waybar -c ~/.config/waybar/configs/config-icons-vertical.jsonc -s ~/.config/waybar/styles/bubbles/catppuccin-mocha/style-vertical.css
