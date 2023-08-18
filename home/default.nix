@@ -23,6 +23,7 @@
     ./qt.nix
     ./bash.nix
     ./rofi.nix
+    ./waybar.nix
 
   ];
 

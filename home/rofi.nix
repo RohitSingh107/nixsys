@@ -1,12 +1,24 @@
 { pkgs, ... }: {
 
 
+  home.file = {
+    ".config/rofi/catppuccin-mocha.rasi" = {
+      enable = true;
+      # source = "https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-mocha.rasi";
+      source = (builtins.fetchurl {
+          url = "https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-mocha.rasi";
+          sha256 = "042g8gx018y0xlw96ic2kxx76g6ailmdc71wvnln5sf2k7z6rn66";
+          }); # Gives path to file
+ 
+    };
+  };
+
   programs.rofi = {
     enable = true;
     location = "center";
-    theme = "dracula";
+    theme = "catppuccin-mocha";
     extraConfig = {
-      
+
       modi = "run,drun,combi";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";
