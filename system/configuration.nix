@@ -286,13 +286,14 @@
     variables = {
       EDITOR = "nvim";
       LC_ALL = "en_IN.UTF-8";
-      NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+      # NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
     };
     #
-    # sessionVariables = {
-    #   # Hints electron apps to use wayland
-    #   NIXOS_OZONE_WL = "1";
-    # };
+    sessionVariables = {
+      # Hints electron apps to use wayland
+      NIXOS_OZONE_WL = "1";
+      NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+    };
 
 
 
@@ -373,7 +374,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
