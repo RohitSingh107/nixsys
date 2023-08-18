@@ -89,8 +89,14 @@
         backlight = {
           format = "{icon} {percent}%";
           format-icons = [ "󰃟" ];
-          on-scroll-up = "brightnessctl set +5% && ~/.config/dunst/scripts/show_brightness.sh";
-          on-scroll-down = "brightnessctl set 5%- && ~/.config/dunst/scripts/show_brightness.sh";
+          on-scroll-up = pkgs.writeShellScript "show_brightness.sh" ''
+brightnessctl set +5%
+notify-send -t 700 "Brightness: " -h int:value:"`brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}'`"
+            '';
+          on-scroll-down = pkgs.writeShellScript "show_brightness.sh" ''
+brightnessctl set 5%-
+notify-send -t 700 "Brightness: " -h int:value:"`brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}'`"
+            '';
           on-click = "";
         };
 
@@ -112,20 +118,60 @@
               "󰕾"
             ];
           };
-          on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.config/dunst/scripts/show_mute.sh";
-          on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +1% && ~/.config/dunst/scripts/show_volume.sh";
-          on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -1% && ~/.config/dunst/scripts/show_volume.sh";
+          on-click = pkgs.writeShellScript "show_mute.sh" ''
+pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print tolower($0)}')
+
+icon="󰕾"
+
+if [[ $mute == "mute: yes" ]]; then
+    icon="󰖁"
+fi
+
+notify-send -t 700 "$icon Volume $mute"
+          '';
+          on-scroll-up = pkgs.writeShellScript "show_volume.sh" ''
+pactl set-sink-volume @DEFAULT_SINK@ +1%
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' '{print substr($2, 0, length($2)-2)}' | awk '{$1=$1;print}')
+notify-send -t 600 "Volume" -h int:value:"$volume"
+            '';
+          on-scroll-down = pkgs.writeShellScript "show_volume.sh" ''
+pactl set-sink-volume @DEFAULT_SINK@ -1%
+volume=$(pactl get-sink-volume @DEFAULT_SINK@ | awk -F '/' '{print substr($2, 0, length($2)-2)}' | awk '{$1=$1;print}')
+notify-send -t 600 "Volume" -h int:value:"$volume"
+            '';
           tooltip = false;
         };
 
-        
+
         "pulseaudio#microphone" = {
           format = "{format_source}";
           format-source = "󰍬 {volume}%";
           format-source-muted = "󰍭 {volume}%";
-          on-click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle && ~/.config/dunst/scripts/show_mute_microphone.sh";
-          on-scroll-up = "pactl set-source-volume @DEFAULT_SOURCE@ +1% && ~/.config/dunst/scripts/show_volume_microphone.sh";
-          on-scroll-down = "pactl set-source-volume @DEFAULT_SOURCE@ -1% && ~/.config/dunst/scripts/show_volume_microphone.sh";
+          on-click = pkgs.writeShellScript "show_mute_microphone.sh" ''
+pactl set-source-mute @DEFAULT_SOURCE@ toggle
+mute=$(pactl get-source-mute @DEFAULT_SOURCE@ | awk '{print tolower($0)}')
+
+icon="󰍬"
+
+if [[ $mute == "mute: yes" ]]; then
+    icon="󰍭"
+fi
+
+notify-send -t 700 "$icon Microphone $mute"
+            '';
+          on-scroll-up = pkgs.writeShellScript "show_volume_microphone.sh" ''
+pactl set-source-volume @DEFAULT_SOURCE@ +1%
+volume=$(pactl get-source-volume @DEFAULT_SOURCE@ | awk -F '/' '{print substr($2, 0, length($2)-2)}' | awk '{$1=$1;print}')
+notify-send -t 600 "Microphone" -h int:value:"$volume"
+            '';
+          on-scroll-down = pkgs.writeShellScript "show_volume_microphone.sh" ''
+pactl set-source-volume @DEFAULT_SOURCE@ -1%
+volume=$(pactl get-source-volume @DEFAULT_SOURCE@ | awk -F '/' '{print substr($2, 0, length($2)-2)}' | awk '{$1=$1;print}')
+notify-send -t 600 "Microphone" -h int:value:"$volume"
+            '';
+
           max-volume = 100;
           tooltip = false;
         };

@@ -24,6 +24,7 @@
     ./bash.nix
     ./rofi.nix
     ./waybar.nix
+    ./wlogout.nix
 
   ];
 
@@ -57,6 +58,15 @@
       screenfetch
       cowsay
 
+      ## Disk
+      filelight
+
+      ## Sound
+      pulseaudio
+
+      ## Notifications
+      dunst
+      libnotify
 
       ## Wayland only
       swaybg
