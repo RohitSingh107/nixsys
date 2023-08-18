@@ -80,16 +80,10 @@ master {
 misc {
 	disable_hyprland_logo=true
 	animate_manual_resizes=true
+  suppress_portal_warnings=true
 }
 
-decoration {
-    rounding=5
-    blur=1
-    blur_size=10
-    blur_passes=3
-   	blur_ignore_opacity=false
-	dim_inactive=false
-}
+## Decoration block gone
 
 gestures {
     workspace_swipe=1

@@ -288,6 +288,11 @@
       LC_ALL = "en_IN.UTF-8";
       NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
     };
+    #
+    # sessionVariables = {
+    #   # Hints electron apps to use wayland
+    #   NIXOS_OZONE_WL = "1";
+    # };
 
 
 
@@ -299,7 +304,7 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       font-awesome
       corefonts
       noto-fonts-emoji
@@ -315,7 +320,10 @@
 
   };
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   ## Virt-manager
   # virtualisation.libvirtd.enable = true;
@@ -373,6 +381,7 @@
   };
 
 
+  # hardware.opengl.enable = true;
 
 
 

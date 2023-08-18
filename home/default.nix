@@ -12,16 +12,17 @@
     ./starship.nix
     ./vscode.nix
     ./chromium.nix
-    ./picom.nix
+    # ./picom.nix
     ./nvim
     ./xmobar
     ./xmonad
     ./firefox
     ./qtile
-    # ./hyprland.nix
+    ./hyprland.nix
     ./accounts.nix
     ./qt.nix
     ./bash.nix
+    ./rofi.nix
 
   ];
 
