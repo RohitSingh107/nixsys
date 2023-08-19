@@ -195,6 +195,90 @@
             ",Print,exec,grim - | swappy -f - -o $HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S_1.png')"
 
 
+            "SUPERALT,space,exec,playerctl play-pause"
+            "SUPERALT,bracketright,exec,playerctl next"
+            "SUPERALT,bracketleft,exec,playerctl previous"
+            ",XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%"
+            ",XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%"
+            ",XF86AudioMute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle"
+            ",XF86AudioMicMute,exec,pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+            ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
+            ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
+            ",XF86AudioPlay,exec,playerctl play-pause"
+            ",XF86AudioNext,exec,playerctl next"
+            ",XF86AudioPrev,exec,playerctl previous"
+            "ind=SUPER,1,workspace,1"
+            "SUPER,2,workspace,2"
+            "SUPER,3,workspace,3"
+            "SUPER,4,workspace,4"
+            "SUPER,5,workspace,5"
+            "SUPER,6,workspace,6"
+            "SUPER,7,workspace,7"
+            "SUPER,8,workspace,8"
+            "SUPER,9,workspace,9"
+            "SUPER,0,workspace,10"
+            "ind=SUPERCTRL,left,resizeactive,-20 0"
+            "SUPERCTRL,right,resizeactive,20 0"
+            "SUPERCTRL,up,resizeactive,0 -20"
+            "SUPERCTRL,down,resizeactive,0 20"
+
+            "SUPERSHIFT,1,movetoworkspacesilent,1"
+            "SUPERSHIFT,2,movetoworkspacesilent,2"
+            "SUPERSHIFT,3,movetoworkspacesilent,3"
+            "SUPERSHIFT,4,movetoworkspacesilent,4"
+            "SUPERSHIFT,5,movetoworkspacesilent,5"
+            "SUPERSHIFT,6,movetoworkspacesilent,6"
+            "SUPERSHIFT,7,movetoworkspacesilent,7"
+            "SUPERSHIFT,8,movetoworkspacesilent,8"
+            "SUPERSHIFT,9,movetoworkspacesilent,9"
+            "SUPERSHIFT,0,movetoworkspacesilent,10"
+
+            # Scratchpads
+            "SUPERCONTROL,s,movetoworkspacesilent,special"
+            "SUPER,S,togglespecialworkspace"
+            "CONTROL,Return,togglespecialworkspace"
+
+            "SUPER,left,movefocus,l"
+            "SUPER,right,movefocus,r"
+            "SUPER,up,movefocus,u"
+            "SUPER,down,movefocus,d"
+            "SUPER,h,movefocus,l"
+            "SUPER,l,movefocus,r"
+            "SUPER,k,movefocus,u"
+            "SUPER,j,movefocus,d"
+            "SUPERSHIFT,left,movewindow,l"
+            "SUPERSHIFT,right,movewindow,r"
+            "SUPERSHIFT,up,movewindow,u"
+            "SUPERSHIFT,down,movewindow,d"
+            "SUPERSHIFT,h,movewindow,l"
+            "SUPERSHIFT,l,movewindow,r"
+            "SUPERSHIFT,k,movewindow,u"
+            "SUPERSHIFT,j,movewindow,d"
+            # bind=SUPERCONTROL,left,workspace,-1
+            # bind=SUPERCONTROL,right,workspace,+1
+            # bind=SUPERCONTROL,up,focusmonitor,l
+            # bind=SUPERCONTROL,down,focusmonitor,r
+            "SUPER,tab,changegroupactive, f"
+            "SUPERSHIFT,ISO_Left_Tab,changegroupactive, b"
+            "SUPERALT,tab,togglegroup"
+            # bind=SUPERALT,left,splitratio,-0.1
+            # bind=SUPERALT,right,splitratio,+0.1
+            # bind=SUPERALT,h,splitratio,-0.1
+            # bind=SUPERALT,l,splitratio,+0.1
+
+
+            "SUPERCONTROL,h,workspace,-1"
+            "SUPERCONTROL,l,workspace,+1"
+            "SUPERCONTROL,k,focusmonitor,l"
+            "SUPERCONTROL,j,focusmonitor,r"
+
+
+
+
+
+            # Scroll through existing workspaces with mainMod + scroll
+            "$mainMod, mouse_down, workspace, e+1"
+            "$mainMod, mouse_up, workspace, e-1"
 
           ];
 
@@ -216,107 +300,7 @@
 
 
 
-        extraConfig = ''
-
-
-
-
-
-
-
-
-
-bind=SUPERALT,space,exec,playerctl play-pause
-bind=SUPERALT,bracketright,exec,playerctl next
-bind=SUPERALT,bracketleft,exec,playerctl previous
-bind=,XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%
-bind=,XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%
-bind=,XF86AudioMute,exec,pactl set-sink-mute @DEFAULT_SINK@ toggle
-bind=,XF86AudioMicMute,exec,pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bind=,XF86MonBrightnessDown,exec,brightnessctl set 5%-
-bind=,XF86MonBrightnessUp,exec,brightnessctl set +5%
-bind=,XF86AudioPlay,exec,playerctl play-pause
-bind=,XF86AudioNext,exec,playerctl next
-bind=,XF86AudioPrev,exec,playerctl previous
-
-bind=SUPER,1,workspace,1
-bind=SUPER,2,workspace,2
-bind=SUPER,3,workspace,3
-bind=SUPER,4,workspace,4
-bind=SUPER,5,workspace,5
-bind=SUPER,6,workspace,6
-bind=SUPER,7,workspace,7
-bind=SUPER,8,workspace,8
-bind=SUPER,9,workspace,9
-bind=SUPER,0,workspace,10
-
-bind=SUPERCTRL,left,resizeactive,-20 0
-bind=SUPERCTRL,right,resizeactive,20 0
-bind=SUPERCTRL,up,resizeactive,0 -20
-bind=SUPERCTRL,down,resizeactive,0 20
-
-bind=SUPERSHIFT,1,movetoworkspacesilent,1
-bind=SUPERSHIFT,2,movetoworkspacesilent,2
-bind=SUPERSHIFT,3,movetoworkspacesilent,3
-bind=SUPERSHIFT,4,movetoworkspacesilent,4
-bind=SUPERSHIFT,5,movetoworkspacesilent,5
-bind=SUPERSHIFT,6,movetoworkspacesilent,6
-bind=SUPERSHIFT,7,movetoworkspacesilent,7
-bind=SUPERSHIFT,8,movetoworkspacesilent,8
-bind=SUPERSHIFT,9,movetoworkspacesilent,9
-bind=SUPERSHIFT,0,movetoworkspacesilent,10
-
-# Scratchpads
-bind=SUPERCONTROL,s,movetoworkspacesilent,special
-bind=SUPER,S,togglespecialworkspace
-bind=CONTROL,Return,togglespecialworkspace
-
-bind=SUPER,left,movefocus,l
-bind=SUPER,right,movefocus,r
-bind=SUPER,up,movefocus,u
-bind=SUPER,down,movefocus,d
-bind=SUPER,h,movefocus,l
-bind=SUPER,l,movefocus,r
-bind=SUPER,k,movefocus,u
-bind=SUPER,j,movefocus,d
-bind=SUPERSHIFT,left,movewindow,l
-bind=SUPERSHIFT,right,movewindow,r
-bind=SUPERSHIFT,up,movewindow,u
-bind=SUPERSHIFT,down,movewindow,d
-bind=SUPERSHIFT,h,movewindow,l
-bind=SUPERSHIFT,l,movewindow,r
-bind=SUPERSHIFT,k,movewindow,u
-bind=SUPERSHIFT,j,movewindow,d
-# bind=SUPERCONTROL,left,workspace,-1
-# bind=SUPERCONTROL,right,workspace,+1
-# bind=SUPERCONTROL,up,focusmonitor,l
-# bind=SUPERCONTROL,down,focusmonitor,r
-bind=SUPER,tab,changegroupactive, f
-bind=SUPERSHIFT,ISO_Left_Tab,changegroupactive, b
-bind=SUPERALT,tab,togglegroup
-# bind=SUPERALT,left,splitratio,-0.1
-# bind=SUPERALT,right,splitratio,+0.1
-# bind=SUPERALT,h,splitratio,-0.1
-# bind=SUPERALT,l,splitratio,+0.1
-
-
-bind=SUPERCONTROL,h,workspace,-1
-bind=SUPERCONTROL,l,workspace,+1
-bind=SUPERCONTROL,k,focusmonitor,l
-bind=SUPERCONTROL,j,focusmonitor,r
-
-
-
-
-
-# Scroll through existing workspaces with mainMod + scroll
-bind = $mainMod, mouse_down, workspace, e+1
-bind = $mainMod, mouse_up, workspace, e-1
-
-
-
-
-          '';
+   
 
       };
 
