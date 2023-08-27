@@ -6,10 +6,10 @@
       source = ./lua;
       recursive = true;
     };
-    # ".config/nvim/snippets" = {
-    #   source = ./snippets;
-    #   recursive = true;
-    # };
+    ".config/nvim/snippets" = {
+      source = ./snippets;
+      recursive = true;
+    };
   };
   programs.neovim = {
     enable = true;
