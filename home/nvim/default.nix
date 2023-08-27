@@ -1,5 +1,16 @@
 { pkgs, ... }: {
 
+  home.file = {
+
+    ".config/nvim/lua" = {
+      source = ./lua;
+      recursive = true;
+    };
+    # ".config/nvim/snippets" = {
+    #   source = ./snippets;
+    #   recursive = true;
+    # };
+  };
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -45,7 +56,7 @@
       coc-prettier
       coc-pyright
       coc-rust-analyzer
-      coc-tabnine
+      # coc-tabnine
       coc-tsserver
       # coc-vimlsp
       coc-sh
@@ -67,11 +78,11 @@
     local api = vim.api
 
     local core_conf_files = {
-      "$NIXOS_CONFIG_DIR/home/nvim/lua/base.lua", -- base settings
-      "$NIXOS_CONFIG_DIR/home/nvim/lua/autocmd.lua", -- Auto Commands settings
-      "$NIXOS_CONFIG_DIR/home/nvim/lua/mappings.lua", -- Custom Mappings
-      "$NIXOS_CONFIG_DIR/home/nvim/lua/coc-conf.lua", -- coc.nvim specific settings
-      "$NIXOS_CONFIG_DIR/home/nvim/lua/plugin-settings.lua", -- plugins specific settings
+      "$HOME/.config/nvim/lua/base.lua", -- base settings
+      "$HOME/.config/nvim/lua/autocmd.lua", -- Auto Commands settings
+      "$HOME/.config/nvim/lua/mappings.lua", -- Custom Mappings
+      "$HOME/.config/nvim/lua/coc-conf.lua", -- coc.nvim specific settings
+      "$HOME/.config/nvim/lua/plugin-settings.lua", -- plugins specific settings
     }
 
     -- source all the core config files
