@@ -87,7 +87,7 @@
     coc = {
       enable = true;
       settings = {
-        "snippets.userSnippetsDirectory" = "/home/rohits/nixsys/home/nvim/snippets";
+        "snippets.userSnippetsDirectory" = "~/.config/nvim/snippets";
         "prettier.printWidth" = 80;
         "coc.preferences.formatOnSaveFiletypes" = [
           "css"

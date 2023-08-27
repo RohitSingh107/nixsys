@@ -281,6 +281,13 @@
       neovim
       gparted
       # virt-manager
+      
+
+    # # Experimental
+    #   bluez-tools
+    #   bluez-alsa
+    #   hidapi
+    #   pulseaudioFull
     ];
 
     variables = {

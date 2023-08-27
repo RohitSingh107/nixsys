@@ -7,6 +7,9 @@
     #   cowsay -r -C 'Hello Rohit'
     #   ";
 
+    shellInit = ''
+      set -g fish_greeting
+      '';
 
     shellAbbrs = {
       gco = "git checkout";
@@ -29,7 +32,7 @@
       fixpacman = "sudo rm /var/lib/pacman/db.lck";
       tarnow = "tar -acf ";
       untar = "tar -xvf ";
-      wget = "wget -c ";
+      # wget = "wget -c ";
       psmem = "ps auxf | sort -nr -k 4";
       psmem10 = "ps auxf | sort -nr -k 4 | head - 10";
       ".." = "cd ..";

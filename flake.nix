@@ -7,11 +7,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
 
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    #   # build with your own instance of nixpkgs
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    firefox-addons = {
+      url = "gitlab:/rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # nur = {
     #   url = github:nix-community/NUR;
@@ -22,16 +21,12 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     #
-    # ec = {
-    #
-    #   url = "github:RohitSingh107/example-c";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+
 
   };
 
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -52,13 +47,21 @@
             ./system/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.rohits = {
-                imports = [
-                  ./home
-                  # hyprland.homeManagerModules.default
-                ];
+
+              home-manager = {
+
+                extraSpecialArgs = { inherit inputs; };
+
+
+
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.rohits = {
+                  imports = [
+                    ./home
+                    # hyprland.homeManagerModules.default
+                  ];
+                };
               };
             }
           ];

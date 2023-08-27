@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 
 
 
@@ -84,20 +84,27 @@
         settings = {
           "browser.bookmarks.addedImportButton" = false;
           # "browser.startup.homepage" = "https://duckduckgo.com";
-          "browser.search.region" = "IN";
-          "browser.search.isUS" = false;
-          "browser.startup.page" = 3;
-          "distribution.searchplugins.defaultLocale" = "en-GB";
-          "general.useragent.locale" = "en-GB";
           "browser.bookmarks.showMobileBookmarks" = true;
+          "browser.download.panel.shown" = true;
           "browser.newtabpage.pinned" = [{
             title = "NixOS";
             url = "https://nixos.org";
           }];
+          "browser.search.region" = "IN";
+          "browser.search.isUS" = false;
+          "browser.startup.page" = 3;
+          "distribution.searchplugins.defaultLocale" = "en-GB";
+          "dom.security.https_only_mode" = true;
+          "general.useragent.locale" = "en-GB";
         };
-        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        #   privacy-badger
-        # ];
+        extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+
+          # privacy-badger
+          firefox-color
+          bitwarden
+          ublock-origin
+          duckduckgo-privacy-essentials
+        ];
         extraConfig = ''
           /* Source file made available under Mozilla Public License v. 2.0 See the main repository for updates as well as full license text. 
              https://github.com/Godiesc/opera-gx */

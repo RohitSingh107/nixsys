@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -57,6 +57,9 @@
       ranger
       screenfetch
       cowsay
+
+      # Process monitor
+      procs
 
       ## Disk
       filelight
