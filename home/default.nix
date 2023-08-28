@@ -36,7 +36,7 @@
     stateVersion = "22.11";
 
     packages = with pkgs; [
-      brave
+      # brave
       bitwarden
       neofetch
       discord
