@@ -39,7 +39,30 @@
       vim-visual-multi #vim
 
       ## Beautification
-      nvim-treesitter
+      {
+        plugin = (nvim-treesitter.withPlugins (p: [
+          p.tree-sitter-nix
+          p.tree-sitter-vim
+          p.tree-sitter-bash
+          p.tree-sitter-lua
+          p.tree-sitter-python
+          p.tree-sitter-json
+          p.tree-sitter-yaml
+          p.tree-sitter-toml
+          p.tree-sitter-fish
+          p.tree-sitter-haskell
+          p.tree-sitter-regex
+          p.tree-sitter-html
+          p.tree-sitter-sql
+          # p.tree-sitter-latex
+          # p.tree-sitter-rust
+          # p.tree-sitter-c
+          # p.tree-sitter-go
+          # p.tree-sitter-tsx
+          # p.tree-sitter-typescript
+        ]));
+        # config = toLuaFile ./nvim/plugin/treesitter.lua;
+      }
       indent-blankline-nvim
       nvim-ts-rainbow2
 
@@ -77,22 +100,11 @@
 
     extraLuaConfig = ''
 
-    local api = vim.api
-
-    local core_conf_files = {
-      "$HOME/.config/nvim/lua/base.lua", -- base settings
-      "$HOME/.config/nvim/lua/autocmd.lua", -- Auto Commands settings
-      "$HOME/.config/nvim/lua/mappings.lua", -- Custom Mappings
-      "$HOME/.config/nvim/lua/coc-conf.lua", -- coc.nvim specific settings
-      "$HOME/.config/nvim/lua/plugin-settings.lua", -- plugins specific settings
-    }
-
-    -- source all the core config files
-    for _, name in ipairs(core_conf_files) do
-      local path = name
-      local source_cmd = "source " .. path
-      vim.cmd(source_cmd)
-    end
+      ${builtins.readFile ./lua/options.lua}
+      ${builtins.readFile ./lua/autocmd.lua}
+      ${builtins.readFile ./lua/mappings.lua}
+      ${builtins.readFile ./lua/coc-conf.lua}
+      ${builtins.readFile ./lua/plugin-settings.lua}
 
     '';
 
