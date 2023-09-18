@@ -121,7 +121,7 @@
       enable = true;
     };
 
-    exa = {
+    eza = {
       enable = true;
       enableAliases = false;
       git = true;

@@ -9,12 +9,12 @@
     '';
   
     shellAliases = {
-      ls = "exa -al --color=always --group-directories-first --icons"; # preferred listing
-      la = "exa -a --color=always --group-directories-first --icons"; # all files and dirs
+      ls = "eza -al --color=always --group-directories-first --icons"; # preferred listing
+      la = "eza -a --color=always --group-directories-first --icons"; # all files and dirs
       ip = "ip -color";
-      ll = "exa -l --color=always --group-directories-first --icons"; # long format
-      lt = "exa -aT --color=always --group-directories-first --icons"; # tree listing
-      "l." = "exa -a | egrep '^\.'"; # show only dotfiles
+      ll = "eza -l --color=always --group-directories-first --icons"; # long format
+      lt = "eza -aT --color=always --group-directories-first --icons"; # tree listing
+      "l." = "eza -a | egrep '^\.'"; # show only dotfiles
 
 
 
