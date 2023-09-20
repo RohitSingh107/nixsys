@@ -113,7 +113,7 @@
             vrr = false; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
             disable_hyprland_logo = true;
             animate_manual_resizes = true;
-            suppress_portal_warnings = true;
+            # suppress_portal_warnings = true;
           };
 
           dwindle = {
@@ -296,11 +296,6 @@
 
 
         };
-
-
-
-
-   
 
       };
 

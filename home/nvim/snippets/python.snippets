@@ -24,3 +24,13 @@ if __name__ == '__main__':
 endsnippet
 
 
+snippet pll "Print Linked List" b
+def printLL(node : Optional[Node]):
+    def printLLInner(node : Optional[Node]):
+        if not node:
+            return
+        print(node, end=" ")
+        printLLInner(node.next)
+    printLLInner(node=node)
+    print()
+endsnippet

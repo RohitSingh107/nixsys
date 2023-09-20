@@ -20,7 +20,7 @@
 
 
 
-        modules-left = [ "custom/launcher" "wlr/workspaces" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
         "custom/launcher" = {
           format = "󱗼";
           on-click = "rofi -show combi &";
@@ -28,7 +28,7 @@
           tooltip = false;
         };
 
-        "wlr/workspaces" = {
+        "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
           format-icons = {
