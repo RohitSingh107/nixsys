@@ -118,8 +118,14 @@
       coc = {
         enable = true;
         settings = {
+
           "snippets.userSnippetsDirectory" = "~/.config/nvim/snippets";
           "prettier.printWidth" = 80;
+          "snippets.ultisnips.pythonPrompt" = false;
+          "pyright.enable" = true;
+          "python.linting.mypyEnabled" = true;
+          "python.formatting.provider" = "black";
+
           "coc.preferences.formatOnSaveFiletypes" = [
             "css"
             "markdown"
@@ -168,9 +174,7 @@
               filetypes = [ "nix" ];
             };
           };
-          "snippets.ultisnips.pythonPrompt" = false;
-          "pyright.enable" = true;
-          "python.linting.mypyEnabled" = true;
+
         };
       };
     };

@@ -27,6 +27,7 @@
     ./wlogout.nix
     ./swaylock.nix
 
+    ./lf
   ];
 
 

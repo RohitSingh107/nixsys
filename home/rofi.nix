@@ -1,15 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
 
 
   home.file = {
     ".config/rofi/catppuccin-mocha.rasi" = {
       enable = true;
-      # source = "https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-mocha.rasi";
-      source = (builtins.fetchurl {
-          url = "https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-mocha.rasi";
-          sha256 = "042g8gx018y0xlw96ic2kxx76g6ailmdc71wvnln5sf2k7z6rn66";
-          }); # Gives path to file
- 
+      # source = (builtins.fetchurl {
+      #     url = "https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-mocha.rasi";
+      #     sha256 = "042g8gx018y0xlw96ic2kxx76g6ailmdc71wvnln5sf2k7z6rn66";
+      #     }); # Gives path to file
+      source = inputs.rofi-conf; # Both are equivalent
     };
   };
 
