@@ -59,6 +59,9 @@
       screenfetch
       cowsay
 
+      # Network
+      networkmanagerapplet
+
       # Process monitor
       procs
 

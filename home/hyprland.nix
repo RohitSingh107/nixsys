@@ -19,7 +19,7 @@
             "pkill swaybg; swaybg -o 'eDP-1' -i ~/.config/wall/xmonad.jpg -m fill"
             "wl-paste -t text --watch clipman store"
             # "dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
-            # "nm-applet --indicator"
+            "nm-applet --indicator"
             # "exec xrdb -load ~/.Xresources"
             # "swaync"
             # "wl-clipboard-history -t"
