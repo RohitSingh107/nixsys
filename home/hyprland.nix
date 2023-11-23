@@ -63,7 +63,7 @@
 
           decoration = {
             rounding = 10;
-            multisample_edges = true;
+            # multisample_edges = true;
             # shadow_ignore_window = true;
             # drop_shadow = true;
             # shadow_range = 15;
@@ -79,7 +79,7 @@
               new_optimizations = true;
               ignore_opacity = true;
               noise = 0.0117;
-              contrast = 1.5;
+              contrast = 1;
               brightness = 1;
             };
           };

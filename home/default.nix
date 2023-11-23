@@ -64,6 +64,7 @@
 
       # Process monitor
       procs
+      mission-center
 
       ## Disk
       filelight
@@ -103,7 +104,7 @@
     };
 
     flameshot = {
-      enable = true;
+      enable = false;
       # settings = {
       #   General = {
       #     showStartupLaunchMessage = true;
