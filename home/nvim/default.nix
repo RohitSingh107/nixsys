@@ -22,12 +22,12 @@
 
         telescope-nvim
         which-key-nvim
-        vim-airline #vim
-        vim-airline-themes #vim
+        vim-airline # vim
+        vim-airline-themes # vim
         nvim-colorizer-lua
         comment-nvim
         nvim-web-devicons
-        vim-devicons #vim
+        vim-devicons # vim
         nvim-tree-lua
         telescope-fzf-native-nvim
 
@@ -37,9 +37,10 @@
         dracula-nvim
 
         ## Coding
-        vim-snippets #vim
-        vim-visual-multi #vim
+        vim-snippets # vim
+        vim-visual-multi # vim
         friendly-snippets
+        neoformat
 
         ## Beautification
         {
@@ -67,8 +68,8 @@
           # config = toLuaFile ./nvim/plugin/treesitter.lua;
         }
         indent-blankline-nvim
-        nvim-ts-rainbow2
-
+        # nvim-ts-rainbow2 # Depricated
+        rainbow-delimiters-nvim
 
         ## Coc Extensions
         coc-json
@@ -93,27 +94,19 @@
         # coc-tailwindcss
         # coc-stylelint
 
-
-
       ];
 
-      extraPackages = with pkgs; [
-        shfmt
-        rnix-lsp
-        xclip
-        wl-clipboard
-      ];
+      extraPackages = with pkgs; [ shfmt rnix-lsp xclip wl-clipboard ];
 
       extraLuaConfig = ''
 
-      ${builtins.readFile ./lua/options.lua}
-      ${builtins.readFile ./lua/autocmd.lua}
-      ${builtins.readFile ./lua/mappings.lua}
-      ${builtins.readFile ./lua/coc-conf.lua}
-      ${builtins.readFile ./lua/plugin-settings.lua}
+        ${builtins.readFile ./lua/options.lua}
+        ${builtins.readFile ./lua/autocmd.lua}
+        ${builtins.readFile ./lua/mappings.lua}
+        ${builtins.readFile ./lua/coc-conf.lua}
+        ${builtins.readFile ./lua/plugin-settings.lua}
 
-    '';
-
+      '';
 
       coc = {
         enable = true;
@@ -151,21 +144,14 @@
                 "package.yaml"
                 "hie.yaml"
               ];
-              filetypes = [
-                "haskell"
-                "lhaskell"
-              ];
+              filetypes = [ "haskell" "lhaskell" ];
               settings = {
                 haskell = {
                   checkParents = "CheckOnSave";
                   checkProject = true;
                   maxCompletions = 40;
                   formattingProvider = "ormolu";
-                  plugin = {
-                    stan = {
-                      globalOn = true;
-                    };
-                  };
+                  plugin = { stan = { globalOn = true; }; };
                 };
               };
             };

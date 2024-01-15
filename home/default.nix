@@ -58,6 +58,7 @@
       ranger
       screenfetch
       cowsay
+      google-chrome
 
       # Network
       networkmanagerapplet
