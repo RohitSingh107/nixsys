@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   services.trayer = {
-    enable = true;
+    enable = false;
     settings = {
       edge = "top";
       align = "right";
@@ -17,8 +17,8 @@
   xsession = {
     windowManager = {
       xmonad = {
-        enable = true;
-        enableContribAndExtras = true;
+        enable = false;
+        enableContribAndExtras = false;
         config = ./xmonad.hs;
         libFiles = {
           "MyDefaults.hs" = ./MyDefaults.hs;
