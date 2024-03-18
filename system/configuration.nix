@@ -146,8 +146,11 @@
     xserver = {
 
       # Configure keymap in X11
-      layout = "us";
-      xkbVariant = "";
+      xkb = {
+        variant = "";
+        layout = "us";
+      };
+
 
       # Enable the X11 windowing system.
       enable = true;
