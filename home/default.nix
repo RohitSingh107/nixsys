@@ -128,7 +128,8 @@
 
     eza = {
       enable = true;
-      # enableAliases = false;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
       git = true;
       icons = true;
       extraOptions = [

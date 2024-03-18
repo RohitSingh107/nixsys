@@ -18,11 +18,11 @@
     };
 
     shellAliases = {
-      # ls = "eza -al --color=always --group-directories-first --icons"; # preferred listing
-      # la = "eza -a --color=always --group-directories-first --icons"; # all files and dirs
+      ls = "eza -al --color=always --group-directories-first --icons"; # preferred listing
+      la = "eza -a --color=always --group-directories-first --icons"; # all files and dirs
       ip = "ip -color";
-      # ll = "eza -l --color=always --group-directories-first --icons"; # long format
-      # lt = "eza -aT --color=always --group-directories-first --icons"; # tree listing
+      ll = "eza -l --color=always --group-directories-first --icons"; # long format
+      lt = "eza -aT --color=always --group-directories-first --icons"; # tree listing
       "l." = "eza -a | egrep '^\.'"; # show only dotfiles
 
 
