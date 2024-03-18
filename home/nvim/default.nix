@@ -96,7 +96,7 @@
 
       ];
 
-      extraPackages = with pkgs; [ shfmt rnix-lsp xclip wl-clipboard ];
+      extraPackages = with pkgs; [ shfmt xclip wl-clipboard ];
 
       extraLuaConfig = ''
 
@@ -155,10 +155,10 @@
                 };
               };
             };
-            nix = {
-              command = "rnix-lsp";
-              filetypes = [ "nix" ];
-            };
+            # nix = {
+            #   command = "rnix-lsp";
+            #   filetypes = [ "nix" ];
+            # };
           };
 
         };

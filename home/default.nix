@@ -41,7 +41,6 @@
       bitwarden
       neofetch
       discord
-      rnix-lsp
       killall
       fantasque-sans-mono # Maybe should not be here
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -129,7 +128,7 @@
 
     eza = {
       enable = true;
-      enableAliases = false;
+      # enableAliases = false;
       git = true;
       icons = true;
       extraOptions = [
@@ -148,7 +147,7 @@
 
 
     htop = {
-      enable = true;
+      enable = false;
     };
 
 
