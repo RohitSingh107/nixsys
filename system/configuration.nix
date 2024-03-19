@@ -296,7 +296,6 @@
     variables = {
       EDITOR = "nvim";
       LC_ALL = "en_IN.UTF-8";
-      # NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
     };
     #
     sessionVariables = {
