@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.swaylock-effects;
     settings = {
-      image = "~/.config/wall/dracula-nixos.png";
+      image = "~/.config/wallpapers/dracula-nixos.png";
       indicator-caps-lock = true;
       font = "FiraSans";
       indicator-radius = 125;

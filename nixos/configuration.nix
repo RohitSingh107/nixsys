@@ -1,18 +1,114 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, home-manager, ... }:
-
+# This is your system's configuration file.
+# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      home-manager.nixosModule
-    ];
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  # You can import other NixOS modules here
+  imports = [
+    # If you want to use modules your own flake exports (from modules/nixos):
+    # outputs.nixosModules.example
 
-  # Bootloader.
+    # Or modules from other flakes (such as nixos-hardware):
+    # inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-ssd
+
+    # You can also split up your configuration and import pieces of it here:
+    # ./users.nix
+
+    # Import your generated (nixos-generate-config) hardware configuration
+    ./hardware-configuration.nix
+  ];
+
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+    };
+  };
+
+  # This will add each flake input as a registry
+  # To make nix3 commands consistent with your flake
+  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+
+  # This will additionally add your inputs to the system's legacy channels
+  # Making legacy nix commands consistent as well, awesome!
+  nix.nixPath = ["/etc/nix/path"];
+  environment.etc =
+    lib.mapAttrs'
+    (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
+
+  nix.settings = {
+    # Enable flakes and new 'nix' command
+    experimental-features = "nix-command flakes";
+    # Deduplicate and optimize nix store
+    auto-optimise-store = true;
+
+    trusted-users = [ "root" "rohits" ];
+
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+  nix.optimise.automatic = true;
+
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    # Enable networking
+    networkmanager = {
+      enable = true;
+    };
+
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+      allowedUDPPortRanges = [
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+    };
+
+
+  };
+
+   # Bootloader.
   boot = {
     loader = {
 
@@ -86,38 +182,38 @@
     };
   };
 
-  networking = {
-    hostName = "nixos"; # Define your hostname.
-
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
-    networkmanager = {
-      enable = true;
-    };
-
-    firewall = {
-      enable = true;
-      allowedTCPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
-      ];
-      allowedUDPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
-      ];
-    };
-
-
-  };
-
-
   # Set your time zone.
   time = {
     timeZone = "Asia/Kolkata";
   };
+
+  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
+  users.users = {
+    rohits = {
+      isNormalUser = true;
+      description = "Rohit Singh";
+      # openssh.authorizedKeys.keys = [
+      #   # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+      # ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+      packages = with pkgs; [
+        #  thunderbird
+      ];
+    };
+  };
+
+  # # This setups a SSH server. Very important if you're setting up a headless system.
+  # # Feel free to remove if you don't need it.
+  # services.openssh = {
+  #   enable = true;
+  #   settings = {
+  #     # Forbid root login through SSH.
+  #     PermitRootLogin = "no";
+  #     # Use keys only. Remove if you want to SSH using password (not recommended)
+  #     PasswordAuthentication = false;
+  #   };
+  # };
+
 
   # Select internationalisation properties.
   i18n = {
@@ -220,7 +316,7 @@
 
     printing = {
       # Enable CUPS to print documents.
-      enable = true;
+      enable = false;
     };
 
 
@@ -228,18 +324,14 @@
 
   };
 
-  users.users = {
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    rohits = {
-      isNormalUser = true;
-      description = "Rohit Singh";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
-      # extraGroups = [ "networkmanager" "wheel" "audio" "video" "ip" "scanner" "camera" "kvm" "libvirtd" "plex" ];
-      packages = with pkgs; [
-        #  thunderbird
-      ];
-    };
+  # Hyprland
+  programs.sway.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
   };
+  hardware.opengl.enable = true;
+
 
   systemd = {
     services = {
@@ -250,65 +342,27 @@
   };
 
 
-  nixpkgs = {
-    config = {
-      # Allow unfree packages
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "nodejs-16.20.0"
-      ];
-      # packageOverrides = pkgs: {
-      #   nur = import
-      #     (builtins.fetchTarball {
-      #       url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
-      #       sha256 = "109v3s1762djqxhq29d5gs0j1xbhlrj6l80xkfhsx2xnj810hgih";
-      #
-      #     })
-      #     {
-      #       inherit pkgs;
-      #     };
-      # };
-    };
-
-  };
-
-  environment = {
-
     # List packages installed in system profile. To search, run:
     # $ nix search wget
-    systemPackages = with pkgs; [
-      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      #  wget
-      firefox
-      git
-      neovim
-      gparted
-      # virt-manager
-      
+  environment.systemPackages = with pkgs; [
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    firefox
+    git
+    neovim
+    gparted
+  ];
 
-    # # Experimental
-    #   bluez-tools
-    #   bluez-alsa
-    #   hidapi
-    #   pulseaudioFull
-    ];
-
-    variables = {
-      EDITOR = "nvim";
-      LC_ALL = "en_IN.UTF-8";
-    };
-    #
-    sessionVariables = {
-      # Hints electron apps to use wayland
-      NIXOS_OZONE_WL = "1";
-      NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
-    };
-
-
-
+  environment.variables = {
+    EDITOR = "nvim";
+    LC_ALL = "en_IN.UTF-8";
   };
-
-
+  #
+  environment.sessionVariables = {
+    # Hints electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+    NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+  };
 
 
 
@@ -330,40 +384,6 @@
 
   };
 
-  programs.sway.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  hardware.opengl.enable = true;
-
-  ## Virt-manager
-  # virtualisation.libvirtd.enable = true;
-  # programs.dconf.enable = true;
-  # # environment.systemPackages = with pkgs; [ virt-manager ];
-
-
-  nix = {
-    package = pkgs.nixFlakes;
-    optimise.automatic = true;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-
-    settings = {
-      auto-optimise-store = true;
-      trusted-users = [ "root" "rohits" ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
-
-  ## Docker
-  # virtualisation.docker.enable = true;
 
   ## Bluetooth
   hardware.bluetooth = {
@@ -374,7 +394,6 @@
       };
     };
   };
-
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -392,9 +411,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-
-  # hardware.opengl.enable = true;
 
 
 
@@ -418,14 +434,16 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+
+
+
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
-
-
-
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  system.stateVersion = "22.11";
 }

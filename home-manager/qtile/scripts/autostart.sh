@@ -20,7 +20,7 @@ run nm-applet &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # dunst &
 # feh --randomize --bg-fill /usr/share/wallpapers/garuda-wallpapers/*
-feh --bg-fill ~/.config/wall/xmonad.jpg
+feh --bg-fill ~/.config/wallpapers/xmonad.jpg
 #starting user applications at boot time
 # run volumeicon &
 # run cbatticon &

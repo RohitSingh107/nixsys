@@ -16,7 +16,7 @@
           ];
           exec-once = [
             "waybar"
-            "pkill swaybg; swaybg -o 'eDP-1' -i ~/.config/wall/xmonad.jpg -m fill"
+            "pkill swaybg; swaybg -o 'eDP-1' -i ~/.config/wallpapers/xmonad.jpg -m fill"
             "wl-paste -t text --watch clipman store"
             # "dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
             "nm-applet --indicator"
@@ -186,7 +186,7 @@
             "SUPER,F,exec,hyprctl --batch 'keyword general:gaps_in 0 ; keyword general:gaps_out 0 ; keyword general:border_size 1'"
             "SUPER,Return,exec,kitty"
             "SUPER,D,exec,rofi -show combi"
-            "SUPER,L,exec,swaylock -i ~/.config/wall/dracula-nixos.png"
+            "SUPER,L,exec,swaylock -i ~/.config/wallpapers/dracula-nixos.png"
             "SUPER,W,exec,firefox"
             "SUPERSHIFT,Return,exec,nautilus"
             ## Screenshots
