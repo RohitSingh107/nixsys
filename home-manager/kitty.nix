@@ -17,6 +17,7 @@
     keybindings = {
       "ctrl+f>2" = "set_font_size 20";
       "ctrl+shift+o" = "set_background_opacity 1";
+      "ctrl+shift+t" = "launch --cwd=current --type=tab";
     };
     settings = {
       background_opacity = "0.6";
