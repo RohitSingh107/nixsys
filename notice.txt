@@ -1,0 +1,1 @@
+Remove pkgs-satble from flake for waybar

@@ -8,6 +8,10 @@
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Stable packages
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05"; # Temporary arrangement for waybar
+
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
@@ -60,6 +64,9 @@
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
+    # Stable packages
+    pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux; # Temporary arrangement for waybar
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs;};
