@@ -333,6 +333,33 @@
   hardware.opengl.enable = true;
 
 
+  virtualisation = {
+    docker = {
+      enable = true;
+      enableOnBoot = false;
+      
+      daemon = {
+        settings = {
+          data-root = "/home/rohits/mydata/docker-data";
+        };
+      };
+      
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+        daemon.settings = {
+          data-root = "/home/rohits/mydata/docker-data";
+        };
+      };
+
+      autoPrune = {
+        enable = false;
+      };
+
+    };
+  };
+
+
   systemd = {
     services = {
       # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
