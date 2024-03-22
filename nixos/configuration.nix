@@ -340,15 +340,15 @@
       
       daemon = {
         settings = {
-          data-root = "/home/rohits/mydata/docker-data";
+          data-root = "/home/rohits/mydata/docker-data/docker-root";
         };
       };
       
       rootless = {
-        enable = true;
+        enable = false;
         setSocketVariable = true;
         daemon.settings = {
-          data-root = "/home/rohits/mydata/docker-data";
+          data-root = "/home/rohits/mydata/docker-data/docker-root";
         };
       };
 
