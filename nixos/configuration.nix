@@ -70,8 +70,7 @@
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
 
-    trusted-users = [ "root" "rohits" ];
-
+    trusted-users = ["root" "rohits"];
   };
 
   nix.gc = {
@@ -98,20 +97,23 @@
     firewall = {
       enable = true;
       allowedTCPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
+        {
+          from = 1714;
+          to = 1764;
+        } # KDE Connect
       ];
       allowedUDPPortRanges = [
-        { from = 1714; to = 1764; } # KDE Connect
+        {
+          from = 1714;
+          to = 1764;
+        } # KDE Connect
       ];
     };
-
-
   };
 
-   # Bootloader.
+  # Bootloader.
   boot = {
     loader = {
-
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
@@ -120,8 +122,6 @@
       # systemd-boot = {
       #   enable = false;
       # };
-
-
 
       grub = {
         enable = true;
@@ -136,14 +136,14 @@
         extraEntries = ''
 
           menuentry "Reboot" {
-	          reboot
+           reboot
           }
 
           menuentry "Shut Down" {
-	          halt
+           halt
           }
 
-          
+
           function load_video {
             if [ x$feature_all_video_module = xy ]; then
               insmod all_video
@@ -173,12 +173,11 @@
             initrd	/@/boot/amd-ucode.img /@/boot/initramfs-linux-zen.img
           }
 
-          
-          '';
+
+        '';
       };
 
       timeout = 5;
-
     };
   };
 
@@ -195,7 +194,7 @@
       # openssh.authorizedKeys.keys = [
       #   # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       # ];
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+      extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
       packages = with pkgs; [
         #  thunderbird
       ];
@@ -214,7 +213,6 @@
   #   };
   # };
 
-
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_IN";
@@ -232,28 +230,22 @@
     };
   };
 
-
   services = {
     blueman = {
       enable = true;
     };
 
-
     xserver = {
-
       # Configure keymap in X11
       xkb = {
         variant = "";
         layout = "us";
       };
 
-
       # Enable the X11 windowing system.
       enable = true;
 
-
       desktopManager = {
-
         # Enable the GNOME Desktop Environment.
         gnome = {
           enable = true;
@@ -281,16 +273,13 @@
         qtile = {
           enable = false;
           backend = "x11";
-          extraPackages = python3Packages: with python3Packages; [
-            qtile-extras
-          ];
+          extraPackages = python3Packages:
+            with python3Packages; [
+              qtile-extras
+            ];
           # configFile = ./qtile/config.py;
-
-
         };
       };
-
-
 
       libinput = {
         # Enable touchpad support (enabled default in most desktopManager).
@@ -303,25 +292,19 @@
         };
       };
 
-
-      # Extra Optional Settings to prevent screen timeout 
+      # Extra Optional Settings to prevent screen timeout
       serverFlagsSection = ''
         Option "BlankTime" "0"
         Option "StandbyTime" "0"
         Option "SuspendTime" "0"
         Option "OffTime" "0"
       '';
-
     };
 
     printing = {
       # Enable CUPS to print documents.
       enable = false;
     };
-
-
-
-
   };
 
   # Hyprland
@@ -332,18 +315,17 @@
   };
   hardware.opengl.enable = true;
 
-
   virtualisation = {
     docker = {
       enable = true;
       enableOnBoot = false;
-      
+
       daemon = {
         settings = {
           data-root = "/home/rohits/mydata/docker-data/docker-root";
         };
       };
-      
+
       rootless = {
         enable = false;
         setSocketVariable = true;
@@ -355,10 +337,8 @@
       autoPrune = {
         enable = false;
       };
-
     };
   };
-
 
   systemd = {
     services = {
@@ -368,9 +348,8 @@
     };
   };
 
-
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
@@ -391,8 +370,6 @@
     NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
   };
 
-
-
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
@@ -408,9 +385,7 @@
       fira-code
       fira-code-symbols
     ];
-
   };
-
 
   ## Bluetooth
   hardware.bluetooth = {
@@ -439,10 +414,6 @@
     #media-session.enable = true;
   };
 
-
-
-
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -450,7 +421,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -460,10 +430,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-
-
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

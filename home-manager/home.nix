@@ -83,7 +83,6 @@
 
     packages = with pkgs; [
       # brave
-      bitwarden
       neofetch
       discord
       killall
