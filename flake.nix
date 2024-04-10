@@ -9,9 +9,6 @@
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Stable packages
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05"; # Temporary arrangement for waybar
-
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager

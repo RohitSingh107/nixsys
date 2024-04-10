@@ -2,10 +2,10 @@
 
   programs.waybar = {
     enable = true;
-    package = (pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      buildInputs = oldAttrs.buildInputs ++ [ outputs.pkgs-stable.wireplumber ]; # Temporary arrangement for waybar
-    }));
+    # package = (pkgs.waybar.overrideAttrs (oldAttrs: {
+    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    #   buildInputs = oldAttrs.buildInputs ++ [ outputs.pkgs-stable.wireplumber ]; # Temporary arrangement for waybar
+    # }));
 
     settings = {
       mainBar = {

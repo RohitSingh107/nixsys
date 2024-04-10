@@ -64,7 +64,7 @@
 
       status = {
         disabled = false;
-        format = "[ \[ $symbol$status_common_meaning$status_signal_name$status_maybe_int \] ] ($style)";
+        format = "[$symbol$status]($style)";
         map_symbol = true;
         pipestatus = true;
         symbol = "🔴";

@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   programs.chromium = {
-    package = pkgs.brave;
+    # package = pkgs.google-chrome;
     enable = true;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin

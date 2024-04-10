@@ -92,17 +92,20 @@
       dmenu
       pavucontrol
       xclip
-      wl-clipboard
       xdotool
       whatsapp-for-linux
       brightnessctl
       gnome.gnome-tweaks
       gnomeExtensions.dash-to-dock
       exercism
-      ranger
       screenfetch
       cowsay
-      google-chrome
+      alejandra
+      # google-chrome
+
+      # Files Operations
+      meld
+      ranger
 
       # Network
       networkmanagerapplet
@@ -128,6 +131,7 @@
       swappy
       grim
       slurp
+      wl-clipboard
     ];
 
     file = {
