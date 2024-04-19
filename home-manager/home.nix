@@ -24,7 +24,7 @@
     ./fish.nix
     ./gtk.nix
     ./tmux.nix
-    ./mimeApps.nix
+    ./xdg.nix
     ./starship.nix
     ./vscode.nix
     ./chromium.nix
@@ -87,7 +87,7 @@
       discord
       killall
       fantasque-sans-mono # Maybe should not be here
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      (nerdfonts.override {fonts = ["FiraCode"];})
       dmenu
       pavucontrol
       xclip
@@ -104,7 +104,6 @@
 
       # Files Operations
       meld
-      ranger
 
       # Network
       networkmanagerapplet
@@ -136,14 +135,13 @@
     file = {
       ".config/wallpapers".source = config.lib.file.mkOutOfStoreSymlink ../wallpapers;
     };
-
   };
 
-
   programs = {
-
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
+
+    dconf.enable = true;
 
     bat = {
       enable = true;
@@ -168,20 +166,15 @@
     #   # and packages.el files
     # };
 
-
-
     htop = {
       enable = true;
     };
-
-
 
     git = {
       enable = true;
       userName = "Rohit Singh";
       userEmail = "RohitSinghEmail@protonmail.com";
     };
-
 
     micro = {
       enable = true;
@@ -202,7 +195,6 @@
       };
     };
 
-
     direnv = {
       enable = true;
       enableBashIntegration = true;
@@ -210,11 +202,33 @@
       nix-direnv.enable = true;
     };
 
+    ranger = {
+      enable = true;
+      mappings = {
+        Q = "quitall";
+        q = "quit";
+        e = "edit";
+        gpc = "cd ~/mydata/code/practice-code";
+        gmd = "cd ~/mydata";
+        gt = "cd ~/mydata/tmp";
+      };
 
+      settings = {
+        preview_images = true;
+        preview_images_method = "kitty";
+        show_hidden = true;
+        status_bar_on_top = true;
+        draw_borders = "outline";
+        display_size_in_status_bar = false;
+        hostname_in_titlebar = false;
+      };
 
+      extraConfig = ''
+        # == Local Options # local options that only affect a single directory.
+        setlocal path=~/Downloads sort mtime
+      '';
+    };
   };
-
-
 
   services = {
     network-manager-applet.enable = true;
@@ -237,12 +251,9 @@
       #   };
       # };
     };
+
+    copyq.enable = true;
   };
-
-
-
-
-
 
 
   fonts = {
@@ -251,18 +262,6 @@
     };
   };
 
-
-  # wayland = {
-  #   windowManager = {
-  #     hyprland = {
-  #       enable = true;
-  #     };
-  #   };
-  # };
-  #
-
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
 }
