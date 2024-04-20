@@ -52,6 +52,9 @@
       # Get the error messages from journalctl
       jctl = "journalctl -p 3 -xb";
 
+      # Battery health and status
+      battery-health = "upower -i /org/freedesktop/UPower/devices/battery_BAT0";
+
     };
 
     functions = {

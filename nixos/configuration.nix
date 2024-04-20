@@ -22,6 +22,9 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    # Enable Power Management
+    ./laptop-battery.nix
   ];
 
   nixpkgs = {

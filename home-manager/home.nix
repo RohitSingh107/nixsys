@@ -141,8 +141,6 @@
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
-    dconf.enable = true;
-
     bat = {
       enable = true;
     };
