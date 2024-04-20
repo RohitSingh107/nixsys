@@ -83,6 +83,7 @@
 
     packages = with pkgs; [
       # brave
+      libsecret
       neofetch
       discord
       killall
@@ -226,6 +227,7 @@
         setlocal path=~/Downloads sort mtime
       '';
     };
+
   };
 
   services = {

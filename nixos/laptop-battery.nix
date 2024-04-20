@@ -1,14 +1,16 @@
 # Reference https://nixos.wiki/wiki/Laptop
 {pkgs, ...}: {
-  services.thrmald.enable = true;
+  services.thermald.enable = false; # Works only on intel cpu
 
   powerManagement = {
     enable = true;
     powertop.enable = true; # This can make your input devices such as the keyboard unresponsive for some time
   };
 
+  # services.power-profiles-daemon.enable = false;
+
   services.tlp = {
-    enable = true;
+    enable = false; # conflicts with services.power-profiles-daemon.enable = true (provided by gnome)
     # settings = {
     #   CPU_SCALING_GOVERNOR_ON_AC = "performance";
     #   CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
