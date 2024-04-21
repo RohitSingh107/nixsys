@@ -133,7 +133,10 @@
         useOSProber = false;
         efiSupport = true;
 
-        theme = pkgs.nixos-grub2-theme;
+        theme = pkgs.sleek-grub-theme.override {
+          withBanner = "Hello Rohit";
+          withStyle = "bigSur"; # one of "white" "dark" "orange" "bigSur"
+        };
         # splashImage = ../wall/grub.png;
 
         extraEntries = ''
@@ -259,6 +262,7 @@
         # Enable the GNOME Desktop Environment.
         gdm = {
           enable = true;
+          banner = "Welocome to Rohit's NixOS system";
         };
         autoLogin = {
           # Enable automatic login for the user.

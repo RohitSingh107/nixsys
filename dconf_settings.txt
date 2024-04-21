@@ -1,0 +1,337 @@
+[io/missioncenter/MissionCenter]
+performance-selected-page='268572236-0000:03:00.0'
+window-height=400
+
+[org/blueman/general]
+window-properties=[1896, 1013, 0, 0]
+
+[org/blueman/network]
+nap-enable=false
+
+[org/blueman/plugins/autoconnect]
+services=@a(ss) []
+
+[org/blueman/plugins/powermanager]
+auto-power-on=@mb false
+
+[org/blueman/plugins/recentconns]
+recent-connections=[{'adapter': '34:6F:24:CE:2E:74', 'address': 'FC:A8:9A:00:C1:4E', 'alias': 'Tune Flex', 'icon': 'audio-headphones', 'name': 'Audio and input profiles', 'uuid': '00000000-0000-0000-0000-000000000000', 'time': '1713360912.5907178', 'device': '/org/bluez/hci0/dev_FC_A8_9A_00_C1_4E'}]
+
+[org/gnome/Console]
+font-scale=1.2000000000000002
+last-window-size=(942, 1036)
+
+[org/gnome/Geary]
+migrated-config=true
+
+[org/gnome/Totem]
+active-plugins=['skipto', 'movie-properties', 'open-directory', 'vimeo', 'mpris', 'screensaver', 'save-file', 'rotation', 'screenshot', 'variable-rate', 'recent', 'autoload-subtitles', 'apple-trailers']
+subtitle-encoding='UTF-8'
+
+[org/gnome/Weather]
+locations=[<(uint32 2, <('New Delhi', 'VIDP', true, [(0.49858239547081096, 1.345939747314058)], [(0.49916416607037828, 1.3473941825396225)])>)>]
+window-height=510
+window-maximized=false
+window-width=992
+
+[org/gnome/calculator]
+accuracy=9
+angle-units='degrees'
+base=10
+button-mode='basic'
+number-format='automatic'
+refresh-interval=604800
+show-thousands=false
+show-zeroes=false
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+window-maximized=true
+window-size=(1920, 1037)
+word-size=64
+
+[org/gnome/calendar]
+active-view='month'
+window-maximized=true
+window-size=(768, 600)
+
+[org/gnome/clocks/state/window]
+maximized=false
+panel-id='stopwatch'
+size=(870, 690)
+
+[org/gnome/control-center]
+last-panel='network'
+window-state=(980, 640, false)
+
+[org/gnome/desktop/app-folders]
+folder-children=['Utilities', 'YaST']
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///run/current-system/sw/share/backgrounds/gnome/symbolic-l.png'
+picture-uri-dark='file:///run/current-system/sw/share/backgrounds/gnome/symbolic-d.png'
+primary-color='#26a269'
+secondary-color='#000000'
+
+[org/gnome/desktop/calendar]
+show-weekdate=false
+
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'us')]
+xkb-options=['terminate:ctrl_alt_bksp']
+
+[org/gnome/desktop/interface]
+clock-show-seconds=true
+clock-show-weekday=false
+color-scheme='prefer-dark'
+cursor-size=18
+cursor-theme='Dracula-cursors'
+font-antialiasing='grayscale'
+font-hinting='slight'
+font-name='FiraCode Nerd Font Mono Medium'
+gtk-theme='Catppuccin-Mocha-Standard-Red-Dark'
+icon-theme='Papirus-Dark'
+show-battery-percentage=true
+
+[org/gnome/desktop/notifications]
+application-children=['org-gnome-nautilus', 'org-gnome-console', 'gnome-network-panel', 'gnome-power-panel', 'org-kde-kdeconnect-daemon', 'chromium-browser', 'com-github-eneshecan-whatsappforlinux', 'thunderbird']
+
+[org/gnome/desktop/notifications/application/chromium-browser]
+application-id='chromium-browser.desktop'
+
+[org/gnome/desktop/notifications/application/com-github-eneshecan-whatsappforlinux]
+application-id='com.github.eneshecan.WhatsAppForLinux.desktop'
+
+[org/gnome/desktop/notifications/application/gnome-network-panel]
+application-id='gnome-network-panel.desktop'
+
+[org/gnome/desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-console]
+application-id='org.gnome.Console.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
+
+[org/gnome/desktop/notifications/application/org-kde-kdeconnect-daemon]
+application-id='org.kde.kdeconnect.daemon.desktop'
+
+[org/gnome/desktop/notifications/application/thunderbird]
+application-id='thunderbird.desktop'
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///run/current-system/sw/share/backgrounds/gnome/symbolic-l.png'
+primary-color='#26a269'
+secondary-color='#000000'
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 0
+
+[org/gnome/desktop/sound]
+event-sounds=true
+theme-name='__custom'
+
+[org/gnome/epiphany]
+ask-for-default=false
+
+[org/gnome/evince/default]
+continuous=true
+dual-page=false
+dual-page-odd-left=false
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=false
+sidebar-page='thumbnails'
+sidebar-size=203
+sizing-mode='automatic'
+
+[org/gnome/evolution-data-server]
+migrated=true
+
+[org/gnome/gedit/plugins/filebrowser]
+root='file:///'
+tree-view=true
+virtual-root='file:///home/rohits/.ssh'
+
+[org/gnome/meld]
+folder-status-filters=['new', 'modified']
+
+[org/gnome/meld/window-state]
+height=301
+is-maximized=true
+width=789
+
+[org/gnome/mutter]
+attach-modal-dialogs=true
+dynamic-workspaces=true
+edge-tiling=true
+focus-change-on-pointer-rest=true
+workspaces-only-on-primary=true
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+search-view='list-view'
+
+[org/gnome/nautilus/window-state]
+initial-size=(1920, 1080)
+maximized=true
+
+[org/gnome/nm-applet/eap/79c5fc6f-cefe-4119-af90-bb88861d235d]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/a0414ebb-6263-4b54-b2fc-410461b9e741]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/photos]
+window-maximized=true
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+
+[org/gnome/settings-daemon/plugins/power]
+idle-dim=false
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'
+
+[org/gnome/shell]
+app-picker-layout=[{'org.gnome.Contacts.desktop': <{'position': <0>}>, 'org.gnome.Weather.desktop': <{'position': <1>}>, 'org.gnome.clocks.desktop': <{'position': <2>}>, 'org.gnome.Maps.desktop': <{'position': <3>}>, 'org.gnome.Totem.desktop': <{'position': <4>}>, 'org.gnome.Calculator.desktop': <{'position': <5>}>, 'simple-scan.desktop': <{'position': <6>}>, 'org.gnome.Settings.desktop': <{'position': <7>}>, 'gnome-system-monitor.desktop': <{'position': <8>}>, 'Utilities': <{'position': <9>}>, 'yelp.desktop': <{'position': <10>}>, 'org.gnome.Cheese.desktop': <{'position': <11>}>, 'bitwarden.desktop': <{'position': <12>}>, 'discord.desktop': <{'position': <13>}>, 'org.gnome.Extensions.desktop': <{'position': <14>}>, 'firefox.desktop': <{'position': <15>}>, 'fish.desktop': <{'position': <16>}>, 'htop.desktop': <{'position': <17>}>, 'cups.desktop': <{'position': <18>}>, 'micro.desktop': <{'position': <19>}>, 'nvim.desktop': <{'position': <20>}>, 'nixos-manual.desktop': <{'position': <21>}>, 'org.gnome.TextEditor.desktop': <{'position': <22>}>, 'org.gnome.Tour.desktop': <{'position': <23>}>}, {'xterm.desktop': <{'position': <0>}>}]
+command-history=['lg']
+disable-user-extensions=false
+disabled-extensions=['windowsNavigator@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['user-theme@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com']
+favorite-apps=['kitty.desktop', 'firefox.desktop', 'org.gnome.Epiphany.desktop', 'org.gnome.Geary.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Music.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop']
+last-selected-power-profile='power-saver'
+looking-glass-history=['ls', 'Windows']
+welcome-dialog-last-shown-version='43.2'
+
+[org/gnome/shell/extensions/dash-to-dock]
+apply-custom-theme=false
+background-color='rgb(0,0,0)'
+background-opacity=0.5
+custom-background-color=false
+custom-theme-shrink=true
+dash-max-icon-size=34
+dock-position='LEFT'
+extend-height=true
+height-fraction=1.0
+intellihide-mode='FOCUS_APPLICATION_WINDOWS'
+preferred-monitor=-2
+preferred-monitor-by-connector='eDP-1'
+running-indicator-style='DEFAULT'
+show-mounts-network=true
+transparency-mode='DYNAMIC'
+
+[org/gnome/shell/extensions/user-theme]
+name='Catppuccin-Mocha-Standard-Red-Dark'
+
+[org/gnome/shell/weather]
+automatic-location=true
+locations=[<(uint32 2, <('New Delhi', 'VIDP', true, [(0.49858239547081096, 1.345939747314058)], [(0.49916416607037828, 1.3473941825396225)])>)>]
+
+[org/gnome/shell/world-clocks]
+locations=@av []
+
+[org/gnome/tweaks]
+show-extensions-notice=false
+
+[org/gtk/gtk4/settings/color-chooser]
+selected-color=(true, 0.0, 0.0, 0.0, 1.0)
+
+[org/gtk/gtk4/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=true
+show-size-column=true
+show-type-column=true
+sidebar-width=140
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+view-type='list'
+window-size=(853, 385)
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=182
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(0, 0)
+window-size=(941, 965)
+
+[org/virt-manager/virt-manager]
+manager-window-height=1036
+manager-window-width=1898
+
+[org/virt-manager/virt-manager/connections]
+autoconnect=['qemu:///system']
+uris=['qemu:///system']
+
+[org/virt-manager/virt-manager/paths]
+media-default='/home/rohits/Downloads'
+
+[org/virt-manager/virt-manager/urls]
+isos=['/home/rohits/Downloads/Win10_22H2_EnglishInternational_x64v1.iso']
+
+[org/virt-manager/virt-manager/vmlist-fields]
+disk-usage=false
+network-traffic=false
+
+[org/virt-manager/virt-manager/vms/5b73cf267f6841e6bd0ffcea9064349a]
+autoconnect=1
+scaling=1
+vm-window-size=(1018, 804)
+
+[org/virt-manager/virt-manager/vms/ee0c55875b3040ea8998c6003a531941]
+autoconnect=1
+scaling=1
+vm-window-size=(1018, 804)
+
+[system/proxy]
+ignore-hosts=['localhost', '', '', '', '127.0.0.0/8', '', '', '', '::1']
+mode='none'
+
+[system/proxy/http]
+host='localhost'
+
+[system/proxy/https]
+host='localhost'
+port=8080
