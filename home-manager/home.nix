@@ -73,7 +73,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "rohits";
     homeDirectory = "/home/rohits";

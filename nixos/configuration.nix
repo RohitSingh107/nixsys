@@ -135,7 +135,7 @@
 
         theme = pkgs.sleek-grub-theme.override {
           withBanner = "Hello Rohit";
-          withStyle = "bigSur"; # one of "white" "dark" "orange" "bigSur"
+          withStyle = "dark"; # one of "white" "dark" "orange" "bigSur"
         };
         # splashImage = ../wall/grub.png;
 
@@ -241,6 +241,12 @@
       enable = true;
     };
 
+    displayManager.autoLogin = {
+      # Enable automatic login for the user.
+      enable = true;
+      user = "rohits";
+    };
+
     xserver = {
       # Configure keymap in X11
       xkb = {
@@ -264,11 +270,6 @@
           enable = true;
           banner = "Welocome to Rohit's NixOS system";
         };
-        autoLogin = {
-          # Enable automatic login for the user.
-          enable = true;
-          user = "rohits";
-        };
       };
 
       windowManager = {
@@ -288,17 +289,6 @@
         };
       };
 
-      libinput = {
-        # Enable touchpad support (enabled default in most desktopManager).
-        enable = true;
-        touchpad = {
-          naturalScrolling = true;
-        };
-        mouse = {
-          naturalScrolling = true;
-        };
-      };
-
       # Extra Optional Settings to prevent screen timeout
       serverFlagsSection = ''
         Option "BlankTime" "0"
@@ -311,6 +301,17 @@
     printing = {
       # Enable CUPS to print documents.
       enable = false;
+    };
+
+    libinput = {
+      # Enable touchpad support (enabled default in most desktopManager).
+      enable = true;
+      touchpad = {
+        naturalScrolling = true;
+      };
+      mouse = {
+        naturalScrolling = true;
+      };
     };
   };
 
