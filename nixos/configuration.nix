@@ -250,7 +250,7 @@
     };
 
     xserver = {
-      # videoDrivers = ["amdgpu"];
+      videoDrivers = ["modesetting"];
 
       # Configure keymap in X11
       xkb = {
