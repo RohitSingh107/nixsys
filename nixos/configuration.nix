@@ -248,6 +248,8 @@
     };
 
     xserver = {
+      # videoDrivers = ["amdgpu"];
+
       # Configure keymap in X11
       xkb = {
         variant = "";
@@ -321,7 +323,23 @@
     enable = true;
     xwayland.enable = true;
   };
-  hardware.opengl.enable = true;
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      libvdpau
+      amdvlk
+      vaapiVdpau
+      # AMD ROCm OpenCL runtime
+      rocmPackages.clr
+      rocmPackages.clr.icd
+    ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
   virtualisation = {
     docker = {

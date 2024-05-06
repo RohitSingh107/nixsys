@@ -1,0 +1,1 @@
+add --hwdec=auto to mpv

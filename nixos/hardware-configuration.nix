@@ -15,11 +15,17 @@
   boot = {
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      # kernelModules = ["amdgpu"];
     };
 
+    # kernelParams = ["amdgpu"];
+
+
+
     kernelModules = ["kvm-amd"];
+    kernelPackages = pkgs.linuxPackages_zen; # Comment it for default kernel
     extraModulePackages = [];
+    # extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
   };
 
   fileSystems = {

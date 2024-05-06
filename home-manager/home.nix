@@ -181,6 +181,14 @@
       };
     };
 
+    mpv = {
+      enable = true;
+      config = {
+        vo = "gpu";
+        hwdec= "auto"
+      };
+    };
+
     feh = {
       enable = true;
       keybindings = {

@@ -82,6 +82,12 @@
           }
         ];
         settings = {
+          # Force enable hardware acceleration 
+          "media.hardware-video-decoding.force-enabled" = true;
+          "webgl.force-enabled" = true;
+          "layers.acceleration.force-enabled" = true;
+          "media.ffmpeg.vaapi.enabled" = true;
+
           "browser.bookmarks.addedImportButton" = false;
           # "browser.startup.homepage" = "https://duckduckgo.com";
           "browser.bookmarks.showMobileBookmarks" = true;
