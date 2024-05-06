@@ -237,6 +237,8 @@
   };
 
   services = {
+    fstrim.enable = true;
+
     blueman = {
       enable = true;
     };
@@ -330,6 +332,7 @@
       libvdpau
       amdvlk
       vaapiVdpau
+      libvdpau-va-gl
       # AMD ROCm OpenCL runtime
       rocmPackages.clr
       rocmPackages.clr.icd

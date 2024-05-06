@@ -18,9 +18,10 @@
       # kernelModules = ["amdgpu"];
     };
 
-    # kernelParams = ["amdgpu"];
-
-
+    kernelParams = [
+      # "amdgpu"
+      "amd_pstate=guided"
+    ];
 
     kernelModules = ["kvm-amd"];
     kernelPackages = pkgs.linuxPackages_zen; # Comment it for default kernel

@@ -185,7 +185,9 @@
       enable = true;
       config = {
         vo = "gpu";
-        hwdec= "auto"
+        hwdec= "auto-safe";
+        profile= "gpu-hq";
+        gpu-context = "wayland";
       };
     };
 
