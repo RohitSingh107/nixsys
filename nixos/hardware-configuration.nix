@@ -19,7 +19,7 @@
     };
 
     kernelParams = [
-      "amdgpu"
+      # "amdgpu"
       "amd_pstate=guided"
     ];
 
