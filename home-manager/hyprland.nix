@@ -132,7 +132,6 @@
             orientation = "right";
             special_scale_factor = 0.8;
             no_gaps_when_only = false;
-            new_is_master = true;
             new_on_top = false;
           };
 

@@ -284,7 +284,6 @@
 
         qtile = {
           enable = false;
-          backend = "x11";
           extraPackages = python3Packages:
             with python3Packages; [
               qtile-extras
@@ -326,7 +325,7 @@
     xwayland.enable = true;
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       libvdpau
@@ -340,8 +339,7 @@
     extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
     ];
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   virtualisation = {
@@ -427,7 +425,6 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

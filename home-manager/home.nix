@@ -145,6 +145,11 @@
       enable = true;
     };
 
+    ripgrep = {
+      enable = true;
+      # package = pkgs.ripgrep-all;
+    };
+
     eza = {
       enable = true;
       enableBashIntegration = true;
