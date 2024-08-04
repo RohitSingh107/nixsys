@@ -19,30 +19,29 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    ./alacritty.nix
-    ./kitty.nix
-    ./fish.nix
-    ./gtk.nix
-    ./tmux.nix
-    ./xdg.nix
-    ./starship.nix
-    ./vscode.nix
-    ./chromium.nix
-    # ./picom.nix
-    ./nvim
-    ./xmobar
-    ./xmonad
-    ./firefox
-    ./qtile
-    ./lf
-    ./hyprland.nix
-    ./accounts.nix
-    ./qt.nix
-    ./bash.nix
-    ./rofi.nix
-    ./waybar.nix
-    ./wlogout.nix
-    ./swaylock.nix
+    ../../modules/home-manager/alacritty.nix
+    ../../modules/home-manager/kitty.nix
+    ../../modules/home-manager/fish.nix
+    # ../../modules/home-manager/gtk.nix
+    ../../modules/home-manager/tmux.nix
+    ../../modules/home-manager/xdg.nix
+    ../../modules/home-manager/starship.nix
+    ../../modules/home-manager/vscode.nix
+    ../../modules/home-manager/chromium.nix
+    # ../../modules/home-manager/picom.nix
+    ../../modules/home-manager/nvim
+    ../../modules/home-manager/xmobar
+    ../../modules/home-manager/xmonad
+    ../../modules/home-manager/firefox
+    ../../modules/home-manager/lf
+    ../../modules/home-manager/hyprland.nix
+    # ../../modules/home-manager/accounts.nix
+    # ../../modules/home-manager/qt.nix
+    ../../modules/home-manager/bash.nix
+    ../../modules/home-manager/rofi.nix
+    ../../modules/home-manager/waybar.nix
+    ../../modules/home-manager/wlogout.nix
+    ../../modules/home-manager/swaylock.nix
   ];
 
   nixpkgs = {
@@ -133,7 +132,7 @@
     ];
 
     file = {
-      ".config/wallpapers".source = config.lib.file.mkOutOfStoreSymlink ../wallpapers;
+      ".config/wallpapers".source = config.lib.file.mkOutOfStoreSymlink ../../wallpapers;
     };
   };
 

@@ -24,7 +24,7 @@
     ./hardware-configuration.nix
 
     # Enable Power Management
-    ./laptop-battery.nix
+    ../../modules/nixos/laptop-battery.nix
   ];
 
   nixpkgs = {
