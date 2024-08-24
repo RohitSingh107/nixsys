@@ -28,12 +28,14 @@
       flake = false;
     };
 
-
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
 
-
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -82,6 +84,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
+          inputs.stylix.nixosModules.stylix
           ./nixos/hp15seq/configuration.nix
         ];
       };
@@ -96,6 +99,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
+          inputs.stylix.homeManagerModules.stylix
           ./home-manager/rohits/home.nix
         ];
       };

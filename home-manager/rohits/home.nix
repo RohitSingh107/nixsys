@@ -136,6 +136,52 @@
     };
   };
 
+  # Stylix theme
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    image = ../../wallpapers/xmonad.jpg;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 32;
+    };
+    fonts = {
+      sizes = {
+        applications = 12;
+        terminal = 12;
+        desktop = 10;
+        popups = 10;
+      };
+      monospace = {
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      # packages = [
+      #   jetbrains-mono
+      #   dejavu_fonts
+      #   fantasque-sans-mono # Maybe should not be here
+      #   (nerdfonts.override {fonts = ["FiraCode"];})
+      # ];
+    };
+
+    opacity = {
+      applications = 1.0;
+      terminal = 1.0;
+      desktop = 1.0;
+      popups = 1.0;
+    };
+    polarity = "dark"; # "lighy" or "either"
+  };
+
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
@@ -189,8 +235,8 @@
       enable = true;
       config = {
         vo = "gpu";
-        hwdec= "auto-safe";
-        profile= "gpu-hq";
+        hwdec = "auto-safe";
+        profile = "gpu-hq";
         gpu-context = "wayland";
       };
     };
@@ -240,7 +286,6 @@
         setlocal path=~/Downloads sort mtime
       '';
     };
-
   };
 
   services = {
@@ -267,7 +312,6 @@
 
     copyq.enable = true;
   };
-
 
   fonts = {
     fontconfig = {

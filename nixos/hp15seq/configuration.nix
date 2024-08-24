@@ -133,10 +133,6 @@
         useOSProber = false;
         efiSupport = true;
 
-        theme = pkgs.sleek-grub-theme.override {
-          withBanner = "Hello Rohit";
-          withStyle = "dark"; # one of "white" "dark" "orange" "bigSur"
-        };
         # splashImage = ../wall/grub.png;
 
         extraEntries = ''
@@ -396,6 +392,46 @@
     # Hints electron apps to use wayland
     NIXOS_OZONE_WL = "1";
     NIXOS_CONFIG_DIR = "/home/rohits/nixsys";
+  };
+
+  # Stylix theme
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    image = ../../wallpapers/xmonad.jpg;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 32;
+    };
+    fonts = {
+      sizes = {
+        applications = 12;
+        terminal = 12;
+        desktop = 10;
+        popups = 10;
+      };
+      monospace = {
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+    };
+
+    opacity = {
+      applications = 1.0;
+      terminal = 1.0;
+      desktop = 1.0;
+      popups = 1.0;
+    };
+    polarity = "dark"; # "lighy" or "either"
   };
 
   fonts = {

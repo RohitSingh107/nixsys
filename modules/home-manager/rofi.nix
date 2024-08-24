@@ -15,7 +15,6 @@
   programs.rofi = {
     enable = true;
     location = "center";
-    theme = "catppuccin-mocha";
     extraConfig = {
 
       modi = "run,drun,combi";

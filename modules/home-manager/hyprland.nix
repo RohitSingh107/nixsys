@@ -54,8 +54,6 @@
             gaps_in = 5;
             gaps_out = 10;
             border_size = 2;
-            "col.active_border" = "0x66cba6f7";
-            "col.inactive_border" = "0x66313244";
             layout = "master";
             sensitivity = 1.0;
             # apply_sens_to_raw = 1; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
