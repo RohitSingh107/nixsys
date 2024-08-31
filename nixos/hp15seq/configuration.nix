@@ -200,7 +200,7 @@
       # openssh.authorizedKeys.keys = [
       #   # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       # ];
-      extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
+      extraGroups = ["networkmanager" "wheel" "libvirtd" "docker" "podman"];
       packages = with pkgs; [
         #  thunderbird
       ];
@@ -345,7 +345,7 @@
 
   virtualisation = {
     docker = {
-      enable = true;
+      enable = false;
       enableOnBoot = false;
 
       daemon = {
@@ -364,6 +364,16 @@
 
       autoPrune = {
         enable = false;
+      };
+    };
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+        # flags = [ "--all" ];
       };
     };
   };
