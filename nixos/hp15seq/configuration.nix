@@ -274,7 +274,7 @@
           enable = true;
           banner = "Welocome to Rohit's NixOS system";
         };
-        defaultSession = "hyprland";
+        defaultSession = "gnome";
       };
 
       windowManager = {

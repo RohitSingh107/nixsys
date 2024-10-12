@@ -99,6 +99,8 @@
       screenfetch
       cowsay
       alejandra
+      guake
+      tilda
       # google-chrome
 
       # Files Operations

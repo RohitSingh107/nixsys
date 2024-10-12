@@ -58,6 +58,8 @@
             p.tree-sitter-regex
             p.tree-sitter-html
             p.tree-sitter-sql
+            p.tree-sitter-elixir
+            p.tree-sitter-erlang
             # p.tree-sitter-latex
             # p.tree-sitter-rust
             # p.tree-sitter-c
