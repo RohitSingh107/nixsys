@@ -7,7 +7,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
@@ -63,7 +63,7 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Stable packages
-    pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux; # Temporary arrangement for waybar
+    # pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux; # Temporary arrangement for waybar
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs;};

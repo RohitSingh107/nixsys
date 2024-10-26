@@ -99,6 +99,8 @@
       screenfetch
       cowsay
       alejandra
+      guake
+      tilda
       # google-chrome
 
       # Files Operations
@@ -129,6 +131,10 @@
       grim
       slurp
       wl-clipboard
+
+      ## Containers/VM
+      distrobox
+      distrobox-tui
     ];
 
     file = {
