@@ -14,7 +14,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    ../../../modules/home-manager/alacritty.nix
+    # ../../../modules/home-manager/alacritty.nix
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/tmux.nix
@@ -95,5 +95,110 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+    bat = {
+      enable = true;
+    };
+
+    ripgrep = {
+      enable = true;
+      # package = pkgs.ripgrep-all;
+    };
+
+    eza = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      git = true;
+      icons = true;
+      extraOptions = [
+        "--color=always"
+        "--group-directories-first"
+        "--icons"
+      ];
+    };
+
+    # doom-emacs = {
+    #   enable = true;
+    #   doomPrivateDir = ./doom.d; # Directory containing your config.el, init.el
+    #   # and packages.el files
+    # };
+
+    htop = {
+      enable = true;
+    };
+
+    git = {
+      enable = true;
+      userName = "Rohit Singh";
+      userEmail = "RohitSinghEmail@protonmail.com";
+    };
+
+    micro = {
+      enable = true;
+      settings = {
+        colorscheme = "simple";
+      };
+    };
+
+    mpv = {
+      enable = true;
+      config = {
+        vo = "gpu";
+        hwdec= "auto-safe";
+        profile= "gpu-hq";
+        gpu-context = "wayland";
+      };
+    };
+
+    feh = {
+      enable = false;
+      keybindings = {
+        prev_img = [
+          "h"
+          "Left"
+        ];
+        zoom_in = "plus";
+        zoom_out = "minus";
+      };
+    };
+
+    direnv = {
+      enable = false;
+      enableBashIntegration = true;
+      # enableFishIntegration = true;
+      nix-direnv.enable = true;
+    };
+
+    ranger = {
+      enable = true;
+      mappings = {
+        Q = "quitall";
+        q = "quit";
+        e = "edit";
+        gpc = "cd ~/mydata/code/practice-code";
+        gmd = "cd ~/mydata";
+        gt = "cd ~/mydata/tmp";
+      };
+
+      settings = {
+        preview_images = true;
+        preview_images_method = "kitty";
+        show_hidden = true;
+        status_bar_on_top = true;
+        draw_borders = "outline";
+        display_size_in_status_bar = false;
+        hostname_in_titlebar = false;
+      };
+
+      extraConfig = ''
+        # == Local Options # local options that only affect a single directory.
+        setlocal path=~/Downloads sort mtime
+      '';
+    };
+
+  };
 }

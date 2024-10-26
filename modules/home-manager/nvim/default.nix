@@ -18,6 +18,8 @@
       vimAlias = true;
       vimdiffAlias = true;
 
+      withNodeJs = true;
+
       plugins = with pkgs.vimPlugins; [
 
         telescope-nvim
