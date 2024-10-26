@@ -131,6 +131,10 @@
       grim
       slurp
       wl-clipboard
+
+      ## Containers/VM
+      distrobox
+      distrobox-tui
     ];
 
     file = {
