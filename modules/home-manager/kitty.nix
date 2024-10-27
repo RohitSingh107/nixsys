@@ -2,7 +2,7 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Dracula";
+    themeFile = "Dracula";
     # environment = {};
     shellIntegration = {
       enableBashIntegration = true;
@@ -20,7 +20,8 @@
       "ctrl+shift+t" = "launch --cwd=current --type=tab";
     };
     settings = {
-      background_opacity = "0.6";
+      background = "#000000";
+      background_opacity = "0.4";
       dynamic_background_opacity = "yes";
       shell = "fish";
 
