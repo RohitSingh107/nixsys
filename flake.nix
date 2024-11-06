@@ -96,7 +96,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
-          ./home-manager/rohits/home.nix
+          ./home-manager/nixos-hp/rohits/home.nix
         ];
       };
 
@@ -105,7 +105,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
-          ./home-manager/rohit/opensuse-hp/home.nix
+          ./home-manager/opensuse-hp/rohit/home.nix
         ];
       };
     };
