@@ -20,7 +20,7 @@
       "ctrl+shift+t" = "launch --cwd=current --type=tab";
     };
     settings = {
-      background = "#000000";
+      background = "#000000"; # permanantely set background to black
       background_opacity = "0.4";
       dynamic_background_opacity = "yes";
       shell = "fish";

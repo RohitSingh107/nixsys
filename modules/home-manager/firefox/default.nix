@@ -64,6 +64,10 @@
             url = "https://www.kernel.org";
           }
           {
+            name = "Opensuse Search Page";
+            url = "https://search.opensuse.org/";
+          }
+          {
             name = "Nix sites";
             bookmarks = [
               {

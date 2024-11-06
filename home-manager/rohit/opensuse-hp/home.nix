@@ -20,6 +20,8 @@
     ../../../modules/home-manager/tmux.nix
     ../../../modules/home-manager/starship.nix
     ../../../modules/home-manager/nvim
+    ../../../modules/home-manager/chromium.nix
+    ../../../modules/home-manager/firefox
   ];
 
 
