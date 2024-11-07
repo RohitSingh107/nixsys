@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    ../../../modules/home-manager/fish.nix
+    ../../../modules/home-manager/starship.nix
+  ]
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "azureuser";
@@ -72,6 +78,21 @@
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+    eza = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      git = true;
+      icons = "auto";
+      extraOptions = [
+        "--color=always"
+        "--group-directories-first"
+        "--icons"
+      ];
+    };
+  };
 }
