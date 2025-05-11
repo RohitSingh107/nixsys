@@ -10,7 +10,7 @@ in {
 
     portal = {
       enable = true;
-      configPackages = [pkgs.gnome.gnome-session];
+      configPackages = [pkgs.gnome-session];
       xdgOpenUsePortal = true;
       extraPortals = [
         pkgs.xdg-desktop-portal-gnome

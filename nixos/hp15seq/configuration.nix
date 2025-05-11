@@ -415,11 +415,12 @@
       corefonts
       noto-fonts-emoji
       liberation_ttf
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-        ];
-      })
+      # (nerdfonts.override {
+      #   fonts = [
+      #     "FiraCode"
+      #   ];
+      # })
+      nerd-fonts.fira-code
       fira-code
       fira-code-symbols
     ];
