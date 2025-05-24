@@ -24,7 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rofi-conf = {
-      url = "https://raw.githubusercontent.com/catppuccin/rofi/main/basic/.local/share/rofi/themes/catppuccin-mocha.rasi";
+      url = "https://raw.githubusercontent.com/hiimsergey/rofi-catppuccin/refs/heads/main/catppuccin-lavrent-mocha.rasi";
       flake = false;
     };
 

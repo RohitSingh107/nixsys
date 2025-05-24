@@ -19,29 +19,29 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    ../../modules/home-manager/alacritty.nix
-    ../../modules/home-manager/kitty.nix
-    ../../modules/home-manager/fish.nix
-    # ../../modules/home-manager/gtk.nix
-    ../../modules/home-manager/tmux.nix
-    ../../modules/home-manager/xdg.nix
-    ../../modules/home-manager/starship.nix
-    ../../modules/home-manager/vscode.nix
-    ../../modules/home-manager/chromium.nix
-    # ../../modules/home-manager/picom.nix
-    ../../modules/home-manager/nvim
-    ../../modules/home-manager/xmobar
-    ../../modules/home-manager/xmonad
-    ../../modules/home-manager/firefox
-    ../../modules/home-manager/lf
-    ../../modules/home-manager/hyprland.nix
-    # ../../modules/home-manager/accounts.nix
-    # ../../modules/home-manager/qt.nix
-    ../../modules/home-manager/bash.nix
-    ../../modules/home-manager/rofi.nix
-    ../../modules/home-manager/waybar.nix
-    ../../modules/home-manager/wlogout.nix
-    ../../modules/home-manager/swaylock.nix
+    ../../../modules/home-manager/alacritty.nix
+    ../../../modules/home-manager/kitty.nix
+    ../../../modules/home-manager/fish.nix
+    # ../../../modules/home-manager/gtk.nix
+    ../../../modules/home-manager/tmux.nix
+    ../../../modules/home-manager/xdg.nix
+    ../../../modules/home-manager/starship.nix
+    ../../../modules/home-manager/vscode.nix
+    ../../../modules/home-manager/chromium.nix
+    # ../../../modules/home-manager/picom.nix
+    ../../../modules/home-manager/nvim
+    ../../../modules/home-manager/xmobar
+    ../../../modules/home-manager/xmonad
+    ../../../modules/home-manager/firefox
+    ../../../modules/home-manager/lf
+    ../../../modules/home-manager/hyprland.nix
+    # ../../../modules/home-manager/accounts.nix
+    # ../../../modules/home-manager/qt.nix
+    ../../../modules/home-manager/bash.nix
+    ../../../modules/home-manager/rofi.nix
+    ../../../modules/home-manager/waybar.nix
+    ../../../modules/home-manager/wlogout.nix
+    ../../../modules/home-manager/swaylock.nix
   ];
 
   nixpkgs = {
@@ -86,21 +86,21 @@
       discord
       killall
       fantasque-sans-mono # Maybe should not be here
-      (nerdfonts.override {fonts = ["FiraCode"];})
+      # (nerdfonts.override {fonts = ["FiraCode"];})
+      nerd-fonts.fira-code
       dmenu
       pavucontrol
       xclip
       xdotool
       whatsapp-for-linux
       brightnessctl
-      gnome.gnome-tweaks
+      gnome-tweaks
       gnomeExtensions.dash-to-dock
       exercism
       screenfetch
       cowsay
       alejandra
       guake
-      tilda
       # google-chrome
 
       # Files Operations
@@ -114,7 +114,7 @@
       mission-center
 
       ## Disk
-      filelight
+      kdePackages.filelight
       gdu
 
       ## Sound
@@ -160,7 +160,7 @@
       enableBashIntegration = true;
       enableFishIntegration = true;
       git = true;
-      icons = true;
+      icons = "auto";
       extraOptions = [
         "--color=always"
         "--group-directories-first"
