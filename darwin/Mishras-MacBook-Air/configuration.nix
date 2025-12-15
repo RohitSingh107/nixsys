@@ -38,11 +38,9 @@
   # Enable OpenSSH to access this machine remotely
   services.openssh = {
     enable = true;
-    settings = {
-      # For security, you might want to disable password auth and use keys only
-      PasswordAuthentication = true;
-      PermitRootLogin = "no";
-    };
+    # For security, you might want to disable password auth and use keys only
+    passwordAuthentication = true;
+    permitRootLogin = "no";
   };
 
   users.users.harsh = {
