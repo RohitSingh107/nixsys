@@ -16,6 +16,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -40,6 +43,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-darwin,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -73,6 +77,15 @@
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
     homeManagerModules = import ./modules/home-manager;
+
+    darwinConfigurations = {
+      "Mishras-MacBook-Air" = nix-darwin.lib.darwinSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./darwin/Mishras-MacBook-Air/configuration.nix
+        ];
+      };
+    };
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -123,6 +136,14 @@
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/cloud-vms/scripts-vm/azureuser.nix
+        ];
+      };
+
+      "harsh@Mishras-MacBook-Air" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home-manager/Mishras-MacBook-Air/harsh/home.nix
         ];
       };
     };
