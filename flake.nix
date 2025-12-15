@@ -5,6 +5,7 @@
     # Nixpkgs
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -17,7 +18,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:LnL7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -42,6 +43,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-darwin,
     home-manager,
     nix-darwin,
     ...
@@ -140,7 +142,7 @@
       };
 
       "harsh@Mishras-MacBook-Air" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs-darwin.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/Mishras-MacBook-Air/harsh/home.nix
