@@ -15,7 +15,7 @@
     # ./nvim.nix
 
     # ../../../modules/home-manager/alacritty.nix
-    ../../../modules/home-manager/kitty.nix
+    # ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/fish.nix
     # ../../../modules/home-manager/tmux.nix
     ../../../modules/home-manager/starship.nix
@@ -86,6 +86,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    devenv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
