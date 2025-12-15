@@ -12,6 +12,7 @@
     pkgs.vim
     pkgs.neovim
     pkgs.git
+    pkgs.tmux
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -34,9 +35,22 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  # Enable OpenSSH to access this machine remotely
+  services.openssh = {
+    enable = true;
+    settings = {
+      # For security, you might want to disable password auth and use keys only
+      PasswordAuthentication = true;
+      PermitRootLogin = "no";
+    };
+  };
+
   users.users.harsh = {
     name = "harsh";
     home = "/Users/harsh";
+    # openssh.authorizedKeys.keys = [
+    #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA..."
+    # ];
   };
 }
 
