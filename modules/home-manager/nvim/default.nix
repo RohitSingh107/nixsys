@@ -90,7 +90,7 @@
         coc-pyright
         coc-rust-analyzer
         # coc-tabnine
-        coc-tsserver
+        # coc-tsserver
         # coc-vimlsp
         coc-sh
         coc-lua
