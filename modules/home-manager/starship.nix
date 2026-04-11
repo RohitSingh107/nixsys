@@ -70,6 +70,10 @@
         symbol = "🔴";
       };
 
+      gcloud = {
+        disabled = true;
+      };
+
       python.symbol = " ";
       nix_shell.symbol = " ";
 
