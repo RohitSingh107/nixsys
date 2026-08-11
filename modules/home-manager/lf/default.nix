@@ -8,7 +8,8 @@
   programs.lf = {
     enable = true;
     commands = {
-      dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';
+      # pkgs.xdragon was renamed to pkgs.dragon-drop
+      dragon-out = ''%${pkgs.dragon-drop}/bin/dragon-drop -a -x "$fx"'';
       editor-open = ''$$EDITOR $f'';
       mkdir = ''
         ''${{

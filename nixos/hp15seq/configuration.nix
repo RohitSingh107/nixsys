@@ -243,10 +243,28 @@
       enable = true;
     };
 
-    displayManager.autoLogin = {
-      # Enable automatic login for the user.
-      enable = true;
-      user = "rohits";
+    # NOTE: desktopManager and displayManager moved out of services.xserver.*
+    # to services.* -- they are no longer X11-specific. windowManager stays
+    # under xserver.
+    displayManager = {
+      autoLogin = {
+        # Enable automatic login for the user.
+        enable = true;
+        user = "rohits";
+      };
+
+      gdm = {
+        enable = true;
+        banner = "Welocome to Rohit's NixOS system";
+      };
+      defaultSession = "gnome";
+    };
+
+    desktopManager = {
+      # Enable the GNOME Desktop Environment.
+      gnome = {
+        enable = true;
+      };
     };
 
     xserver = {
@@ -260,22 +278,6 @@
 
       # Enable the X11 windowing system.
       enable = true;
-
-      desktopManager = {
-        # Enable the GNOME Desktop Environment.
-        gnome = {
-          enable = true;
-        };
-      };
-
-      displayManager = {
-        # Enable the GNOME Desktop Environment.
-        gdm = {
-          enable = true;
-          banner = "Welocome to Rohit's NixOS system";
-        };
-        defaultSession = "gnome";
-      };
 
       windowManager = {
         xmonad = {
@@ -331,7 +333,7 @@
     extraPackages = with pkgs; [
       libvdpau
       # amdvlk
-      vaapiVdpau
+      libva-vdpau-driver # renamed from vaapiVdpau
       libvdpau-va-gl
       # AMD ROCm OpenCL runtime
       rocmPackages.clr
@@ -413,7 +415,7 @@
     packages = with pkgs; [
       font-awesome
       corefonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji # renamed from noto-fonts-emoji
       liberation_ttf
       # (nerdfonts.override {
       #   fonts = [
@@ -437,7 +439,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false; # was hardware.pulseaudio
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

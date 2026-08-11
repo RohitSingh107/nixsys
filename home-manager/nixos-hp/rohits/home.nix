@@ -82,7 +82,7 @@
     packages = with pkgs; [
       # brave
       libsecret
-      neofetch
+      fastfetch # was neofetch, removed from nixpkgs (unmaintained upstream)
       discord
       killall
       fantasque-sans-mono # Maybe should not be here
@@ -92,7 +92,7 @@
       pavucontrol
       xclip
       xdotool
-      whatsapp-for-linux
+      wasistlos # renamed from whatsapp-for-linux
       brightnessctl
       gnome-tweaks
       gnomeExtensions.dash-to-dock
