@@ -16,6 +16,7 @@ nix fmt
 home-manager switch --flake .#rohit@ubuntu-wsl
 home-manager switch --flake .#rohits@hp15seq
 home-manager switch --flake .#rohit@opensuse-hp
+home-manager switch --flake .#rohit@fedora
 home-manager switch --flake .#azureuser@scripts-vm
 
 # Rebuild NixOS system (hp15seq only)
@@ -32,7 +33,7 @@ nix flake check
 
 ### Flake Structure
 
-`flake.nix` defines one NixOS system config (`hp15seq`) and four standalone home-manager configs. All use nixpkgs unstable. Inputs (`inputs`) and flake self-reference (`outputs`) are passed into every module via `specialArgs`/`extraSpecialArgs`.
+`flake.nix` defines one NixOS system config (`hp15seq`) and five standalone home-manager configs. All use nixpkgs unstable. Inputs (`inputs`) and flake self-reference (`outputs`) are passed into every module via `specialArgs`/`extraSpecialArgs`.
 
 ### Host Profiles (home-manager/)
 
@@ -40,6 +41,7 @@ Each host directory contains a `home.nix` that selectively imports from the shar
 
 - **nixos-hp/rohits/** — Full desktop: xmonad, xmobar, picom, rofi, browsers, email accounts, neovim, terminals. Imports ~24 modules.
 - **opensuse-hp/rohit/** — Mid-range: terminals, browsers, neovim, fish. ~7 modules.
+- **fedora/rohit/** — Mid-range, mirrors opensuse-hp: kitty, fish, tmux, starship, neovim, browsers. ~7 modules. Fedora's own GNOME/Wayland session owns the desktop, so no WM/shell modules (and no `xdg.nix`, whose portal config would conflict with Fedora's).
 - **ubuntu-wsl/rohit/** — Minimal CLI: fish, starship, neovim, basic CLI tools.
 - **cloud-vms/scripts-vm/** — Bare minimum: fish, starship, disk usage tool.
 
