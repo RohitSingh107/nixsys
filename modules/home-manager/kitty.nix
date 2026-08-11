@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     themeFile = "Dracula";
@@ -12,7 +11,6 @@
       package = pkgs.fantasque-sans-mono;
       name = "Fantasque Sans Mono";
       size = 16;
-
     };
     keybindings = {
       "ctrl+f>2" = "set_font_size 20";
@@ -31,6 +29,5 @@
     };
     # extraConfig = ''
     #   '';
-
   };
 }

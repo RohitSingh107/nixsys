@@ -1,9 +1,9 @@
-{ config, pkgs, outputs, ... }:
-
 {
-
-
-
+  config,
+  pkgs,
+  outputs,
+  ...
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -50,8 +50,6 @@
       allowUnfreePredicate = _: true;
     };
   };
-
-
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -162,8 +160,8 @@
 
     git = {
       enable = false;
-      userName = "Rohit Singh";
-      userEmail = "RohitSinghEmail@protonmail.com";
+      settings.user.name = "Rohit Singh";
+      settings.user.email = "RohitSinghEmail@protonmail.com";
     };
     git-credential-oauth.enable = true;
 
@@ -178,8 +176,8 @@
       enable = true;
       config = {
         vo = "gpu";
-        hwdec= "auto-safe";
-        profile= "gpu-hq";
+        hwdec = "auto-safe";
+        profile = "gpu-hq";
         gpu-context = "wayland";
       };
     };
@@ -229,6 +227,5 @@
         setlocal path=~/Downloads sort mtime
       '';
     };
-
   };
 }

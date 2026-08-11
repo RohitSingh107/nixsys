@@ -1,6 +1,5 @@
-{ pkgs, ...}: {
-
-    programs.tmux = {
+{pkgs, ...}: {
+  programs.tmux = {
     enable = true;
     extraConfig = "
         
@@ -37,5 +36,4 @@
 
     ";
   };
-
 }

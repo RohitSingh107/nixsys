@@ -180,8 +180,8 @@
 
     git = {
       enable = true;
-      userName = "Rohit Singh";
-      userEmail = "RohitSinghEmail@protonmail.com";
+      settings.user.name = "Rohit Singh";
+      settings.user.email = "RohitSinghEmail@protonmail.com";
     };
 
     micro = {
@@ -195,8 +195,8 @@
       enable = true;
       config = {
         vo = "gpu";
-        hwdec= "auto-safe";
-        profile= "gpu-hq";
+        hwdec = "auto-safe";
+        profile = "gpu-hq";
         gpu-context = "wayland";
       };
     };
@@ -246,7 +246,6 @@
         setlocal path=~/Downloads sort mtime
       '';
     };
-
   };
 
   services = {
@@ -273,7 +272,6 @@
 
     copyq.enable = true;
   };
-
 
   fonts = {
     fontconfig = {

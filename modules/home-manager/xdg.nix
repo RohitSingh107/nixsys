@@ -3,7 +3,6 @@
   image_viewer = "org.gnome.Loupe"; # loupe
   file_manager = "org.gnome.Nautilus";
 in {
-
   xdg = {
     enable = true;
     mime.enable = true;

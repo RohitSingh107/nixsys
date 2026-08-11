@@ -1,6 +1,4 @@
-{ pkgs, ... }: {
-
-
+{pkgs, ...}: {
   services.trayer = {
     enable = false;
     settings = {
@@ -34,8 +32,5 @@
         };
       };
     };
-
-
   };
-
 }

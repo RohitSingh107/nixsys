@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -19,7 +17,6 @@
         decorations = "full";
         dynamic_title = true;
         decorations_theme_variant = "Dark";
-
       };
 
       cursor.style = "Underline";
@@ -27,7 +24,6 @@
       draw_bold_text_with_bright_colors = true;
 
       shell.program = "fish";
-
 
       scrolling = {
         history = 10000;
@@ -56,7 +52,6 @@
         };
 
         bright = {
-
           black = "#575b70";
           red = "#ff6e67";
           green = "#5af78e";
@@ -65,7 +60,6 @@
           magenta = "#ff92d0";
           cyan = "#9aedfe";
           white = "#e6e6e6";
-
         };
       };
     };

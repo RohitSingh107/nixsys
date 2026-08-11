@@ -1,6 +1,4 @@
-{ pkgs, ... }: {
-
-
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     # interactiveShellInit = "
@@ -10,7 +8,7 @@
     shellInit = ''
       set -g fish_greeting
       set -x GPG_TTY (tty)
-      '';
+    '';
 
     shellAbbrs = {
       gco = "git checkout";
@@ -25,8 +23,6 @@
       ll = "eza -l --color=always --group-directories-first --icons"; # long format
       lt = "eza -aT --color=always --group-directories-first --icons"; # tree listing
       "l." = "eza -a | egrep '^\.'"; # show only dotfiles
-
-
 
       # Common use
       grubup = "sudo update-grub";
@@ -49,13 +45,11 @@
       hw = "hwinfo --short";
       icat = "kitty +kitten icat";
 
-
       # Get the error messages from journalctl
       jctl = "journalctl -p 3 -xb";
 
       # Battery health and status
       battery-health = "upower -i /org/freedesktop/UPower/devices/battery_BAT0";
-
     };
 
     functions = {
@@ -67,6 +61,4 @@
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
     };
   };
-
-
 }

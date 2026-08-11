@@ -1,6 +1,8 @@
-{ pkgs, inputs, ... }: {
-
-
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.file = {
     ".config/rofi/catppuccin-mocha.rasi" = {
       enable = true;
@@ -17,7 +19,6 @@
     location = "center";
     theme = "catppuccin-mocha";
     extraConfig = {
-
       modi = "run,drun,combi";
       kb-primary-paste = "Control+V,Shift+Insert";
       kb-secondary-paste = "Control+v,Insert";
@@ -32,6 +33,5 @@
       display-Network = " 󰤨  Network";
       sidebar-mode = true;
     };
-
   };
 }

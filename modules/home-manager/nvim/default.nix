@@ -1,7 +1,5 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   home.file = {
-
     ".config/nvim/snippets" = {
       source = ./snippets;
       recursive = true;
@@ -21,7 +19,6 @@
       withNodeJs = true;
 
       plugins = with pkgs.vimPlugins; [
-
         telescope-nvim
         which-key-nvim
         vim-airline # vim
@@ -46,7 +43,7 @@
 
         ## Beautification
         {
-          plugin = (nvim-treesitter.withPlugins (p: [
+          plugin = nvim-treesitter.withPlugins (p: [
             p.tree-sitter-nix
             p.tree-sitter-vim
             p.tree-sitter-bash
@@ -68,7 +65,7 @@
             # p.tree-sitter-go
             # p.tree-sitter-tsx
             # p.tree-sitter-typescript
-          ]));
+          ]);
           # config = toLuaFile ./nvim/plugin/treesitter.lua;
         }
         indent-blankline-nvim
@@ -97,12 +94,14 @@
         coc-markdownlint
         # coc-tailwindcss
         # coc-stylelint
-
       ];
 
-      extraPackages = with pkgs; [ shfmt xclip wl-clipboard ];
+      extraPackages = with pkgs; [shfmt xclip wl-clipboard];
 
-      extraLuaConfig = ''
+      withRuby = false;
+      withPython3 = false;
+
+      initLua = ''
 
         ${builtins.readFile ./lua/options.lua}
         ${builtins.readFile ./lua/autocmd.lua}
@@ -115,7 +114,6 @@
       coc = {
         enable = true;
         settings = {
-
           "snippets.userSnippetsDirectory" = "~/.config/nvim/snippets";
           "prettier.printWidth" = 80;
           "snippets.ultisnips.pythonPrompt" = false;
@@ -140,7 +138,7 @@
           languageserver = {
             haskell = {
               command = "haskell-language-server-wrapper";
-              args = [ "--lsp" ];
+              args = ["--lsp"];
               rootPatterns = [
                 "*.cabal"
                 "stack.yaml"
@@ -148,14 +146,14 @@
                 "package.yaml"
                 "hie.yaml"
               ];
-              filetypes = [ "haskell" "lhaskell" ];
+              filetypes = ["haskell" "lhaskell"];
               settings = {
                 haskell = {
                   checkParents = "CheckOnSave";
                   checkProject = true;
                   maxCompletions = 40;
                   formattingProvider = "ormolu";
-                  plugin = { stan = { globalOn = true; }; };
+                  plugin = {stan = {globalOn = true;};};
                 };
               };
             };
@@ -164,7 +162,6 @@
             #   filetypes = [ "nix" ];
             # };
           };
-
         };
       };
     };

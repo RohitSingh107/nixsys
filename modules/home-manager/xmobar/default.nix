@@ -1,13 +1,10 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   home.file = {
     ".config/xmobar/trayer-padding-icon.sh" = {
-
       source = ./trayer-padding-icon.sh;
 
       executable = true;
     };
-
   };
 
   programs.xmobar = {
@@ -84,11 +81,11 @@
                                                 18000
 
 
-                    
+
       		        -- Weather
       		            , Run Com "/home/rohit/.config/xmobar/scripts/weather.sh" [] "weather" 20
 
-      		            -- Battery 
+      		            -- Battery
                           , Run Battery        [ "--template" , "Batt: <acstatus>"
                                                , "--Low"      , "10"        -- units: %
                                                , "--High"     , "80"        -- units: %
@@ -105,7 +102,7 @@
                                                          , "-i"	, "<fc=#006000>Charged</fc>"
                                    ] 50
 
-      		            
+
                           ]
              , sepChar = "%"
              , alignSep = "}{"
@@ -114,8 +111,5 @@
 
 
     '';
-
   };
-
-
 }

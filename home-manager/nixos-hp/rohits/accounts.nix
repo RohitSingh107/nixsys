@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   programs.thunderbird = {
     enable = true;
     profiles = {
@@ -7,7 +6,7 @@
         isDefault = true;
       };
       "rohithack" = {
-        isDefault= false;
+        isDefault = false;
       };
     };
   };
@@ -18,7 +17,6 @@
 
   accounts.email.accounts = {
     "Rohit Sigh" = {
-
       realName = "Rohit Singh";
       address = "rohitsingh.mait@gmail.com";
       primary = true;
@@ -36,14 +34,11 @@
 
       imapnotify = {
         enable = true;
-        boxes = [ "Inbox" ];
+        boxes = ["Inbox"];
       };
-
     };
 
     "rohithack" = {
-
-
       realName = "Rohit Singh";
       address = "rohithack@outlook.com";
 

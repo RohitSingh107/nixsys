@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   wayland = {
     windowManager = {
       hyprland = {
@@ -7,7 +6,6 @@
         xwayland = {
           enable = true;
         };
-
 
         settings = {
           "$mainMod" = "SUPER";
@@ -48,7 +46,6 @@
               tap-to-click = 1;
             };
           };
-
 
           general = {
             gaps_in = 5;
@@ -147,8 +144,6 @@
             damage_tracking = 2; # leave it on 2 (full) unless you hate your GPU and want to make it suffer!
           };
 
-
-
           windowrule = [
             "tile,title:^(kitty)$"
             "float,title:^(fly_is_kitty)$"
@@ -165,10 +160,7 @@
             "animation none,Rofi"
           ];
 
-
-
           bind = [
-
             # Keybindings
             "SUPER,T,togglefloating,"
             "SUPERSHIFT,S,workspaceopt,allfloat"
@@ -192,7 +184,6 @@
             "SUPERSHIFT,Print,exec,slurp | grim -g - $HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S_1.png') && notify-send 'Screenshot saved'"
             "SUPER,Print,exec,grim - | wl-copy && notify-send 'Screenshot copied to clipboard'"
             ",Print,exec,grim - | swappy -f - -o $HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S_1.png')"
-
 
             "SUPERALT,space,exec,playerctl play-pause"
             "SUPERALT,bracketright,exec,playerctl next"
@@ -265,42 +256,23 @@
             # bind=SUPERALT,h,splitratio,-0.1
             # bind=SUPERALT,l,splitratio,+0.1
 
-
             "SUPERCONTROL,h,workspace,-1"
             "SUPERCONTROL,l,workspace,+1"
             "SUPERCONTROL,k,focusmonitor,l"
             "SUPERCONTROL,j,focusmonitor,r"
 
-
-
-
-
             # Scroll through existing workspaces with mainMod + scroll
             "$mainMod, mouse_down, workspace, e+1"
             "$mainMod, mouse_up, workspace, e-1"
-
           ];
-
-
-
-
-
-
 
           bindm = [
             # Move/resize windows with mainMod + LMB/RMB and dragging
             "SUPER,mouse:272,movewindow"
             "SUPER,mouse:273,resizewindow"
           ];
-
-
         };
-
       };
-
     };
-
-
   };
-
 }

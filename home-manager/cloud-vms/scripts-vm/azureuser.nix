@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/starship.nix
@@ -77,7 +78,6 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-
 
   programs = {
     # Let Home Manager install and manage itself.

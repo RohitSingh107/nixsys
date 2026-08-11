@@ -1,13 +1,12 @@
-
-{ pkgs, lib, ... }: {
-
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.starship = {
     enable = true;
     enableBashIntegration = false;
     enableFishIntegration = true;
-
-
-
 
     settings = {
       sudo = {
@@ -21,7 +20,6 @@
         style = "white";
       };
       username = {
-
         format = " [╭─$user]($style)@";
         show_always = true;
         style_root = "bold red";
@@ -29,7 +27,6 @@
       };
 
       hostname = {
-
         disabled = false;
         format = "[$hostname]($style) in ";
         ssh_only = false;
@@ -77,7 +74,6 @@
       python.symbol = " ";
       nix_shell.symbol = " ";
 
-
       # battery = {
       #   charging_symbol = "";
       #   disabled = true;
@@ -100,10 +96,6 @@
       #     threshold = 80;
       #   };
       # };
-
-
-
     };
   };
-
 }

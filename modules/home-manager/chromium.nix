@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-
   home.sessionVariables = {
     LIBVA_DRI3_DISABLE = 1;
   };
