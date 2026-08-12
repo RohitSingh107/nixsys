@@ -14,10 +14,12 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    # NOTE: Fedora's own GNOME/Wayland session manages the desktop here, so the
-    # window manager and shell modules (hyprland, waybar, xmonad, xmobar, picom,
-    # wlogout, swaylock) are deliberately left out. xdg.nix is skipped too --
-    # its xdg.portal block would fight Fedora's system portals.
+    # NOTE: Fedora owns the desktop here -- GNOME/Wayland for the default
+    # session, and dnf-installed sway plus waybar for the tiling one. sway.nix
+    # and waybar-sway.nix therefore only write config files and install
+    # nothing; the remaining WM and shell modules (hyprland, waybar, xmonad,
+    # xmobar, picom, wlogout, swaylock) are deliberately left out, as is
+    # xdg.nix, whose xdg.portal block would fight Fedora's system portals.
 
     # ../../../modules/home-manager/alacritty.nix
     ../../../modules/home-manager/kitty.nix
@@ -25,6 +27,8 @@
     ../../../modules/home-manager/tmux.nix
     ../../../modules/home-manager/starship.nix
     ../../../modules/home-manager/nvim
+    ../../../modules/home-manager/sway.nix
+    ../../../modules/home-manager/waybar-sway.nix
     # Browsers and Cursor are not managed by home-manager on this host --
     # install them through Fedora (dnf/flatpak) instead.
     # ../../../modules/home-manager/chromium.nix

@@ -41,7 +41,7 @@ Each host directory contains a `home.nix` that selectively imports from the shar
 
 - **nixos-hp/rohits/** — Full desktop: xmonad, xmobar, picom, rofi, browsers, email accounts, neovim, terminals. Imports ~24 modules.
 - **opensuse-hp/rohit/** — Mid-range: terminals, browsers, neovim, fish. ~7 modules.
-- **fedora/rohit/** — Mid-range, mirrors opensuse-hp: kitty, fish, tmux, starship, neovim, browsers. ~7 modules. Fedora's own GNOME/Wayland session owns the desktop, so no WM/shell modules (and no `xdg.nix`, whose portal config would conflict with Fedora's).
+- **fedora/rohit/** — Mid-range, mirrors opensuse-hp: kitty, fish, tmux, starship, neovim, sway, waybar. ~9 modules. Desktop software comes from Fedora here: GNOME/Wayland for the default session and dnf-installed sway + waybar for the tiling one, so `sway.nix` (`package = null`) and `waybar-sway.nix` (`package = pkgs.emptyDirectory`) install nothing and only write config files. Other WM/shell modules are left out, as is `xdg.nix`, whose portal config would conflict with Fedora's.
 - **ubuntu-wsl/rohit/** — Minimal CLI: fish, starship, neovim, basic CLI tools.
 - **cloud-vms/scripts-vm/** — Bare minimum: fish, starship, disk usage tool.
 
