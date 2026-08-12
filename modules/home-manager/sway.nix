@@ -19,6 +19,12 @@
   # Appearance lives in swaylock-fedora.nix (~/.config/swaylock/config).
   lock = "swaylock -f";
 
+  # A dropdown terminal: show the scratchpad copy if it exists, otherwise
+  # start it -- swaymsg exits non-zero when no node matches. The window rule
+  # below drops it into the scratchpad the moment it appears, and pressing the
+  # key again while it is focused hides it, so one key toggles.
+  scratchTerm = ''swaymsg '[app_id="scratchterm"] scratchpad show' || ${pkgs.kitty}/bin/kitty --class scratchterm'';
+
   # grim/slurp/wl-copy/notify-send all come from Fedora; mako (started below)
   # shows the notifications. sway runs these through sh -c, which is bash here,
   # so pipefail is available to keep a cancelled slurp from claiming success.
@@ -88,6 +94,13 @@ in {
       window = {
         border = 2;
         titlebar = false;
+
+        commands = [
+          {
+            criteria = {app_id = "scratchterm";};
+            command = "floating enable, resize set 60 ppt 60 ppt, move position center, move scratchpad, scratchpad show";
+          }
+        ];
       };
 
       floating = {
@@ -174,6 +187,7 @@ in {
         # Lock before handing over to systemd rather than trusting swayidle's
         # before-sleep hook, so the screen is covered even if swayidle died.
         "${modifier}+Ctrl+s" = "exec ${lock} && systemctl suspend";
+        "${modifier}+grave" = "exec ${scratchTerm}";
         # nautilus comes from Fedora's GNOME install.
         "${modifier}+Shift+Return" = "exec nautilus";
 
