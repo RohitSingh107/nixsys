@@ -92,7 +92,7 @@
       pavucontrol
       xclip
       xdotool
-      wasistlos # renamed from whatsapp-for-linux
+      karere # was wasistlos (itself renamed from whatsapp-for-linux), removed upstream
       brightnessctl
       gnome-tweaks
       gnomeExtensions.dash-to-dock

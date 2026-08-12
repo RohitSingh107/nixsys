@@ -25,8 +25,11 @@
     ../../../modules/home-manager/tmux.nix
     ../../../modules/home-manager/starship.nix
     ../../../modules/home-manager/nvim
-    ../../../modules/home-manager/chromium.nix
-    ../../../modules/home-manager/firefox
+    # Browsers and Cursor are not managed by home-manager on this host --
+    # install them through Fedora (dnf/flatpak) instead.
+    # ../../../modules/home-manager/chromium.nix
+    # ../../../modules/home-manager/firefox
+    # ../../../modules/home-manager/cursor.nix
 
     # Makes /run/opengl-driver survive both SELinux and mesa bumps; without it
     # Nix GUI apps die in eglInitialize. See docs/fedora-gpu-drivers.md.

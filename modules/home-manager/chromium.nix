@@ -11,10 +11,11 @@
       "--enable-chrome-browser-cloud-management"
       "--disable-features=UseChromeOSDirectVideoDecoder"
     ];
-    extensions = [
-      {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
-      {id = "nngceckbapebfimnlniiiahkandclblb";} # Bitwarden
-      {id = "bfbameneiokkgbdmiekhjnmfkcnldhhm";} # Web development tools
-    ];
+    # home-manager now asserts on this: google-chrome only picks up external
+    # extensions from system-managed dirs, so declaring them here never worked.
+    # Install from the Web Store / Chrome sync instead.
+    #   cjpalhdlnbpafiamejdnhcphjbkeiagm  ublock origin
+    #   nngceckbapebfimnlniiiahkandclblb  Bitwarden
+    #   bfbameneiokkgbdmiekhjnmfkcnldhhm  Web development tools
   };
 }
