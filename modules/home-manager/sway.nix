@@ -24,7 +24,7 @@
   screenshot = {
     screen = ''grim - | wl-copy && notify-send -t 2000 "Screenshot" "Copied to clipboard"'';
     region = ''set -o pipefail; slurp | grim -g - - | wl-copy && notify-send -t 2000 "Screenshot" "Region copied to clipboard"'';
-    file = ''mkdir -p $HOME/Pictures/Screenshots && f=$HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png && grim "$f" && notify-send -t 3000 -i "$f" "Screenshot saved" "$f"'';
+    file = ''mkdir -p $HOME/Pictures/Screenshots && f=$HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png && grim "$f" && notify-send -t 3000 -i "$f" "Screenshot saved" "$(basename "$f")"'';
   };
 in {
   # `wayland.windowManager.sway.xwayland` pulls pkgs.xwayland into the profile
