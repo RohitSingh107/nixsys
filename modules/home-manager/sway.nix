@@ -16,7 +16,8 @@
   # Kept in this repo (wallpapers/), so it lands in the store and the config
   # never points at a path that can go missing. Swap the file to change it.
   wallpaper = ../../wallpapers/dracula-linux.png;
-  lock = "swaylock -f -i ${wallpaper} -s fill";
+  # Appearance lives in swaylock-fedora.nix (~/.config/swaylock/config).
+  lock = "swaylock -f";
 
   # grim/slurp/wl-copy/notify-send all come from Fedora; mako (started below)
   # shows the notifications. sway runs these through sh -c, which is bash here,

@@ -31,6 +31,7 @@
     ../../../modules/home-manager/waybar-sway.nix
     ../../../modules/home-manager/mako.nix
     ../../../modules/home-manager/wofi.nix
+    ../../../modules/home-manager/swaylock-fedora.nix
     # Browsers and Cursor are not managed by home-manager on this host --
     # install them through Fedora (dnf/flatpak) instead.
     # ../../../modules/home-manager/chromium.nix
