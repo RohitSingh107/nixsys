@@ -56,6 +56,13 @@
     };
   };
 
+  # Fedora is not NixOS, so Nix-built GUI apps (kitty, mpv, browsers) can't find
+  # a GPU driver: Nix's libglvnd looks for EGL/GL vendor ICDs under
+  # /run/opengl-driver, which doesn't exist here. This builds a Nix mesa driver
+  # env and installs a tmpfiles.d rule that recreates that symlink each boot.
+  # After switching, run once: sudo non-nixos-gpu-setup
+  targets.genericLinux.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "rohit";
@@ -89,6 +96,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    slack
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -3,7 +3,7 @@
     LIBVA_DRI3_DISABLE = 1;
   };
   programs.chromium = {
-    package = pkgs.brave;
+    package = pkgs.google-chrome;
     enable = true;
     commandLineArgs = [
       "--enable-features=VaapiIgnoreDriverChecks,VaapiVideoEncoder,VaapiVideoDecoder,VaapiVideoDecodeLinuxGL"
