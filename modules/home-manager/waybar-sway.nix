@@ -174,7 +174,8 @@
 
         # swaynag ships with Fedora's sway, so the power menu needs nothing extra.
         "custom/powermenu" = let
-          swaylock = "swaylock -f -c 282a36";
+          # Same lock screen as sway.nix binds to Mod4+Ctrl+l.
+          swaylock = "swaylock -f -i ${../../wallpapers/dracula-linux.png} -s fill";
         in {
           format = "";
           on-click = "swaynag -t warning -m 'Power' -b 'Lock' '${swaylock}' -b 'Logout' 'swaymsg exit' -b 'Reboot' 'systemctl reboot' -b 'Shutdown' 'systemctl poweroff'";

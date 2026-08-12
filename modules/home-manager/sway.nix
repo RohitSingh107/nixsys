@@ -12,6 +12,11 @@
   comment = "#6272a4";
   purple = "#bd93f9";
   red = "#ff5555";
+
+  # Kept in this repo (wallpapers/), so it lands in the store and the config
+  # never points at a path that can go missing. Swap the file to change it.
+  wallpaper = ../../wallpapers/dracula-linux.png;
+  lock = "swaylock -f -i ${wallpaper} -s fill";
 in {
   # `wayland.windowManager.sway.xwayland` pulls pkgs.xwayland into the profile
   # with no way to opt out, and ~/.nix-profile/bin sits ahead of /usr/bin in
@@ -130,7 +135,7 @@ in {
 
       output = {
         "*" = {
-          bg = "${background} solid_color";
+          bg = "${wallpaper} fill";
         };
       };
 
@@ -148,12 +153,12 @@ in {
         # sudo dnf install mako
         {command = "mako";}
         {
-          command = ''swayidle -w timeout 600 "swaylock -f -c ${lib.removePrefix "#" background}" timeout 900 "swaymsg 'output * power off'" resume "swaymsg 'output * power on'" before-sleep "swaylock -f -c ${lib.removePrefix "#" background}"'';
+          command = ''swayidle -w timeout 600 "${lock}" timeout 900 "swaymsg 'output * power off'" resume "swaymsg 'output * power on'" before-sleep "${lock}"'';
         }
       ];
 
       keybindings = lib.mkOptionDefault {
-        "${modifier}+Ctrl+l" = "exec swaylock -f -c ${lib.removePrefix "#" background}";
+        "${modifier}+Ctrl+l" = "exec ${lock}";
 
         # Screenshots (grim/slurp/wl-clipboard come from Fedora).
         "Print" = "exec grim - | wl-copy";
