@@ -168,6 +168,9 @@ in {
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+Ctrl+l" = "exec ${lock}";
+        # Lock before handing over to systemd rather than trusting swayidle's
+        # before-sleep hook, so the screen is covered even if swayidle died.
+        "${modifier}+Ctrl+s" = "exec ${lock} && systemctl suspend";
         # nautilus comes from Fedora's GNOME install.
         "${modifier}+Shift+Return" = "exec nautilus";
 
