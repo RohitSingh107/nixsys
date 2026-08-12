@@ -17,6 +17,15 @@
   # never points at a path that can go missing. Swap the file to change it.
   wallpaper = ../../wallpapers/dracula-linux.png;
   lock = "swaylock -f -i ${wallpaper} -s fill";
+
+  # grim/slurp/wl-copy/notify-send all come from Fedora; mako (started below)
+  # shows the notifications. sway runs these through sh -c, which is bash here,
+  # so pipefail is available to keep a cancelled slurp from claiming success.
+  screenshot = {
+    screen = ''grim - | wl-copy && notify-send -t 2000 "Screenshot" "Copied to clipboard"'';
+    region = ''set -o pipefail; slurp | grim -g - - | wl-copy && notify-send -t 2000 "Screenshot" "Region copied to clipboard"'';
+    file = ''mkdir -p $HOME/Pictures/Screenshots && f=$HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png && grim "$f" && notify-send -t 3000 -i "$f" "Screenshot saved" "$f"'';
+  };
 in {
   # `wayland.windowManager.sway.xwayland` pulls pkgs.xwayland into the profile
   # with no way to opt out, and ~/.nix-profile/bin sits ahead of /usr/bin in
@@ -159,11 +168,19 @@ in {
 
       keybindings = lib.mkOptionDefault {
         "${modifier}+Ctrl+l" = "exec ${lock}";
+        # nautilus comes from Fedora's GNOME install.
+        "${modifier}+Shift+Return" = "exec nautilus";
 
-        # Screenshots (grim/slurp/wl-clipboard come from Fedora).
-        "Print" = "exec grim - | wl-copy";
-        "Shift+Print" = "exec slurp | grim -g - - | wl-copy";
-        "${modifier}+Print" = "exec mkdir -p $HOME/Pictures/Screenshots && grim $HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png";
+        # Screenshots. This laptop has no Print key, so p (for print) carries
+        # the same three actions; Mod+Shift+s is there for Windows muscle
+        # memory. The Print variants still work on an external keyboard.
+        "${modifier}+p" = "exec ${screenshot.screen}";
+        "${modifier}+Shift+p" = "exec ${screenshot.region}";
+        "${modifier}+Shift+s" = "exec ${screenshot.region}";
+        "${modifier}+Ctrl+p" = "exec ${screenshot.file}";
+        "Print" = "exec ${screenshot.screen}";
+        "Shift+Print" = "exec ${screenshot.region}";
+        "${modifier}+Print" = "exec ${screenshot.file}";
 
         # Audio / media (pactl and playerctl come from Fedora).
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
