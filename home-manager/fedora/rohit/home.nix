@@ -27,6 +27,10 @@
     ../../../modules/home-manager/nvim
     ../../../modules/home-manager/chromium.nix
     ../../../modules/home-manager/firefox
+
+    # Makes /run/opengl-driver survive both SELinux and mesa bumps; without it
+    # Nix GUI apps die in eglInitialize. See docs/fedora-gpu-drivers.md.
+    ../../../modules/home-manager/non-nixos-gpu-selinux.nix
   ];
   nixpkgs = {
     # You can add overlays here
@@ -56,11 +60,8 @@
     };
   };
 
-  # Fedora is not NixOS, so Nix-built GUI apps (kitty, mpv, browsers) can't find
-  # a GPU driver: Nix's libglvnd looks for EGL/GL vendor ICDs under
-  # /run/opengl-driver, which doesn't exist here. This builds a Nix mesa driver
-  # env and installs a tmpfiles.d rule that recreates that symlink each boot.
-  # After switching, run once: sudo non-nixos-gpu-setup
+  # Also switches on targets.genericLinux.gpu, which builds the GPU driver env
+  # that non-nixos-gpu-selinux.nix above wires up to /run/opengl-driver.
   targets.genericLinux.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
