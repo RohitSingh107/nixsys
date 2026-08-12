@@ -13,6 +13,17 @@
   purple = "#bd93f9";
   red = "#ff5555";
 in {
+  # `wayland.windowManager.sway.xwayland` pulls pkgs.xwayland into the profile
+  # with no way to opt out, and ~/.nix-profile/bin sits ahead of /usr/bin in
+  # the session PATH -- sway would then launch the Nix Xwayland instead of
+  # Fedora's. Emptying the package leaves Fedora's the only one on PATH. If
+  # something on this host ever needs a real Xwayland, this is what to drop.
+  nixpkgs.overlays = [
+    (_final: prev: {
+      xwayland = prev.emptyDirectory;
+    })
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
 
@@ -22,10 +33,12 @@ in {
     # itself off, since validation needs a sway binary from Nix.
     package = null;
 
-    # Keeps pkgs.xwayland out of the profile -- Fedora ships Xwayland already.
-    # The module emits "xwayland disable" for this, which extraConfig (appended
-    # last) flips back on; the point is the package, not the feature.
-    xwayland = false;
+    # Xwayland stays on (Fedora's /usr/bin/Xwayland), and setting this to true
+    # is what keeps the config free of any `xwayland` line: sway rejects those
+    # on reload whenever they disagree with the running state, so a
+    # disable-then-enable pair would pop up a swaynag error on every reload.
+    # The package that comes with it is emptied out by the overlay below.
+    xwayland = true;
 
     # Fedora runs dbus-broker, where `systemctl --user import-environment` is
     # enough. The "dbus" implementation would pull in Nix's dbus purely to run
@@ -34,11 +47,6 @@ in {
       enable = true;
       dbusImplementation = "broker";
     };
-
-    extraConfig = ''
-      # Re-enable Xwayland (see the xwayland option above); /usr/bin/Xwayland.
-      xwayland enable
-    '';
 
     config = {
       inherit modifier;

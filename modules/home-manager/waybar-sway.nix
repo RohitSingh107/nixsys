@@ -24,7 +24,9 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 34;
+        # 38 is the minimum the modules below need; smaller and waybar warns
+        # and grows the bar anyway.
+        height = 38;
         margin-top = 5;
         margin-left = 10;
         margin-right = 10;
@@ -183,7 +185,7 @@
 
     style = ''
       * {
-        font-family: Fantasque Sans Mono, Font Awesome 6 Free, Font Awesome 6 Brands, monospace;
+        font-family: "Fantasque Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
         font-size: 14px;
       }
 
