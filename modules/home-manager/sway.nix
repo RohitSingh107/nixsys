@@ -26,11 +26,16 @@
   scratchTerm = ''swaymsg '[app_id="scratchterm"] scratchpad show' || ${pkgs.kitty}/bin/kitty --class scratchterm'';
 
   # grim/slurp/wl-copy/notify-send all come from Fedora; mako (started below)
-  # shows the notifications. sway runs these through sh -c, which is bash here,
-  # so pipefail is available to keep a cancelled slurp from claiming success.
+  # shows the notifications.
+  #
+  # No `;` anywhere in these: sway treats it as a command separator before the
+  # line ever reaches the shell, which silently split the region capture into
+  # `exec set -o pipefail` plus an unknown sway command. Holding slurp's output
+  # in a variable also means a cancelled selection stops the chain on its own,
+  # with no need for pipefail.
   screenshot = {
     screen = ''grim - | wl-copy && notify-send -t 2000 "Screenshot" "Copied to clipboard"'';
-    region = ''set -o pipefail; slurp | grim -g - - | wl-copy && notify-send -t 2000 "Screenshot" "Region copied to clipboard"'';
+    region = ''g=$(slurp) && grim -g "$g" - | wl-copy && notify-send -t 2000 "Screenshot" "Region copied to clipboard"'';
     file = ''mkdir -p $HOME/Pictures/Screenshots && f=$HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png && grim "$f" && notify-send -t 3000 -i "$f" "Screenshot saved" "$(basename "$f")"'';
   };
 in {
