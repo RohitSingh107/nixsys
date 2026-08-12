@@ -5,13 +5,13 @@
 }: let
   modifier = "Mod4";
 
-  # Dracula, to match the kitty theme used on the same hosts.
-  background = "#282a36";
-  currentLine = "#44475a";
-  foreground = "#f8f8f2";
-  comment = "#6272a4";
-  purple = "#bd93f9";
-  red = "#ff5555";
+  # Catppuccin Mocha, the palette waybar, mako, wofi, swaylock and kitty use.
+  base = "#1E1E2E";
+  surface = "#45475A";
+  text = "#CDD6F4";
+  overlay = "#7F849C";
+  mauve = "#CBA6F7";
+  red = "#F38BA8";
 
   # Kept in this repo (wallpapers/), so it lands in the store and the config
   # never points at a path that can go missing. Swap the file to change it.
@@ -79,8 +79,10 @@ in {
       gaps = {
         inner = 6;
         outer = 3;
-        smartGaps = true;
-        smartBorders = "on";
+        # Off on purpose: a lone window keeps its gaps and its border, so the
+        # focus colour is still visible with one window on the workspace.
+        smartGaps = false;
+        smartBorders = "off";
       };
 
       window = {
@@ -97,34 +99,34 @@ in {
 
       colors = {
         focused = {
-          border = purple;
-          background = currentLine;
-          text = foreground;
-          indicator = purple;
-          childBorder = purple;
+          border = mauve;
+          background = surface;
+          text = text;
+          indicator = mauve;
+          childBorder = mauve;
         };
         focusedInactive = {
-          border = currentLine;
-          background = background;
-          text = comment;
-          indicator = currentLine;
-          childBorder = currentLine;
+          border = surface;
+          background = base;
+          text = overlay;
+          indicator = surface;
+          childBorder = surface;
         };
         unfocused = {
-          border = background;
-          background = background;
-          text = comment;
-          indicator = background;
-          childBorder = background;
+          border = base;
+          background = base;
+          text = overlay;
+          indicator = base;
+          childBorder = base;
         };
         urgent = {
           border = red;
           background = red;
-          text = foreground;
+          text = base;
           indicator = red;
           childBorder = red;
         };
-        inherit background;
+        background = base;
       };
 
       input = {
