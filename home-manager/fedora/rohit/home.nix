@@ -138,26 +138,14 @@
   };
 
   # Flutter is a hand-extracted SDK at ~/develop/flutter, not a Nix package, so
-  # its bin dir (and pub global's) go on PATH by hand. sessionPath covers fish,
-  # which sources hm-session-vars.fish. Bash does not: bash.nix is deliberately
-  # not imported on this host, so ~/.bashrc is Fedora's own and never sources
-  # hm-session-vars.sh -- it does loop over ~/.bashrc.d/*, which is what the
-  # drop-in below hooks into.
+  # its bin dir (and pub global's) go on PATH by hand. This reaches fish only,
+  # which sources hm-session-vars.fish from its generated config; bash on this
+  # host is Fedora's own (bash.nix is deliberately not imported) and never
+  # sources hm-session-vars.sh.
   home.sessionPath = [
     "$HOME/develop/flutter/bin"
     "$HOME/.pub-cache/bin"
   ];
-
-  home.file.".bashrc.d/flutter.sh".text = ''
-    for dir in "$HOME/develop/flutter/bin" "$HOME/.pub-cache/bin"; do
-      case ":$PATH:" in
-        *":$dir:"*) ;;
-        *) PATH="$dir:$PATH" ;;
-      esac
-    done
-    unset dir
-    export PATH
-  '';
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
