@@ -77,6 +77,13 @@
   # that non-nixos-gpu-selinux.nix above wires up to /run/opengl-driver.
   targets.genericLinux.enable = true;
 
+  # Writes ~/.config/fontconfig/conf.d/10-hm-fonts.conf, which declares the
+  # profile's font directory. Nix-built GUI apps carry their own fontconfig,
+  # and that build does not expand XDG_DATA_DIRS the way Fedora's does -- so
+  # without this file they see /usr/share/fonts and nothing of ours. It is what
+  # makes waybar find Font Awesome and kitty find Fantasque Sans Mono.
+  fonts.fontconfig.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "rohit";

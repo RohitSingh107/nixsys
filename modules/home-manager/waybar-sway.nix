@@ -7,9 +7,12 @@
   # waybar.nix instead -- its workspace modules and helpers are Hyprland
   # specific.
 
-  # The glyphs in the bar are Font Awesome's. Fedora ships it too, but taking
-  # it from Nix keeps the bar readable no matter what dnf holds.
-  home.packages = [pkgs.font-awesome];
+  # The glyphs in the bar are Font Awesome's, and `dnf remove waybar` took
+  # Fedora's copy with it -- the icons were the only regression after the move.
+  # Pinned to 6 on purpose: the unversioned attribute is at 7, whose families
+  # are named "Font Awesome 7 ..." and whose glyph table has moved on from the
+  # codepoints below. The CSS names 7 as a fallback anyway.
+  home.packages = [pkgs.font-awesome_6];
 
   programs.waybar = {
     enable = true;
@@ -188,7 +191,7 @@
 
     style = ''
       * {
-        font-family: "Fantasque Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
+        font-family: "Fantasque Sans Mono", "Font Awesome 6 Free Solid", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
         font-size: 14px;
       }
 
