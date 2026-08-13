@@ -1,4 +1,4 @@
-{...}: let
+{pkgs, ...}: let
   # Catppuccin Mocha, the same palette waybar-sway.nix uses, so notifications
   # read as part of the bar rather than as a stray GTK window.
   base = "#1E1E2EF7";
@@ -12,9 +12,10 @@ in {
   services.mako = {
     enable = true;
 
-    # mako is installed with dnf and started from sway's config, so this only
-    # writes ~/.config/mako/config -- `makoctl reload` picks it up on switch.
-    package = null;
+    # Nix's mako, started by store path from sway.nix. This module writes no
+    # systemd unit, which is what keeps it out of the GNOME session, where
+    # gnome-shell already owns org.freedesktop.Notifications.
+    package = pkgs.mako;
 
     settings = {
       font = "Fantasque Sans Mono 12";

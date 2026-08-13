@@ -2,9 +2,8 @@
   programs.wofi = {
     enable = true;
 
-    # wofi comes from dnf like the rest of this session's tooling; only
-    # ~/.config/wofi/{config,style.css} is managed here.
-    package = null;
+    # Nix's wofi. sway.nix and waybar-sway.nix both launch it by store path.
+    package = pkgs.wofi;
 
     settings = {
       show = "drun";

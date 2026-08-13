@@ -3,21 +3,24 @@
   lib,
   ...
 }: {
-  # Waybar variant for the Fedora sway session: the bar itself comes from dnf
-  # (sway.nix launches /usr/bin/waybar through the sway bar block), so this
-  # module only writes ~/.config/waybar/{config,style.css}. The hyprland hosts
-  # use waybar.nix instead -- its workspace modules and helpers are Hyprland
-  # and Nix specific.
+  # Waybar variant for the Fedora sway session. The hyprland hosts use
+  # waybar.nix instead -- its workspace modules and helpers are Hyprland
+  # specific.
+
+  # The glyphs in the bar are Font Awesome's. Fedora ships it too, but taking
+  # it from Nix keeps the bar readable no matter what dnf holds.
+  home.packages = [pkgs.font-awesome];
+
   programs.waybar = {
     enable = true;
 
-    # home-manager has no `package = null` here the way sway does, so point it
-    # at an empty derivation: nothing lands in the profile and Fedora's
-    # /usr/bin/waybar stays the only waybar on PATH.
-    package = pkgs.emptyDirectory;
+    # Nix's waybar, launched by store path from sway.nix's bar block -- the
+    # session PATH has no nix profile on it, so a bare `waybar` would miss it.
+    package = pkgs.waybar;
 
-    # Leave systemd integration off -- it would build a user unit around the
-    # empty package above. sway starts the bar instead.
+    # Leave systemd integration off: as sway's `swaybar_command` waybar is
+    # handed `-b bar-0`, which is what lets it talk sway IPC. A user unit would
+    # start a second, workspace-blind copy.
     systemd.enable = false;
 
     settings = {
@@ -50,8 +53,7 @@
 
         "custom/launcher" = {
           format = "";
-          # wofi is not part of Fedora's sway package: sudo dnf install wofi
-          on-click = "wofi --show drun";
+          on-click = "${pkgs.wofi}/bin/wofi --show drun";
           tooltip = false;
         };
 

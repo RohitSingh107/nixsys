@@ -14,12 +14,15 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    # NOTE: Fedora owns the desktop here -- GNOME/Wayland for the default
-    # session, and dnf-installed sway plus waybar for the tiling one. sway.nix
-    # and waybar-sway.nix therefore only write config files and install
-    # nothing; the remaining WM and shell modules (hyprland, waybar, xmonad,
-    # xmobar, picom, wlogout, swaylock) are deliberately left out, as is
-    # xdg.nix, whose xdg.portal block would fight Fedora's system portals.
+    # NOTE: Fedora owns the compositor here -- GNOME/Wayland for the default
+    # session and dnf's sway for the tiling one, so sway.nix keeps
+    # `package = null` and only writes ~/.config/sway/config. The rest of the
+    # session (waybar, wofi, mako, swayidle, grim, slurp, wl-clipboard,
+    # libnotify, playerctl, brightnessctl) comes from Nix and is launched by
+    # store path, because the session PATH is /usr/local/bin:/usr/bin. The
+    # remaining WM and shell modules (hyprland, waybar, xmonad, xmobar, picom,
+    # wlogout, swaylock) are deliberately left out, as is xdg.nix, whose
+    # xdg.portal block would fight Fedora's system portals.
 
     # ../../../modules/home-manager/alacritty.nix
     ../../../modules/home-manager/kitty.nix

@@ -25,8 +25,24 @@
   # key again while it is focused hides it, so one key toggles.
   scratchTerm = ''swaymsg '[app_id="scratchterm"] scratchpad show' || ${pkgs.kitty}/bin/kitty --class scratchterm'';
 
-  # grim/slurp/wl-copy/notify-send all come from Fedora; mako (started below)
-  # shows the notifications.
+  # Every tool Nix provides is spelled out by store path. The sway session's
+  # PATH is /usr/local/bin:/usr/bin (`systemctl --user show-environment`), so a
+  # bare name can only ever find Fedora's copy -- the same thing that broke
+  # kitty's `shell fish`. Fedora still owns what stays bare below: sway itself,
+  # swaymsg/swaynag, swaylock (it wants /etc/pam.d/swaylock), Xwayland, pactl
+  # and nautilus.
+  waybar = "${pkgs.waybar}/bin/waybar";
+  wofi = "${pkgs.wofi}/bin/wofi";
+  mako = "${pkgs.mako}/bin/mako";
+  swayidle = "${pkgs.swayidle}/bin/swayidle";
+  grim = "${pkgs.grim}/bin/grim";
+  slurp = "${pkgs.slurp}/bin/slurp";
+  wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
+  notify-send = "${pkgs.libnotify}/bin/notify-send";
+  playerctl = "${pkgs.playerctl}/bin/playerctl";
+  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+
+  # mako (started below) is what draws the notifications these send.
   #
   # No `;` anywhere in these: sway treats it as a command separator before the
   # line ever reaches the shell, which silently split the region capture into
@@ -34,27 +50,41 @@
   # in a variable also means a cancelled selection stops the chain on its own,
   # with no need for pipefail.
   screenshot = {
-    screen = ''grim - | wl-copy && notify-send -t 2000 "Screenshot" "Copied to clipboard"'';
-    region = ''g=$(slurp) && grim -g "$g" - | wl-copy && notify-send -t 2000 "Screenshot" "Region copied to clipboard"'';
-    file = ''mkdir -p $HOME/Pictures/Screenshots && f=$HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png && grim "$f" && notify-send -t 3000 -i "$f" "Screenshot saved" "$(basename "$f")"'';
+    screen = ''${grim} - | ${wl-copy} && ${notify-send} -t 2000 "Screenshot" "Copied to clipboard"'';
+    region = ''g=$(${slurp}) && ${grim} -g "$g" - | ${wl-copy} && ${notify-send} -t 2000 "Screenshot" "Region copied to clipboard"'';
+    file = ''mkdir -p $HOME/Pictures/Screenshots && f=$HOME/Pictures/Screenshots/$(date +'%Y%m%d%H%M%S').png && ${grim} "$f" && ${notify-send} -t 3000 -i "$f" "Screenshot saved" "$(basename "$f")"'';
   };
 in {
   # `wayland.windowManager.sway.xwayland` pulls pkgs.xwayland into the profile
-  # with no way to opt out, and ~/.nix-profile/bin sits ahead of /usr/bin in
-  # the session PATH -- sway would then launch the Nix Xwayland instead of
-  # Fedora's. Emptying the package leaves Fedora's the only one on PATH. If
-  # something on this host ever needs a real Xwayland, this is what to drop.
+  # with no way to opt out, and Fedora's /usr/bin/Xwayland is the one this
+  # session actually launches -- so that build would be a large download that
+  # nothing ever runs. If something on this host ever needs a real Xwayland
+  # from Nix, this overlay is what to drop.
   nixpkgs.overlays = [
     (_final: prev: {
       xwayland = prev.emptyDirectory;
     })
   ];
 
+  # The store paths above are enough to keep these alive in the generation;
+  # listing them here also puts them on PATH in a normal shell, which is where
+  # the dnf copies used to be.
+  # No `with pkgs`: the let bindings above already hold these names as strings.
+  home.packages = [
+    pkgs.swayidle
+    pkgs.grim
+    pkgs.slurp
+    pkgs.wl-clipboard
+    pkgs.libnotify
+    pkgs.playerctl
+    pkgs.brightnessctl
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
 
-    # Sway (and swaybg/swayidle/swaylock/swaynag/waybar/foot/grim/slurp) is
-    # installed system-wide with dnf on this host, so home-manager only writes
+    # Sway itself (with swaybg/swaylock/swaynag/swaymsg) is installed
+    # system-wide with dnf on this host, so home-manager only writes
     # ~/.config/sway/config. `checkConfig` follows `package != null` and turns
     # itself off, since validation needs a sway binary from Nix.
     package = null;
@@ -78,8 +108,7 @@ in {
       inherit modifier;
 
       terminal = "${pkgs.kitty}/bin/kitty";
-      # wofi is not part of Fedora's sway package: sudo dnf install wofi
-      menu = "wofi --show drun";
+      menu = "${wofi} --show drun";
       defaultWorkspace = "workspace number 1";
 
       fonts = {
@@ -169,21 +198,20 @@ in {
         };
       };
 
-      # Fedora's waybar speaks the swaybar protocol well enough to be launched
-      # as sway's bar; it reads its own config from /etc/xdg/waybar.
+      # waybar speaks the swaybar protocol well enough to be launched as sway's
+      # bar, which is also how it gets the `-b bar-0` it needs for sway IPC.
       bars = [
         {
-          command = "waybar";
+          command = waybar;
           statusCommand = null;
         }
       ];
 
       startup = [
-        # GNOME's notification daemon is not around in this session:
-        # sudo dnf install mako
-        {command = "mako";}
+        # GNOME's notification daemon is not around in this session.
+        {command = mako;}
         {
-          command = ''swayidle -w timeout 600 "${lock}" timeout 900 "swaymsg 'output * power off'" resume "swaymsg 'output * power on'" before-sleep "${lock}"'';
+          command = ''${swayidle} -w timeout 600 "${lock}" timeout 900 "swaymsg 'output * power off'" resume "swaymsg 'output * power on'" before-sleep "${lock}"'';
         }
       ];
 
@@ -207,18 +235,19 @@ in {
         "Shift+Print" = "exec ${screenshot.region}";
         "${modifier}+Print" = "exec ${screenshot.file}";
 
-        # Audio / media (pactl and playerctl come from Fedora).
+        # pactl stays Fedora's: it ships with the system PipeWire stack.
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
         "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-        "XF86AudioPlay" = "exec playerctl play-pause";
-        "XF86AudioNext" = "exec playerctl next";
-        "XF86AudioPrev" = "exec playerctl previous";
+        "XF86AudioPlay" = "exec ${playerctl} play-pause";
+        "XF86AudioNext" = "exec ${playerctl} next";
+        "XF86AudioPrev" = "exec ${playerctl} previous";
 
-        # Needs: sudo dnf install brightnessctl
-        "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
-        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        # Nix's brightnessctl goes through logind rather than writing
+        # /sys/class/backlight directly, so it needs no udev rule or setuid.
+        "XF86MonBrightnessUp" = "exec ${brightnessctl} set +5%";
+        "XF86MonBrightnessDown" = "exec ${brightnessctl} set 5%-";
       };
     };
   };
