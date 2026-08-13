@@ -8,6 +8,13 @@
     shellInit = ''
       set -g fish_greeting
       set -x GPG_TTY (tty)
+
+      # pipx / pip --user / cargo installs land in ~/.local/bin. The distros put
+      # it on PATH from their own bashrc, but nothing does that for fish, so add
+      # it here. -g keeps it a per-shell global instead of writing a universal
+      # variable to ~/.config/fish/fish_variables, which would be state outside
+      # this repo.
+      fish_add_path -g $HOME/.local/bin
     '';
 
     shellAbbrs = {
