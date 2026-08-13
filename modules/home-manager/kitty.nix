@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   # Everything that changes with the palette lives in one of these; flip the
   # `theme` binding below to switch. Dracula is what this module used before
   # the move to Catppuccin, kept whole so going back is a one-line edit.
@@ -66,7 +70,11 @@ in {
       theme.settings
       // {
         dynamic_background_opacity = "yes";
-        shell = "fish";
+        # Absolute path, not a bare "fish": kitty resolves the shell against
+        # its own PATH, and the sway session on Fedora is started without the
+        # nix profile on PATH, so a bare name dies with "Failed to launch
+        # child: fish". The store path also pins the shell to this generation.
+        shell = "${config.programs.fish.package}/bin/fish";
 
         # Breathing room inside the sway border.
         window_padding_width = 8;
