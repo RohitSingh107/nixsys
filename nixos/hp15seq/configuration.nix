@@ -413,7 +413,10 @@
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
-      font-awesome
+      # Pinned to 6: the unversioned attribute is at 7 now, whose families are
+      # named "Font Awesome 7 ..." -- nothing that asks for an older name (see
+      # xmobar and waybar) would match it.
+      font-awesome_6
       corefonts
       noto-fonts-color-emoji # renamed from noto-fonts-emoji
       liberation_ttf

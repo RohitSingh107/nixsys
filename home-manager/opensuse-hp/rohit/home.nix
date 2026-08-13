@@ -51,6 +51,13 @@
     };
   };
 
+  # Writes ~/.config/fontconfig/conf.d/10-hm-fonts.conf, which declares the
+  # profile's font directory. Nix-built GUI apps carry their own fontconfig,
+  # and that build does not expand XDG_DATA_DIRS the way a distro's does -- so
+  # without this file kitty never finds Fantasque Sans Mono and silently falls
+  # back to whatever openSUSE ships.
+  fonts.fontconfig.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "rohit";

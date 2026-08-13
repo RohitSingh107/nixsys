@@ -3,6 +3,16 @@
   outputs,
   ...
 }: {
+  # The bar's CSS names these three and nothing installed them, so every icon
+  # and the text alongside fell back to a default font. The pictographs live in
+  # Material Design Icons' plane-15 range (U+F0079 and friends), except the
+  # phone and car glyphs at U+F095/U+F1B9, which are Font Awesome's --
+  # font-awesome_6 comes from fonts.packages on the host.
+  home.packages = [
+    (pkgs.iosevka-bin.override {variant = "SGr-IosevkaFixed";})
+    pkgs.material-design-icons
+  ];
+
   programs.waybar = {
     enable = true;
     # package = (pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -250,7 +260,7 @@
 
 
       * {
-        font-family: Iosevka Fixed, Material Design Icons Desktop;
+        font-family: "Iosevka Fixed", "Material Design Icons", "Font Awesome 6 Free Solid", monospace;
         font-size: 14px;
       }
 

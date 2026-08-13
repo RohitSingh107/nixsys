@@ -13,13 +13,14 @@
       -- Xmobar (http://projects.haskell.org/xmobar/)
       -- This is the default xmobar configuration for DTOS.
       -- This config is packaged in the DTOS repo as dtos-xmobar
-      -- Dependencies: otf-font-awesome ttf-mononoki ttf-ubuntu-font-family trayer
+      -- Dependencies: font-awesome_6 (fonts.packages on hp15seq), mononoki,
+      -- ubuntu font family, trayer
       -- Also depends on scripts from dtos-local-bin from the dtos-core-repo.
 
       Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=true"
              , additionalFonts = [ "xft:Mononoki:pixelsize=11:antialias=true:hinting=true"
-                                 , "xft:Font Awesome 5 Free Solid:pixelsize=12"
-                                 , "xft:Font Awesome 5 Brands:pixelsize=12"
+                                 , "xft:Font Awesome 6 Free Solid:pixelsize=12"
+                                 , "xft:Font Awesome 6 Brands:pixelsize=12"
                                  , "xft:Ubuntu:weight=bold:pixelsize=14:antialias=true:hinting=true"
                                  ]
              -- , bgColor      = "#000000"
