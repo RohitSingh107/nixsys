@@ -190,7 +190,6 @@
       extraOptions = [
         "--color=always"
         "--group-directories-first"
-        "--icons"
       ];
     };
 
