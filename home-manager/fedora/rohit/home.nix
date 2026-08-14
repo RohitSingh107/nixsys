@@ -137,14 +137,16 @@
     # '';
   };
 
-  # Flutter is a hand-extracted SDK at ~/develop/flutter, not a Nix package, so
-  # its bin dir (and pub global's) go on PATH by hand. This reaches fish only,
-  # which sources hm-session-vars.fish from its generated config; bash on this
-  # host is Fedora's own (bash.nix is deliberately not imported) and never
+  # Toolchains installed outside Nix, so their bin dirs go on PATH by hand:
+  # Flutter is a hand-extracted SDK at ~/develop/flutter (with pub global's bin
+  # alongside it), and Rust comes from rustup at ~/.cargo. This reaches fish
+  # only, which sources hm-session-vars.fish from its generated config; bash on
+  # this host is Fedora's own (bash.nix is deliberately not imported) and never
   # sources hm-session-vars.sh.
   home.sessionPath = [
     "$HOME/develop/flutter/bin"
     "$HOME/.pub-cache/bin"
+    "$HOME/.cargo/bin"
   ];
 
   # Home Manager can also manage your environment variables through
