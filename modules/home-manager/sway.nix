@@ -134,6 +134,19 @@ in {
             criteria = {app_id = "scratchterm";};
             command = "floating enable, resize set 60 ppt 60 ppt, move position center, move scratchpad, scratchpad show";
           }
+          # The android emulator is an Xwayland client, so it comes in under a
+          # class rather than an app_id, and the name it uses has moved around
+          # between releases (plain "Emulator", the old "emulator64-*" binaries,
+          # and the bare qemu window some versions map first). Tiling it just
+          # squashes a fixed-aspect device screen, so float all of them.
+          {
+            criteria = {class = "^(Emulator|emulator64-.*|qemu-system-.*)$";};
+            command = "floating enable";
+          }
+          {
+            criteria = {title = "^Android Emulator - ";};
+            command = "floating enable";
+          }
         ];
       };
 
