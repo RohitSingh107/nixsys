@@ -155,7 +155,13 @@ in {
         titlebar = true;
       };
 
-      focus.followMouse = true;
+      focus = {
+        followMouse = true;
+        # When an app opens or activates a window on another workspace (a link
+        # from a terminal, "Open in browser" from an app), jump to it instead
+        # of only marking the workspace urgent in waybar.
+        newWindow = "focus";
+      };
 
       colors = {
         focused = {
