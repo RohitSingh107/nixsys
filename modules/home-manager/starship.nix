@@ -75,7 +75,7 @@
         disabled = true;
       };
 
-      python.symbol = " ";
+      python.disabled = true;
       nix_shell.symbol = " ";
 
       # battery = {
