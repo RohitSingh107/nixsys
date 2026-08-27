@@ -71,6 +71,10 @@
         disabled = true;
       };
 
+      aws = {
+        disabled = true;
+      };
+
       python.symbol = " ";
       nix_shell.symbol = " ";
 
