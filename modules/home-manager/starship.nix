@@ -76,6 +76,7 @@
       };
 
       python.disabled = true;
+      package.disabled = true;
       nix_shell.symbol = " ";
 
       # battery = {
