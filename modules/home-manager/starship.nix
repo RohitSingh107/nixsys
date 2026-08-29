@@ -75,7 +75,7 @@
         disabled = true;
       };
 
-      python.disabled = true;
+      python.symbol = " ";
       package.disabled = true;
       nix_shell.symbol = " ";
 
