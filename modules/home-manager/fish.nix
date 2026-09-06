@@ -1,6 +1,14 @@
 {pkgs, ...}: {
   programs.fish = {
     enable = true;
+
+    plugins = [
+      {
+        name = "nvm";
+        src = pkgs.fishPlugins.nvm.src;
+      }
+    ];
+
     # interactiveShellInit = "
     #   cowsay -r -C 'Hello Rohit'
     #   ";
