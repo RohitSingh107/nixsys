@@ -53,3 +53,8 @@ map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 
 
 
+
+-- Buffer navigation along the bufferline (see lua/theme.lua)
+map('n', '<S-l>', '<CMD>BufferLineCycleNext<CR>')
+map('n', '<S-h>', '<CMD>BufferLineCyclePrev<CR>')
+map('n', '<leader>bd', '<CMD>bdelete<CR>')

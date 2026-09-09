@@ -73,14 +73,15 @@ in {
       plugins = with pkgs.vimPlugins; [
         telescope-nvim
         which-key-nvim
-        vim-airline # vim
-        vim-airline-themes # vim
         nvim-colorizer-lua
         comment-nvim
         nvim-web-devicons
-        vim-devicons # vim
         nvim-tree-lua
         telescope-fzf-native-nvim
+
+        ## Statusline and bufferline, both configured in lua/theme.lua
+        lualine-nvim
+        bufferline-nvim
 
         ## Color themes
         catppuccin-nvim
@@ -133,6 +134,7 @@ in {
       initLua = ''
 
         ${builtins.readFile ./lua/options.lua}
+        ${builtins.readFile ./lua/theme.lua}
         ${builtins.readFile ./lua/autocmd.lua}
         ${builtins.readFile ./lua/mappings.lua}
         ${builtins.readFile ./lua/lsp.lua}
