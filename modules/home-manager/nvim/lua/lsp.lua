@@ -14,6 +14,13 @@ vim.o.signcolumn = "yes"
 vim.o.updatetime = 300
 vim.o.winborder = "rounded"
 
+-- "noselect" is required, not cosmetic: autotrigger completion otherwise selects
+-- and inserts the first candidate as soon as the menu opens, so typing "os." and
+-- carrying on gives you "os.CLD_CONTINUEDpath". Nothing is inserted until <C-y>.
+-- "menuone" keeps the menu up when there is only one match, "popup" shows the
+-- documentation preview for the selected item.
+vim.o.completeopt = "menu,menuone,noselect,popup"
+
 vim.diagnostic.config({
   virtual_text = { spacing = 2, prefix = "●" },
   signs = true,
