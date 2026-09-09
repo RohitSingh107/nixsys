@@ -1,22 +1,74 @@
-{pkgs, ...}: {
-  home.file = {
-    ".config/nvim/snippets" = {
-      source = ./snippets;
-      recursive = true;
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  # Every language Neovim knows how to talk to. Adding one here is enough:
+  # it declares the option, installs the server and emits vim.lsp.enable().
+  # The matching server definition lives in ./lsp/<server>.lua.
+  #
+  # These are language *servers*, not toolchains. gopls shells out to `go`,
+  # rust-analyzer to `cargo`, and hls needs a matching GHC; without them on
+  # PATH the server attaches but reports no results. Get the toolchain from the
+  # project (devenv/nix develop) and launch Neovim inside it.
+  servers = {
+    python = {
+      server = "pyright";
+      # pyright type-checks but cannot format, so black comes along to give
+      # <leader>lf something to do in Python buffers (via neoformat).
+      packages = [pkgs.pyright pkgs.black];
+    };
+    go = {
+      server = "gopls";
+      packages = [pkgs.gopls];
+    };
+    rust = {
+      server = "rust_analyzer";
+      packages = [pkgs.rust-analyzer];
+    };
+    haskell = {
+      server = "hls";
+      packages = [pkgs.haskell-language-server];
     };
   };
-  programs.neovim =
-    # let
-    #   toLua = str: "lua << EOF\n${str}\nEOF\n";
-    #   toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-    # in
-    {
+
+  # Languages switched on by this host. Everything is off by default.
+  enabled = lib.filterAttrs (lang: _: config.custom.nvim.languages.${lang}.enable) servers;
+
+  enabledServers = lib.mapAttrsToList (_: s: s.server) enabled;
+  enabledPackages = lib.concatMap (s: s.packages) (lib.attrValues enabled);
+
+  # vim.lsp.enable({}) is a harmless no-op, so no special case when all are off.
+  lspEnable = ''
+    vim.lsp.enable({${lib.concatMapStringsSep ", " (s: "\"${s}\"") enabledServers}})
+  '';
+in {
+  options.custom.nvim.languages =
+    lib.mapAttrs (lang: _: {
+      enable = lib.mkEnableOption "the ${lang} language server in Neovim";
+    })
+    servers;
+
+  config = {
+    home.file = {
+      ".config/nvim/snippets" = {
+        source = ./snippets;
+        recursive = true;
+      };
+      # Server definitions are read off the runtimepath by vim.lsp.enable().
+      # Shipping all of them is inert; only the enabled ones are ever started.
+      ".config/nvim/lsp" = {
+        source = ./lsp;
+        recursive = true;
+      };
+    };
+
+    programs.neovim = {
       enable = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-
-      withNodeJs = true;
 
       plugins = with pkgs.vimPlugins; [
         telescope-nvim
@@ -71,32 +123,9 @@
         indent-blankline-nvim
         # nvim-ts-rainbow2 # Depricated
         rainbow-delimiters-nvim
-
-        ## Coc Extensions
-        coc-json
-        coc-snippets
-        coc-clangd
-        coc-emmet
-        coc-eslint
-        # coc-flutter
-        coc-highlight
-        coc-html
-        coc-json
-        coc-pairs
-        coc-prettier
-        coc-pyright
-        coc-rust-analyzer
-        # coc-tabnine
-        # coc-tsserver
-        # coc-vimlsp
-        coc-sh
-        coc-lua
-        coc-markdownlint
-        # coc-tailwindcss
-        # coc-stylelint
       ];
 
-      extraPackages = with pkgs; [shfmt xclip wl-clipboard];
+      extraPackages = with pkgs; [shfmt xclip wl-clipboard] ++ enabledPackages;
 
       withRuby = false;
       withPython3 = false;
@@ -106,63 +135,11 @@
         ${builtins.readFile ./lua/options.lua}
         ${builtins.readFile ./lua/autocmd.lua}
         ${builtins.readFile ./lua/mappings.lua}
-        ${builtins.readFile ./lua/coc-conf.lua}
+        ${builtins.readFile ./lua/lsp.lua}
         ${builtins.readFile ./lua/plugin-settings.lua}
 
+        ${lspEnable}
       '';
-
-      coc = {
-        enable = true;
-        settings = {
-          "snippets.userSnippetsDirectory" = "~/.config/nvim/snippets";
-          "prettier.printWidth" = 80;
-          "snippets.ultisnips.pythonPrompt" = false;
-          "pyright.enable" = true;
-          "python.linting.mypyEnabled" = true;
-          "python.formatting.provider" = "black";
-
-          "coc.preferences.formatOnSaveFiletypes" = [
-            "css"
-            "markdown"
-            "javascript"
-            "javascriptreact"
-            "typescript"
-            "typescriptreact"
-            "json"
-            "html"
-            "solidity"
-            "cpp"
-            "c++"
-          ];
-
-          languageserver = {
-            haskell = {
-              command = "haskell-language-server-wrapper";
-              args = ["--lsp"];
-              rootPatterns = [
-                "*.cabal"
-                "stack.yaml"
-                "cabal.project"
-                "package.yaml"
-                "hie.yaml"
-              ];
-              filetypes = ["haskell" "lhaskell"];
-              settings = {
-                haskell = {
-                  checkParents = "CheckOnSave";
-                  checkProject = true;
-                  maxCompletions = 40;
-                  formattingProvider = "ormolu";
-                  plugin = {stan = {globalOn = true;};};
-                };
-              };
-            };
-            # nix = {
-            #   command = "rnix-lsp";
-            #   filetypes = [ "nix" ];
-            # };
-          };
-        };
-      };
     };
+  };
 }

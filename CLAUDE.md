@@ -47,7 +47,7 @@ Each host directory contains a `home.nix` that selectively imports from the shar
 
 ### Shared Modules (modules/home-manager/)
 
-All reusable configuration lives here. Each file or directory is one logical unit (a program or service). Modules are **config-only** — they directly set `programs.*`/`services.*` options without defining custom module options.
+All reusable configuration lives here. Each file or directory is one logical unit (a program or service). Modules are **config-only** — they directly set `programs.*`/`services.*` options without defining custom module options. The one exception is `nvim/`, which declares `custom.nvim.languages.*` so each host can pick its own language servers.
 
 - Simple programs: single `.nix` file (e.g., `fish.nix`, `tmux.nix`, `starship.nix`)
 - Complex programs: directory with `default.nix` + supporting files (e.g., `nvim/` has Lua configs and snippets, `xmonad/` has Haskell source)
@@ -74,4 +74,5 @@ Module function signature: `{ pkgs, config, lib, outputs, inputs, ... }:`
 - **Overlays**: Every host config applies the same three overlays from `outputs.overlays.*`.
 - **State versions**: Don't change `home.stateVersion` — it controls migration behavior, not the package set.
 - **Shell**: Fish is the primary shell across all hosts. Bash is configured as fallback.
-- **Editor**: Neovim with CoC for LSP, Treesitter for syntax. Config is split across `nvim/lua/` files.
+- **Editor**: Neovim with Treesitter for syntax and Neovim's built-in LSP client (no lspconfig, no completion plugin). Config is split across `nvim/lua/` files; `nvim/lua/lsp.lua` holds the language-agnostic setup and `nvim/lsp/<server>.lua` holds one definition per server, read off the runtimepath by `vim.lsp.enable()`.
+- **LSP languages**: off by default and enabled per host via `custom.nvim.languages.<lang>.enable` (`python`, `go`, `rust`, `haskell`). The toggle drives both `extraPackages` and the generated `vim.lsp.enable()` call from one `servers` table in `modules/home-manager/nvim/default.nix`, so the server binary and its activation cannot drift apart. Adding a language means one entry in that table plus a `nvim/lsp/<server>.lua`.

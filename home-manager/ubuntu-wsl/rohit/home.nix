@@ -23,6 +23,15 @@
     # ../../../modules/home-manager/chromium.nix
     # ../../../modules/home-manager/firefox
   ];
+  # Language servers for Neovim. Everything is off by default; enable only
+  # what this host actually develops in.
+  custom.nvim.languages = {
+    python.enable = true;
+    go.enable = false;
+    rust.enable = false;
+    haskell.enable = false;
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [

@@ -161,3 +161,14 @@ require('telescope').setup({
 require('telescope').load_extension('fzf')
 
 
+
+
+-- Neoformat
+-- Formatting is reached through <leader>lf in lua/lsp.lua, which only falls
+-- back to neoformat when the language server cannot format the buffer.
+-- black is installed by the `custom.nvim.languages.python` toggle; pinning the
+-- list stops neoformat from probing yapf/autopep8/isort first.
+vim.g.neoformat_enabled_python = { "black" }
+
+-- Leave the buffer untouched if no formatter is actually installed.
+vim.g.neoformat_only_msg_on_error = 1
