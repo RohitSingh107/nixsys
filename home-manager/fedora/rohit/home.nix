@@ -24,6 +24,11 @@
     # wlogout, swaylock) are deliberately left out, as is xdg.nix, whose
     # xdg.portal block would fight Fedora's system portals.
 
+    # Writes ~/.config/nixpkgs/config.nix so ad-hoc `nix run nixpkgs#...
+    # --impure` and friends allow unfree packages. The `nixpkgs.config`
+    # setting in a host config only covers home-manager's own pkgs instance.
+    ../../../modules/home-manager/nixpkgs-config.nix
+
     # ../../../modules/home-manager/alacritty.nix
     ../../../modules/home-manager/kitty.nix
     ../../../modules/home-manager/fish.nix

@@ -4,6 +4,11 @@
   ...
 }: {
   imports = [
+    # Writes ~/.config/nixpkgs/config.nix so ad-hoc `nix run nixpkgs#...
+    # --impure` and friends allow unfree packages. The `nixpkgs.config`
+    # setting in a host config only covers home-manager's own pkgs instance.
+    ../../../modules/home-manager/nixpkgs-config.nix
+
     ../../../modules/home-manager/fish.nix
     ../../../modules/home-manager/starship.nix
   ];
